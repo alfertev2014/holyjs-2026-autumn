@@ -1,0 +1,118 @@
+:root {
+  font-size: 20px;
+  --slidev-code-font-size: 18px;
+  --slidev-code-line-height: 1.5em;
+  --slidev-code-margin: 0;
+  --slidev-code-background: white;
+  --brand-primary-color: #2d79c7;
+  --brand-secondary-color: #c72d79;
+}
+
+:root.dark {
+  --slidev-code-background: rgb(11, 9, 0);
+  --slidev-slide-content-background: rgb(11, 9, 0);
+  --brand-primary-color: #ffcb6b;
+  --brand-secondary-color: #c792ea;
+  --brand-third-color: #89ddff;
+  .slidev-slide-container .slidev-slide-content .slidev-page {
+    background-color: var(--slidev-slide-content-background);
+  }
+}
+
+
+
+.slidev-layout {
+  h1 {
+    font-weight: 800;
+    font-size: 2rem;
+  }
+
+  a {
+    font-size: 0.8rem;
+    color: #82aaff;
+  }
+
+  li {
+    line-height: 1.75em;
+    margin-bottom: 0.5rem;
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  li::marker {
+    color: var(--brand-primary-color);
+  }
+  ol {
+    li::marker {
+      color: var(--brand-third-color);
+    }
+  }
+
+  h1 + p {
+    opacity: 0.8;
+  }
+
+  &.cover h1 + p {
+    opacity: 1;
+    font-size: 1.6rem;
+  }
+
+  &.section {
+    h1 + p {
+      font-size: 1.75rem;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+    }
+  }
+
+  code {
+    color: #eee;
+  }
+
+  .slidev-code .slidev-code-dishonored {
+    opacity: 0.5;
+  }
+  .shiki .line, .shiki-magic-move-item {
+    font-weight: 600;
+  }
+}
+
+li.slidev-vclick-current {
+  font-weight: 800;
+}
+
+.two-cols-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  column-gap: 2rem;
+}
+
+.reference {
+  margin-block: 1rem;
+}
+
+.reference p {
+  margin: 0;
+}
+
+.error-output {
+  color: #ff4545;
+  background-color: black;
+  margin-block: 8px;
+  font-weight: 600;
+}
+
+.twoslash .twoslash-meta-line.twoslash-error-line {
+  width: 100%;
+  text-wrap-mode: wrap;
+  font-weight: 600;
+}
+
+.brand-accent-color {
+  color: var(--brand-third-color);
+  font-weight: 600;
+}
