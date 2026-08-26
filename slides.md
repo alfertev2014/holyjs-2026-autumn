@@ -70,9 +70,10 @@ flowchart LR
 flowchart LR
   delta([Δarg]) --> magic@{ shape: cloud } --> deltaRes([Δres])
 ```
-</div>
 
 </div>
+</div>
+
 <!--
 Ну, и давайте я сразу раскрою смысл названия доклада.
 
@@ -262,7 +263,7 @@ level: 3
 flowchart LR
   State -- component --> View
   View -- event --> Action
-  Action --> State
+  Action -- mutation --> State
 ```
 
 - UI разделяется на дерево компонентов с жизненным циклом
@@ -351,12 +352,20 @@ level: 2
 layout: center
 ---
 
+````md magic-move
 ```ts
 const a = "The "
 const b = "Answer"
 
 const c = a + b
 ```
+```ts
+const a = "The Answer"
+const b = "Life and Universe and Everything"
+
+const c = `${a} to ${b}`
+```
+````
 
 ---
 level: 2
@@ -365,7 +374,7 @@ layout: center
 
 ```ts
 const a = 100500.0
-const b = false
+const b = "Whatever"
 
 const c = { foo: a, bar: b }
 ```
