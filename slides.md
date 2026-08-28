@@ -18,6 +18,93 @@ comark: true
 -->
 ---
 level: 1
+---
+
+# Приятно познакомиться
+
+<style>
+  .two-cols-grid {
+    align-items: center;
+  }
+</style>
+<div class="flex gap-x-3">
+  <div class="flex gap-x-1 text-xl"><img src="./images/vasya.jpg" style="border-radius: 50%" /><div><b>Василий Алфертьев</b></div></div>
+  <div>
+    <img src="./images/osinit.png" style="width: 300px" />
+  </div>
+  <div>
+    <p><logos-telegram style="display: inline; width: 32px; height: 32px" /> <b>Telegram</b>: <a href="https://t.me/alfertev2012">@alfertev2012</a></p>
+    <p><logos-github style="display: inline; width: 32px; height: 32px" /> <b>GitHub</b>: <a href="https://github.com/alfertev2014">@alfertev2014</a></p>
+  </div>
+  <div>
+    <div class="two-cols-grid">
+      <div><logos-react style="display: inline; width: 64px; height: 64px" /> React</div>
+      <div><logos-typescript style="display: inline; width: 64px; height: 64px" /> TypeScript</div>
+    </div>
+  </div>
+</div>
+
+<!--
+Теперь немного обо мне. Я Василий Алфертьев, в настоящее время - frontend-разработчик в компании Открытые решения, пишу в основном на React-е, обязательно с TypeScript-ом, люблю придерживаться строгой типизации и вообще люблю, когда абстракции строгие.
+-->
+---
+level: 2
+---
+
+# Чем ещё владею
+
+<style>
+li {
+  margin-block: 0;
+  line-height: 1.5rem;
+}
+</style>
+<div class="two-cols-grid">
+
+<div>
+
+- 5+ лет в **С++**:
+  - системное программирование
+  - Linux
+  - UI на Qt
+
+</div>
+<div v-click="1">
+
+- Увлекаюсь
+  - **дизайном языков программирования**
+  - best practices и архитектурой ПО
+  - computer science
+
+</div>
+<div>
+
+- ~6 лет в **Java**:
+  - backend на Spring
+  - базы данных
+  - монолиты, микросервисы…
+
+</div>
+<div v-click="1">
+
+<ul>
+<li>Тянет разбираться в
+  <ul>
+  <li>компиляторах и оптимизациях</li>
+  <li>"кишках" runtime разных языков</li>
+  <li>IDE и инструментах</li>
+  <li>Устройстве UI-фреймворков и библиотек</li>
+  </ul>
+</li>
+</ul>
+</div>
+</div>
+
+<!--
+Начинал интересоваться устройством UI-фреймворков ещё в C# во времена WinForms, много писал UI на Qt. Параллельно много погружался в различные интересные темы computer science, связанные с компиляторами. И с развитием Web-технологий UI-фреймворки для меня не менее интересны.
+-->
+---
+level: 1
 layout: two-cols
 ---
 
@@ -99,93 +186,6 @@ level: 2
 1. И всё это потому, что они стараются моделировать одну и ту же *абстракцию* пользовательского интерфейса. И отличаются они только *способами* и *строгостью* реализации этой абстракции. И именно от понимания этой абстракции и механизмов её реализации *исходят* все *паттерны* использования фреймворка и *best practices*.
 2. И уже в этой абстрактной модели можно отметить фазу инкрементального обновления представления. В модели UI очень удобно представлять view как чистую функцию от state. И именно про инкрементальные вычисления *этой* функции мы и будем говорить.
 3. Во многие фреймворки уже пробралась идея сигнальной реактивности как реализации инкрементальных вычислений. Есть даже proposal для добавления сигналов прямо в JavaScript runtime. Но об этом позже.
--->
----
-level: 1
----
-
-# Приятно познакомиться
-
-<style>
-  .two-cols-grid {
-    align-items: center;
-  }
-</style>
-<div class="two-cols-grid">
-  <div class="two-cols-grid text-xl"><img src="./images/vasya.jpg" style="border-radius: 50%" /><div><b>Василий Алфертьев</b></div></div>
-  <div>
-    <img src="./images/osinit.png" style="width: 300px" />
-  </div>
-  <div>
-    <p><img src="./images/telegram.svg" style="display: inline; width: 32px; height: 32px" /> <b>Telegram</b>: <a href="https://t.me/alfertev2012">@alfertev2012</a></p>
-    <p><img src="./images/github.svg" style="display: inline; width: 32px; height: 32px" /> <b>GitHub</b>: <a href="https://github.com/alfertev2014">@alfertev2014</a></p>
-  </div>
-  <div>
-    <div class="two-cols-grid">
-      <div><img src="./images/react.svg" style="display: inline; width: 64px; height: 64px" /> React</div>
-      <div><img src="./images/ts_logo.png" style="display: inline; width: 64px; height: 64px" /> TypeScript</div>
-    </div>
-  </div>
-</div>
-
-<!--
-Теперь немного обо мне. Я Василий Алфертьев, в настоящее время - frontend-разработчик в компании Открытые решения, пишу в основном на React-е, обязательно с TypeScript-ом, люблю придерживаться строгой типизации и вообще люблю, когда абстракции строгие.
--->
----
-level: 2
----
-
-# Чем ещё владею
-
-<style>
-li {
-  margin-block: 0;
-  line-height: 1.5rem;
-}
-</style>
-<div class="two-cols-grid">
-
-<div>
-
-- 5+ лет в **С++**:
-  - системное программирование
-  - Linux
-  - UI на Qt
-
-</div>
-<div v-click="1">
-
-- Увлекаюсь
-  - **дизайном языков программирования**
-  - best practices и архитектурой ПО
-  - математической логикой
-
-</div>
-<div>
-
-- ~6 лет в **Java**:
-  - backend на Spring
-  - базы данных
-  - монолиты, микросервисы…
-
-</div>
-<div v-click="1">
-
-<ul>
-<li>Тянет разбираться в
-  <ul>
-  <li>компиляторах и оптимизациях</li>
-  <li>"кишках" runtime разных языков</li>
-  <li>IDE и инструментах</li>
-  <li>Устройстве UI-фреймворков и библиотек</li>
-  </ul>
-</li>
-</ul>
-</div>
-</div>
-
-<!--
-Начинал интересоваться устройством UI-фреймворков ещё в C# во времена WinForms, много писал UI на Qt. Параллельно много погружался в различные интересные темы computer science, связанные с компиляторами. И с развитием Web-технологий UI-фреймворки для меня не менее интересны.
 -->
 ---
 level: 1
