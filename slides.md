@@ -23,20 +23,20 @@ hideInToc: true
 
 # Приятно познакомиться
 
-<div class="flex gap-x-3">
-  <div class="flex gap-x-1 text-xl"><img src="./images/vasya.jpg" style="border-radius: 50%" /><div><b>Василий Алфертьев</b></div></div>
+<div class="flex gap-x-3 items-center">
+  <div class="flex gap-x-1 text-xl items-center"><img src="./images/vasya.jpg" style="border-radius: 50%" /><div><b>Василий Алфертьев</b></div></div>
   <div>
     <img src="./images/osinit.png" style="width: 300px" />
   </div>
+</div>
+<div class="flex gap-x3 items-center">
   <div>
     <p><logos-telegram style="display: inline; width: 32px; height: 32px" /> <b>Telegram</b>: <a href="https://t.me/alfertev2012">@alfertev2012</a></p>
     <p><logos-github-icon style="display: inline; width: 32px; height: 32px" /> <b>GitHub</b>: <a href="https://github.com/alfertev2014">@alfertev2014</a></p>
   </div>
-  <div>
-    <div class="two-cols-grid">
-      <div><logos-react style="display: inline; width: 64px; height: 64px" /> React</div>
-      <div><logos-typescript-icon style="display: inline; width: 64px; height: 64px" /> TypeScript</div>
-    </div>
+  <div class="flex gap-x-1 items-center">
+    <logos-react style="display: inline; width: 64px; height: 64px" /><div>React</div>
+    <logos-typescript-icon style="display: inline; width: 64px; height: 64px" /><div>TypeScript</div>
   </div>
 </div>
 
@@ -120,26 +120,47 @@ level: 2
 
 # Разновидности реактивности
 
-<v-clicks>
+<style>
+li {
+  margin-block: 0;
+  line-height: 1rem;
+}
+</style>
+<div class="grid grid-cols-2 gap-4">
+<div v-click>
 
 - Ориентированные на данные
   - первичные и производные данные
   - граф зависимостей
   - Примеры: Сигнальная реактивность
+
+</div>
+<div v-click>
+
 - Ориентированные на события
   - события и потоки данных
   - observables, observers, подписки
   - трансформация, фильтрация буферизация событий и т.п.
   - Примеры: Rx.js
+
+</div>
+<div v-click>
+
 - Гибрид первых двух
   - подробный граф из событий, данных и действий с ними
   - Примеры: Effector
+
+</div>
+<div v-click>
+
 - Основанные на перевычислении
   - rerender целых частей приложения
   - reconcilliation результатов
   - Примеры: React
 
-</v-clicks>
+</div>
+</div>
+
 
 <!--
 А если пуститься в детали, то можно выделить, например,
@@ -162,10 +183,14 @@ level: 2
 
 ```mermaid
 flowchart LR
-  r(recalculate all) --> cg("coarse-graned") --> fg("fine-graned") --> i(incremental)
+  r(recalculate all) ---|>| cg("coarse-graned") ---|>| fg("fine-graned") ---|>| i(incremental)
 ```
 
-<v-click>Идеал: минимально необходимые перевычисления - **инкрементальные вычисления**.</v-click>
+<v-click>
+
+Идеал: минимально необходимые обновления - **инкрементальные вычисления**.
+
+</v-click>
 
 <!--
 Под гранулярностью понимается, насколько мелкие блоки из действий по пересчёту производных данных могут выполняться атомарно и независимо.
@@ -259,15 +284,18 @@ const OhmsLaw = () => {
 
   return (
     <div>
-      <p>Напряжение: <input type="number" value={voltage} onInput={e => { voltage = e.target.valueAsNumber }}/></p>
-      <p>Сопротивление: <input type="number" value={voltage} onInput={e => { voltage = e.target.valueAsNumber }}/></p>
+      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+        voltage = e.target.valueAsNumber
+      }}/></p>
+      <p>Сопротивление: <input type="number" value={voltage} onInput={e => {
+        voltage = e.target.valueAsNumber
+      }}/></p>
       <p>Сила тока: <span>{amperage}</span> А</p>
       <p>Мощность: <span>{amperage * voltage}</span> Вт</p>
     </div>
   )
 }
 ```
-
 
 <!--
 И я бы ожидал от UI-фреймворка примерно следующего. Хочется, чтобы связи между данными описывались простыми формулами, UI описывался простой структурой с привязкой данных, события вызывали бы изменения исходных данных. А в ответ на изменения происходил бы не ререндер целого компонента, а точечно изменялось бы в UI ровно то, что нужно, и промежуточные вычисления выполнялись бы минимальные.
@@ -280,13 +308,22 @@ level: 2
 
 # В JavaScript нет реактивности
 
-Решения проблемы:
+<div class="flex gap-4">
+<div v-click>
+
 - Runtime
   - Библиотеки реактивности
   - Интеграция с фреймворками
+
+</div>
+<div v-click>
+
 - Build time
   - Расширение языка, трансформации кода
   - +1 шаг сборки
+
+</div>
+</div>
 
 <!--
 Но проблема в том, что в JavaScript нет такой реактивности даже близко. И язык не располагает возможностями, чтобы сделать это в том виде, как я сейчас описал. Поэтому приходится идти на компромисс: делать либо специальные библиотеки, либо модифицировать язык или придумывать новый язык с семантикой реактивности.
@@ -307,8 +344,12 @@ const OhmsLaw = () => {
 
   return (
     <div>
-      <p>Напряжение: <input type="number" value={voltage} onInput={e => { setVoltage(e.target.valueAsNumber) }}/></p>
-      <p>Сопротивление: <input type="number" value={voltage} onInput={e => { setVoltage(e.target.valueAsNumber) }}/></p>
+      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+        setVoltage(e.target.valueAsNumber)
+      }}/></p>
+      <p>Сопротивление: <input type="number" value={voltage} onInput={e => {
+        setVoltage(e.target.valueAsNumber)
+      }}/></p>
       <p>Сила тока: <span>{amperage}</span> А</p>
       <p>Мощность: <span>{amperage * voltage}</span> Вт</p>
     </div>
@@ -325,8 +366,12 @@ const OhmsLaw = () => {
 
   return (
     <div>
-      <p>Напряжение: <input type="number" value={voltage} onInput={e => { setVoltage(e.target.valueAsNumber) }}/></p>
-      <p>Сопротивление: <input type="number" value={voltage} onInput={e => { setVoltage(e.target.valueAsNumber) }}/></p>
+      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+        setVoltage(e.target.valueAsNumber)
+      }}/></p>
+      <p>Сопротивление: <input type="number" value={voltage} onInput={e => {
+        setVoltage(e.target.valueAsNumber)
+      }}/></p>
       <p>Сила тока: <span>{amperage}</span> А</p>
       <p>Мощность: <span>{power}</span> Вт</p>
     </div>
@@ -345,8 +390,12 @@ const OhmsLaw = () => {
 
   return (
     <div>
-      <p>Напряжение: <input type="number" value={voltage} onInput={e => { setVoltage(e.target.valueAsNumber) }}/></p>
-      <p>Сопротивление: <input type="number" value={voltage} onInput={e => { setVoltage(e.target.valueAsNumber) }}/></p>
+      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+        setVoltage(e.target.valueAsNumber)
+      }}/></p>
+      <p>Сопротивление: <input type="number" value={voltage} onInput={e => {
+        setVoltage(e.target.valueAsNumber)
+      }}/></p>
       <p>Сила тока: <span>{amperage}</span> А</p>
       <p>Мощность: <span>{power}</span> Вт</p>
       <p>Направленность:{" "}
@@ -363,6 +412,26 @@ const OhmsLaw = () => {
 
 ---
 level: 2
+---
+
+# Сигнальная реактивность
+
+```ts
+type Signal<T> = {
+  get: () => T
+  set: (value: T) => void
+}
+
+type Computed<T> = {
+  get: () => T
+}
+
+const signal = <T>(initValue: T): Signal<T> => { /* ... */ }
+const computed = <T>(func: () => T): Computed<T> => { /* ... */ }
+```
+
+---
+level: 3
 ---
 
 # Сигнальная реактивность
@@ -405,20 +474,170 @@ level: 3
 
 # Сигнальная реактивность
 
+<div class="grid grid-cols-2 gap-4">
+<div v-click>
+
 - Преимущества
   - Это всё ещё JavaScript, который вы знаете
   - Просто библиотека - лёгкая интеграция
   - Простые соглашения использования
   - Понятные ограничения
+
+</div>
+<div v-click>
+
 - Недостатки
   - "Магия" порядка исполнения вычислений
   - Дополнительный "синтаксис": создание сигналов и computed, получение и изменение значений
   - Возможность "потерять реактивность"
 
+</div>
+</div>
+
 ---
 level: 3
 ---
 
+# computed внутри computed?
+
+````md magic-move
+```ts
+const foo = computed(() => a.get() + b.get() + c.get())
+```
+```ts
+const foo = computed(() => a.get() + computed(() => b.get() + c.get()))
+```
+```ts
+const bar = computed(() => b.get() + c.get())
+const foo = computed(() => a.get() + bar.get())
+```
+````
+
+---
+level: 3
+---
+
+# Потеря реактивности сигналов
+
+````md magic-move
+```ts
+const a = signal("The Answer")
+const b = signal(6)
+const c = signal(7)
+
+const d = computed(() => `${a.get()} is ${b.get() * c.get()}`)
+```
+```ts
+const a = signal("The Answer")
+const b = signal(6)
+const c = signal(7)
+
+const fourtyTwo = b.get() * c.get() // 42
+
+const d = computed(() => `${a.get()} is ${fourtyTwo}`)
+```
+```ts
+const a = signal("The Answer")
+const b = signal(6)
+const c = signal(7)
+
+const fourtyTwo = b.get() * c.get() // 42
+
+const d = computed(() => `${a.get()} is ${fourtyTwo}`)
+
+b.set(12)
+
+console.log(d.get()) // "The Answer is 42"
+```
+```ts{5,11}
+const a = signal("The Answer")
+const b = signal(6)
+const c = signal(7)
+
+const fourtyTwo = computed(() => b.get() * c.get()) // 42
+
+const d = computed(() => `${a.get()} is ${fourtyTwo}`)
+
+b.set(12)
+
+console.log(d.get()) // "The Answer is 84"
+```
+````
+---
+level: 3
+---
+
+# Proxy-объекты
+
+```ts
+const reactive = <T extends Record<string, unknown>>(o: T): T => {
+  const res = {}
+  for (const [key, value] of Object.entries(o)) {
+    const s = signal(value)
+    Object.defineProperty(res, key, {
+      get() { return s.get() }
+      set(newValue) { s.set(newValue) }
+    })
+  }
+  return res
+}
+
+```
+---
+level: 3
+---
+
+# Потеря реактивности сигналов: деструктуризация
+
+````md magic-move
+```ts{all|1|2-3|5|7-8|10|12-13|5}
+const foo = reactive({ a: "The Answer", b: 42 })
+const bar = computed(() => `${foo.a} is ${foo.b}`)
+console.log(bar.get()) // "The Answer is 42"
+
+const { a, b } = foo
+
+const baz = computed(() => `${a} is ${b}`)
+console.log(baz.get()) // "The Answer is 42"
+
+foo.b = 100500
+
+console.log(bar.get()) // "The Answer is 100500"
+console.log(baz.get()) // "The Answer is 42"
+```
+```ts{5-6}
+const foo = reactive({ a: "The Answer", b: 42 })
+const bar = computed(() => `${foo.a} is ${foo.b}`)
+console.log(bar.get()) // "The Answer is 42"
+
+const a = foo.a
+const b = foo.b
+
+const baz = computed(() => `${a} is ${b}`)
+console.log(baz.get()) // "The Answer is 42"
+
+foo.b = 100500
+
+console.log(bar.get()) // "The Answer is 100500"
+console.log(baz.get()) // "The Answer is 42"
+```
+```ts{5-6,8|all|14}
+const foo = reactive({ a: "The Answer", b: 42 })
+const bar = computed(() => `${foo.a} is ${foo.b}`)
+console.log(bar.get()) // "The Answer is 42"
+
+const a = computed(() => foo.a)
+const b = computed(() => foo.b)
+
+const baz = computed(() => `${a.get()} is ${b.get()}`)
+console.log(baz.get()) // "The Answer is 42"
+
+foo.b = 100500
+
+console.log(bar.get()) // "The Answer is 100500"
+console.log(baz.get()) // "The Answer is 100500"
+```
+````
 
 ---
 level: 2
@@ -426,6 +645,9 @@ layout: center
 ---
 
 # Компилируемая реактивность?
+
+- Преобразования кода для удобства использования сигналов
+- Всё тот же JavaScript, который вы знаете
 
 <!--
 И многие фреймворки держатся за идею оставаться в рамках всем знакомого JavaScript. Хотя на самом деле применяют к нему преобразования при сборке.
@@ -541,8 +763,8 @@ level: 2
 level: 2
 ---
 
-```tsx
-const MyComponent = ({ answer = 'a mystery' }) => {
+```tsx{all|1|2|4-5|7-24|15}
+const MyComponent = ({ answer = 42 }) => {
 	let count = 1;
 
 	const doubled = count * 2;
@@ -550,11 +772,17 @@ const MyComponent = ({ answer = 'a mystery' }) => {
 
   return (
     <>
-      <p>The answer is {answer}</p>
+      <p>The Answer is {answer}</p>
 
       <button onclick={() => { count += 1 }}>
         Count: {count}
       </button>
+
+      <p>{count === answer ? (
+        <span class="equals">Count === The Answer</span>
+      ) : (
+        <span class="not-equals">Count !== The Answer</span>
+      )}</p>
 
       <p>{count} * 2 = {doubled}</p>
       <p>{doubled} * 2 = {quadrupled}</p>
@@ -567,7 +795,7 @@ const MyComponent = ({ answer = 'a mystery' }) => {
 level: 2
 ---
 
-# Основная идея
+# Инкрементальные вычисления
 
 <div class="text-center">
 
@@ -587,8 +815,6 @@ flowchart LR
 </div>
 
 <!--
-Ну, и давайте я сразу раскрою смысл названия доклада.
-
 Основная идея инкрементальных вычислений заключается вот в чём. Есть у нас чистая функция, преобразующая некоторый аргумент в результат без побочных эффектов. Представьте, что тут аргумент может быть большой и сложный, например, целое дерево данных. Функция тоже может быть композицией других функций. И результат тоже может быть большим и сложным.
 
 И если мы внесём небольшие изменения в аргумент, то вместо того, чтобы делать полный перезапуск вычисления всей функции, мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений.
@@ -606,6 +832,16 @@ level: 2
 - Domain Specific Language (DSL)
 - Строгие абстракции
 
+---
+level: 1
+layout: cover
+---
+
+# UI-фреймворки и ментальная модель UI
+
+<!--
+Вот я всё говорю тут: "фреймворки, фреймворки...". Давайте сначала определимся, что собираемся рассматривать - что мы будем понимать под UI-фреймворками и чего мы от них хотим.
+-->
 ---
 level: 2
 ---
@@ -625,16 +861,7 @@ level: 2
 2. И уже в этой абстрактной модели можно отметить фазу инкрементального обновления представления. В модели UI очень удобно представлять view как чистую функцию от state. И именно про инкрементальные вычисления *этой* функции мы и будем говорить.
 3. Во многие фреймворки уже пробралась идея сигнальной реактивности как реализации инкрементальных вычислений. Есть даже proposal для добавления сигналов прямо в JavaScript runtime. Но об этом позже.
 -->
----
-level: 1
-layout: cover
----
 
-# UI-фреймворки и ментальная модель UI
-
-<!--
-Вот я всё говорю тут: "фреймворки, фреймворки...". Давайте сначала определимся, что собираемся рассматривать - что мы будем понимать под UI-фреймворками и чего мы от них хотим.
--->
 ---
 level: 2
 ---
