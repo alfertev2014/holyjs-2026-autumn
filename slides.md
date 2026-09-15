@@ -45,7 +45,7 @@ backgroundSize: contain
   }
 </style>
 
-<div v-drag="[267,19,461,74]" class="caption" style="font-size: 2em"><logos-vue/> лучше, чем <logos-react/>!</div>
+<div v-drag="[237,25,538,74]" class="caption"><logos-vue/> Vue лучше, чем <logos-react/> React!</div>
 
 <div v-drag="[656,174,260,96]" class="caption">Я просто пишу на <logos-jquery/></div>
 
@@ -104,12 +104,16 @@ leve: 3
 
 # Реактивность в UI
 
+<div class="text-center">
+
 ```mermaid
 flowchart LR
   State -- component --> View
   View -- event --> Action
   Action -- mutation --> State
 ```
+
+</div>
 
 ---
 level: 2
@@ -183,6 +187,9 @@ level: 2
 
 # Как я представляю реактивность?
 
+<div class="grid grid-cols-2 gap-4">
+<div>
+
 ````md magic-move
 ```ts{all|1}
 let U = 5
@@ -193,7 +200,7 @@ const I = U / R  // --> 5
 
 const P = I * U  // --> 25
 ```
-```ts{1|all}
+```ts{1|5-7}
 let U = 4
 
 let R = 1
@@ -240,6 +247,20 @@ const P = I * U  // --> 1.125
 ```
 ````
 
+</div>
+<div class="text-center">
+
+```mermaid
+flowchart BT
+  P(P) --> I(I)
+  P --> U[U]
+  I --> U
+  I --> R[R]
+```
+
+</div>
+</div>
+
 <!--
 Что я себе всегда представляю под реактивностью? Как я уже сказал, для меня реактивность больше строится вокруг данных. А взаимосвязи между данными описываются уравнениями. Конечно, уравнения не должны противоречить друг другу. Для каждого значения можно из выражения формулы определить, от каких значений оно зависит. Если составить граф из этих значений, то это должен быть ориентированный ациклический граф. При изменении исходных данных должны пересчитаться все зависимые от них данные, и затем зависимые зависимых. Вся эта последовательность вычислений должна произойти за один проход таким образом, чтобы потребитель конечных данных не увидел их в состоянии промежуточных вычислений.
 
@@ -282,16 +303,22 @@ level: 2
 
 # В JavaScript нет реактивности
 
+<div v-click class="text-center text-xl">
+
+**Решения?**
+
+</div>
+
 <div class="grid grid-cols-2 gap-4">
 <div class="card" v-click>
-<div class="card-header">Runtime</div>
+<div class="card-header">Run-time</div>
 
 - Библиотеки реактивности
 - Интеграция с фреймворками
 
 </div>
 <div class="card" v-click>
-<div class="card-header">Build time</div>
+<div class="card-header">Build-time</div>
 
 - Расширение языка, трансформации кода
 - +1 шаг сборки
@@ -308,9 +335,22 @@ level: 3
 
 # Как описывать изменения?
 
-- Описать новую версию состояния
-- Описать "patch" данных
+<div class="grid grid-cols-2 gap-4">
+<div v-click>
 
+Новая версия данных
+
+- Удобнее описывать новый view
+
+</div>
+<div v-click>
+
+"Patch" данных
+
+- Удобнее описывать mutations состояния
+
+</div>
+</div>
 <!--
 И нельзя сказать однозначно, что удобнее.
 -->
@@ -327,11 +367,11 @@ flowchart LR
   r(recalculate all) ---|>| cg("coarse-graned") ---|>| fg("fine-graned") ---|>| i(incremental)
 ```
 
-<v-click>
+<div class="text-xl" v-click>
 
 Идеал: минимально необходимые обновления - **инкрементальные вычисления**.
 
-</v-click>
+</div>
 </div>
 
 
@@ -350,26 +390,29 @@ flowchart LR
 level: 3
 ---
 
-# Пересчитать всё
+# Стратегия "Пересчитать всё"
 
-При любом изменении состояния просто пересчитать все производные данные
+При любом изменении состояния просто пересчитать всё
 
 <div class="grid grid-cols-2 gap-4">
-  <div class="card" v-click>
-    <div class="card-header">Преимущества</div>
-    <div>
-    <ul>
-      <li>0 накладных расходов на 1 пересчёт</li>
-      <li>0 затрат на реализацию</li>
-    </ul>
-    </div>
-  </div>
-  <div class="card" v-click>
-    <div class="card-header">Недостатки</div>
-    <div>
-    <ul><li>Повторение одних тех же вычислений с одинаковым результатом</li></ul>
-    </div>
-  </div>
+<div class="card" v-click>
+<div class="card-header">Преимущества</div>
+<div>
+  <ul>
+  <li>0 накладных расходов на 1 расчёт</li>
+  <li>0 затрат на реализацию: не нужны ни runtime-библиотека, ни расширения языка</li>
+  </ul>
+</div>
+</div>
+<div class="card" v-click>
+<div class="card-header">Недостатки</div>
+<div>
+  <ul>
+  <li>Повторение одних тех же вычислений с одинаковым результатом</li>
+  <li>Побочные эффекты тоже выполняются каждый раз</li>
+  </ul>
+</div>
+</div>
 </div>
 
 ---
@@ -378,21 +421,28 @@ level: 3
 
 # "Coarse-grained reactivity"
 
-Пересчёт частей приложения в ответ на изменения
+Пересчёт "крупных" частей приложения в ответ на изменения
 
 <div class="grid grid-cols-2 gap-4">
-  <div class="card" v-click>
-    <div class="card-header">Преимущества</div>
-    <div>
-    <ul><li>Простота реализации</li></ul>
-    </div>
-  </div>
-  <div class="card" v-click>
-    <div class="card-header">Недостатки</div>
-    <div>
-    <ul><li>Повторение одних тех же вычислений с одинаковым результатом</li></ul>
-    </div>
-  </div>
+<div class="card" v-click>
+<div class="card-header">Преимущества</div>
+<div>
+<ul>
+<li>Знакомая модель: state --&gt; view</li>
+<li>Небольшие модификации кода</li>
+</ul>
+</div>
+</div>
+<div class="card" v-click>
+<div class="card-header">Недостатки</div>
+<div>
+<ul>
+<li>Повторение одних тех же вычислений с одинаковым результатом</li>
+<li>Побочные эффекты могут выполняються лишний раз</li>
+<li>Реализация требует применения diff результатов</li>
+</ul>
+</div> 
+</div>
 </div>
 
 ---
@@ -491,24 +541,28 @@ level: 3
 # "Coarse-grained reactivity" (React)
 
 <div class="grid grid-cols-2 gap-4">
-<div class="card" v-click>
-<div class="card-header">Преимущества</div>
-
-- Это всё ещё JavaScript, который вы знаете
-- Просто библиотека, легко интегрировать
-- Удобный "синтаксис": деструктуризация props, условный рендеринг, рендеринг массивов
-
-</div>
-<div class="card" v-click>
-<div class="card-header">Недостатки</div>
-
-- Лишние перевычисления
-- "Правила хуков"
-- Дополнительный "синтаксис" хуков
-- Явное перечисление зависимостей useMemo
-- "Магия" порядка исполнения вычислений
-
-</div>
+  <div class="card" v-click>
+    <div class="card-header">Преимущества</div>
+    <div>
+      <ul>
+        <li>Это всё ещё JavaScript, который вы знаете</li>
+        <li>Просто библиотека, легко интегрировать</li>
+        <li>Удобный "синтаксис" деструктуризация props, условный рендеринг, рендеринг массивов</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" v-click>
+    <div class="card-header">Недостатки</div>
+    <div>
+      <ul>
+        <li>Лишние перевычисления</li>
+        <li>"Правила хуков"</li>
+        <li>Дополнительный "синтаксис" хуков</li>
+        <li>Явное перечисление зависимостей useMemo</li>
+        <li>"Магия" порядка исполнения вычислений</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 ---
@@ -517,12 +571,13 @@ level: 2
 
 # "Fine-grained reactivity"
 
-Точечное обновление данных
+"Точечное" обновление данных
 
 <div class="grid grid-cols-2 gap-4">
 <div class="card" v-click>
 <div class="card-header">Преимущества</div>
 
+- Точечное обновление результата
 - Меньше лишних вычислений
 
 </div>
@@ -530,6 +585,7 @@ level: 2
 <div class="card-header">Недостатки</div>
 
 - Накладные расходы на поддержание графа
+- "Boilerplate" описания графа
 
 </div>
 </div>
@@ -585,23 +641,6 @@ level: 3
 
 # Сигнальная реактивность
 
-<v-clicks>
-
-- "Fine-grained reactivity"
-- Автоматическое отслеживание зависимостей computed
-- Автоматическое обновление зависимостей computed
-- Вычисление computed в правильном порядке и только с актуальными данными
-- Минимизация лишних вычислений computed, если зависимости не изменились
-- Автоматический "clean up" связей при удалении узлов графа
-
-</v-clicks>
-
----
-level: 3
----
-
-# Сигнальная реактивность
-
 <div class="grid grid-cols-2 gap-4">
 <div class="card" v-click>
 <div class="card-header">Преимущества</div>
@@ -628,27 +667,25 @@ level: 3
 # computed внутри computed?
 
 ````md magic-move
-```ts
-const a = signal(1)
-const b = signal(2)
-const c = signal(3)
+```ts{all|4}
+const amperage = signal(1)
+const resistance = signal(5)
 
-const foo = computed(() => a.get() + b.get() + c.get())
+const power = computed(() => amperage.get() * amperage.get() * resistance.get())  // P == I^2 * R == I * U
 ```
-```ts{5}
-const a = signal(1)
-const b = signal(2)
-const c = signal(3)
+```ts{4}
+const amperage = signal(1)
+const resistance = signal(5)
 
-const foo = computed(() => a.get() + computed(() => b.get() + c.get()))
+const power = computed(() => amperage.get() * computed(() => amperage.get() * resistance.get()))
 ```
-```ts{5-6}
-const a = signal(1)
-const b = signal(2)
-const c = signal(3)
+```ts{4-5}
+const amperage = signal(1)
+const resistance = signal(5)
 
-const bar = computed(() => b.get() + c.get())
-const foo = computed(() => a.get() + bar.get())
+const voltage = computed(() => amperage.get() * resistance.get())
+
+const power = computed(() => amperage.get() * voltage.get())
 ```
 ````
 
@@ -660,46 +697,42 @@ level: 3
 
 ````md magic-move
 ```ts
-const a = signal("The Answer")
-const b = signal(6)
-const c = signal(7)
+const amperage = signal(2)
+const resistance = signal(1)
 
-const d = computed(() => `${a.get()} is ${b.get() * c.get()}`)
+const power = computed(() => amperage.get() * amperage.get() * resistance.get())
 ```
-```ts
-const a = signal("The Answer")
-const b = signal(6)
-const c = signal(7)
+```ts{4-6}
+const amperage = signal(2)
+const resistance = signal(1)
 
-const fourtyTwo = b.get() * c.get() // 42
+const voltage = amperage.get() * resistance.get()  // --> 2
 
-const d = computed(() => `${a.get()} is ${fourtyTwo}`)
+const power = computed(() => amperage.get() * voltage)  // --> 4
 ```
-```ts
-const a = signal("The Answer")
-const b = signal(6)
-const c = signal(7)
+```ts{8-10}
+const amperage = signal(2)
+const resistance = signal(1)
 
-const fourtyTwo = b.get() * c.get() // 42
+const voltage = amperage.get() * resistance.get()  // --> 2
 
-const d = computed(() => `${a.get()} is ${fourtyTwo}`)
+const power = computed(() => amperage.get() * voltage)  // --> 4
 
-b.set(12)
+resistance.set(2)
 
-console.log(d.get()) // "The Answer is 42"
+console.log(power.get())  // 4
 ```
-```ts{5,11}
-const a = signal("The Answer")
-const b = signal(6)
-const c = signal(7)
+```ts{4|10}
+const amperage = signal(2)
+const resistance = signal(1)
 
-const fourtyTwo = computed(() => b.get() * c.get()) // 42
+const voltage = computed(() => amperage.get() * resistance.get())  // --> 2
 
-const d = computed(() => `${a.get()} is ${fourtyTwo}`)
+const power = computed(() => amperage.get() * voltage.get())  // --> 4
 
-b.set(12)
+resistance.set(2)
 
-console.log(d.get()) // "The Answer is 84"
+console.log(power.get())  // 8
 ```
 ````
 ---
@@ -730,57 +763,56 @@ level: 3
 
 ````md magic-move
 ```ts{all|1|2-3|5|7-8|10|12-13|5}
-const foo = reactive({ a: "The Answer", b: 42 })
-const bar = computed(() => `${foo.a} is ${foo.b}`)
-console.log(bar.get()) // "The Answer is 42"
+const foo = reactive({ name: "Resistance", value: 5 })
+const bar = computed(() => `${foo.name} == ${foo.value}`)
+console.log(bar.get())  // "Resistance == 5"
 
-const { a, b } = foo
+const { name, value } = foo
 
-const baz = computed(() => `${a} is ${b}`)
-console.log(baz.get()) // "The Answer is 42"
+const baz = computed(() => `${name} is ${value}`)
+console.log(baz.get())  // "Resistance == 5"
 
-foo.b = 100500
+foo.value = 2
 
-console.log(bar.get()) // "The Answer is 100500"
-console.log(baz.get()) // "The Answer is 42"
+console.log(bar.get())  // "Resistance == 2"
+console.log(baz.get())  // "Resistance == 5"
 ```
 ```ts{5-6}
-const foo = reactive({ a: "The Answer", b: 42 })
-const bar = computed(() => `${foo.a} is ${foo.b}`)
-console.log(bar.get()) // "The Answer is 42"
+const foo = reactive({ name: "Resistance", value: 5 })
+const bar = computed(() => `${foo.name} == ${foo.value}`)
+console.log(bar.get())  // "Resistance == 5"
 
-const a = foo.a
-const b = foo.b
+const name = foo.name
+const value = foo.value
 
-const baz = computed(() => `${a} is ${b}`)
-console.log(baz.get()) // "The Answer is 42"
+const baz = computed(() => `${name} is ${value}`)
+console.log(baz.get())  // "Resistance == 5"
 
-foo.b = 100500
+foo.value = 2
 
-console.log(bar.get()) // "The Answer is 100500"
-console.log(baz.get()) // "The Answer is 42"
+console.log(bar.get())  // "Resistance == 2"
+console.log(baz.get())  // "Resistance == 5"
 ```
 ```ts{5-6,8|all|14}
-const foo = reactive({ a: "The Answer", b: 42 })
-const bar = computed(() => `${foo.a} is ${foo.b}`)
-console.log(bar.get()) // "The Answer is 42"
+const foo = reactive({ name: "Resistance", value: 5 })
+const bar = computed(() => `${foo.name} == ${foo.value}`)
+console.log(bar.get())  // "Resistance == 5"
 
-const a = computed(() => foo.a)
-const b = computed(() => foo.b)
+const name = computed(() => foo.name)
+const value = computed(() => foo.value)
 
-const baz = computed(() => `${a.get()} is ${b.get()}`)
-console.log(baz.get()) // "The Answer is 42"
+const baz = computed(() => `${name.get()} is ${value.get()}`)
+console.log(baz.get())  // "Resistance == 5"
 
-foo.b = 100500
+foo.value = 2
 
-console.log(bar.get()) // "The Answer is 100500"
-console.log(baz.get()) // "The Answer is 100500"
+console.log(bar.get())  // "Resistance == 2"
+console.log(baz.get())  // "Resistance == 2"
 ```
 ````
 
 ---
 level: 2
-layout: center
 ---
 
 # Компилируемая реактивность?
@@ -943,120 +975,7 @@ flowchart LR
 
 И если мы внесём небольшие изменения в аргумент, то вместо того, чтобы делать полный перезапуск вычисления всей функции, мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений.
 -->
----
-level: 2
----
 
-# 📜 Декларативное программирование
-
-<v-clicks>
-
-- Код описывает ожидаемый результат, а не способ его получения
-  - Код описывает структуру UI, потоки данных, логику приложения в виде **деклараций**, а не последовательности действий
-- Domain Specific Language (DSL) поверх универсального JavaScript
-- Строгие абстракции:
-  - Программист сосредоточен на семантике DSL
-  - Детали реализации берёт на себя фреймворк
-
-</v-clicks>
-
----
-level: 1
-layout: cover
----
-
-# UI-фреймворки и ментальная модель UI
-
-<!--
-Вот я всё говорю тут: "фреймворки, фреймворки...". Давайте сначала определимся, что собираемся рассматривать - что мы будем понимать под UI-фреймворками и чего мы от них хотим.
--->
----
-level: 2
----
-
-# Все фреймворки похожи друг на друга
-
-<v-clicks>
-
-- Ментальная модель UI
-- **Инкрементальное** обновление view при изменении state
-- Реактивность как реализация
-
-</v-clicks>
-
-<!--
-Эта идея всё больше прослеживается в UI.
-
-У всех фреймворков в последнее время стало много общего, они всё больше становятся похожи друг на друга.
-
-1. И всё это потому, что они стараются моделировать одну и ту же *абстракцию* пользовательского интерфейса. И отличаются они только *способами* и *строгостью* реализации этой абстракции. И именно от понимания этой абстракции и механизмов её реализации *исходят* все *паттерны* использования фреймворка и *best practices*.
-2. И уже в этой абстрактной модели можно отметить фазу инкрементального обновления представления. В модели UI очень удобно представлять view как чистую функцию от state. И именно про инкрементальные вычисления *этой* функции мы и будем говорить.
-3. Во многие фреймворки уже пробралась идея сигнальной реактивности как реализации инкрементальных вычислений. Есть даже proposal для добавления сигналов прямо в JavaScript runtime. Но об этом позже.
--->
----
-level: 3
----
-
-# Ментальная модель UI
-
-```mermaid
-flowchart LR
-  State -- component --> View
-  View -- event --> Action
-  Action -- mutation --> State
-```
-
-- UI разделяется на дерево компонентов с жизненным циклом
-- Состояние, изменяемое во времени
-- Представление, производное от состояния (чистая функция)
-- Пользовательские действия и фоновые события
-- Действия над состоянием
-
-<!--
-Быстро вспомним, как мы себе представляем UI. Примерно так же себе представляет его и пользователь.
-
-1. Это некоторая иерархическая структура из элементов (компонентов), которые могут появляться и исчезать, то есть, обладают жизненным циклом.
-2. Некоторые компоненты могут иметь состояние, изменяемое во времени, привязанное к жизненному циклу компонентов.
-3. То, что видит пользователь - это представление, которое рисуется на основе данных, производных от состояния. И это отображение можно определить чистой функцией.
-4. У представления есть средства для выполнения пользовательских действий - кликов, жестов, нажатий клавиш.
-5. Также, в приложении могут происходить другие фоновые события, например, таймеры или завершение загрузки данных с сервера. Они выступают триггерами для
-6. модификации состояния UI - простые транзакции по изменению данных, описывающие новое состояние на основе предыдущего (тоже чисто функционально).
--->
-
----
-level: 3
-layout: center
-class: text-center
----
-
-Большая часть UI укладывается в эту модель.
-
-Исключения из правил фреймворка можно (нужно!) держать в коде отдельно.
-
-<!--
-Большая часть UI укладывается в эту модель. В любом типовом UI будут компоненты, цикл обновления представления и потоки данных, описываемые чистыми функциями. В этом и состоит идея фреймворка - упросить нам работу с этой большей частью UI и сделать это наиболее оптимально.
-
-А все нестандартные компоненты, такие как canvas, карты, плееры, или директивы, интеграции и другие специальные возможности, требующие доступа к низкоуровневым API нужно держать в кодовой базе отдельно. Они выступают адаптерами возможностей для фреймворка, своего рода расширениями языка.
--->
----
-level: 3
----
-
-# MVP
-
-<div class="text-center">
-
-```mermaid
-flowchart LR
-  M(Model) --> V(View) --> P(Presenter)
-```
-
-```mermaid
-flowchart LR
-  S(State) -->|Computed| V(JSX) -->|Effects| D(DOM API)
-```
-
-</div>
 ---
 level: 1
 layout: center
@@ -1342,6 +1261,121 @@ level: 3
 # Вложенная реактивность: пример
 
 TBD
+
+---
+level: 2
+---
+
+# 📜 Декларативное программирование
+
+<v-clicks>
+
+- Код описывает ожидаемый результат, а не способ его получения
+  - Код описывает структуру UI, потоки данных, логику приложения в виде **деклараций**, а не последовательности действий
+- Domain Specific Language (DSL) поверх универсального JavaScript
+- Строгие абстракции:
+  - Программист сосредоточен на семантике DSL
+  - Детали реализации берёт на себя фреймворк
+
+</v-clicks>
+
+---
+level: 1
+layout: cover
+---
+
+# UI-фреймворки и ментальная модель UI
+
+<!--
+Вот я всё говорю тут: "фреймворки, фреймворки...". Давайте сначала определимся, что собираемся рассматривать - что мы будем понимать под UI-фреймворками и чего мы от них хотим.
+-->
+---
+level: 2
+---
+
+# Все фреймворки похожи друг на друга
+
+<v-clicks>
+
+- Ментальная модель UI
+- **Инкрементальное** обновление view при изменении state
+- Реактивность как реализация
+
+</v-clicks>
+
+<!--
+Эта идея всё больше прослеживается в UI.
+
+У всех фреймворков в последнее время стало много общего, они всё больше становятся похожи друг на друга.
+
+1. И всё это потому, что они стараются моделировать одну и ту же *абстракцию* пользовательского интерфейса. И отличаются они только *способами* и *строгостью* реализации этой абстракции. И именно от понимания этой абстракции и механизмов её реализации *исходят* все *паттерны* использования фреймворка и *best practices*.
+2. И уже в этой абстрактной модели можно отметить фазу инкрементального обновления представления. В модели UI очень удобно представлять view как чистую функцию от state. И именно про инкрементальные вычисления *этой* функции мы и будем говорить.
+3. Во многие фреймворки уже пробралась идея сигнальной реактивности как реализации инкрементальных вычислений. Есть даже proposal для добавления сигналов прямо в JavaScript runtime. Но об этом позже.
+-->
+---
+level: 3
+---
+
+# Ментальная модель UI
+
+```mermaid
+flowchart LR
+  State -- component --> View
+  View -- event --> Action
+  Action -- mutation --> State
+```
+
+- UI разделяется на дерево компонентов с жизненным циклом
+- Состояние, изменяемое во времени
+- Представление, производное от состояния (чистая функция)
+- Пользовательские действия и фоновые события
+- Действия над состоянием
+
+<!--
+Быстро вспомним, как мы себе представляем UI. Примерно так же себе представляет его и пользователь.
+
+1. Это некоторая иерархическая структура из элементов (компонентов), которые могут появляться и исчезать, то есть, обладают жизненным циклом.
+2. Некоторые компоненты могут иметь состояние, изменяемое во времени, привязанное к жизненному циклу компонентов.
+3. То, что видит пользователь - это представление, которое рисуется на основе данных, производных от состояния. И это отображение можно определить чистой функцией.
+4. У представления есть средства для выполнения пользовательских действий - кликов, жестов, нажатий клавиш.
+5. Также, в приложении могут происходить другие фоновые события, например, таймеры или завершение загрузки данных с сервера. Они выступают триггерами для
+6. модификации состояния UI - простые транзакции по изменению данных, описывающие новое состояние на основе предыдущего (тоже чисто функционально).
+-->
+
+---
+level: 3
+layout: center
+class: text-center
+---
+
+Большая часть UI укладывается в эту модель.
+
+Исключения из правил фреймворка можно (нужно!) держать в коде отдельно.
+
+<!--
+Большая часть UI укладывается в эту модель. В любом типовом UI будут компоненты, цикл обновления представления и потоки данных, описываемые чистыми функциями. В этом и состоит идея фреймворка - упросить нам работу с этой большей частью UI и сделать это наиболее оптимально.
+
+А все нестандартные компоненты, такие как canvas, карты, плееры, или директивы, интеграции и другие специальные возможности, требующие доступа к низкоуровневым API нужно держать в кодовой базе отдельно. Они выступают адаптерами возможностей для фреймворка, своего рода расширениями языка.
+-->
+---
+level: 3
+---
+
+# MVP
+
+<div class="text-center">
+
+```mermaid
+flowchart LR
+  M(Model) --> V(View) --> P(Presenter)
+```
+
+```mermaid
+flowchart LR
+  S(State) -->|Computed| V(JSX) -->|Effects| D(DOM API)
+```
+
+</div>
 
 ---
 level: 3
