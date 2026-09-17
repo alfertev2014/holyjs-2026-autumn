@@ -49,7 +49,7 @@ backgroundSize: contain
 
 <div v-drag="[656,174,260,96]" class="caption">Я просто пишу на <logos-jquery/></div>
 
-<div v-drag="[82,179,282,116]" class="caption">Я просто пишу на <logos-jquery/></div>
+<div v-drag="[98,227,268,116]" class="caption">Я просто пишу на <logos-jquery/></div>
 
 ---
 level: 2
@@ -86,8 +86,11 @@ level: 2
 
 ---
 level: 1
-layout: center
+layout: image-right
+image: images/rocket.jfif
 ---
+
+<br /><br /><br />
 
 # 🚀 Реактивность
 
@@ -140,7 +143,6 @@ li {
 <div class="card-header">Ориентированные на события</div>
 
 - события и потоки данных
-- observables и observers
 - трансформация, фильтрация, буферизация событий и т.п.
 
 <div>Примеры: <logos-reactivex/> Rx.js</div>
@@ -190,7 +192,7 @@ level: 2
 <div class="grid grid-cols-2 gap-4">
 <div>
 
-````md magic-move
+````md magic-move {at:3}
 ```ts{all|1}
 let U = 5
 
@@ -248,7 +250,11 @@ const P = I * U  // --> 1.125
 ````
 
 </div>
-<div class="text-center">
+<div style="position:relative">
+  <div class="fill-container" v-click="[1,2]">
+    <img src="./images/excel.png" style="width: 100%" />
+  </div>
+  <div class="text-center fill-container" v-click="2">
 
 ```mermaid
 flowchart BT
@@ -258,6 +264,7 @@ flowchart BT
   I --> R[R]
 ```
 
+  </div>
 </div>
 </div>
 
@@ -329,6 +336,25 @@ level: 2
 <!--
 Но проблема в том, что в JavaScript нет такой реактивности даже близко. И язык не располагает возможностями, чтобы сделать это в том виде, как я сейчас описал. Поэтому приходится идти на компромисс: делать либо специальные библиотеки, либо модифицировать язык или придумывать новый язык с семантикой реактивности.
 -->
+
+---
+level: 3
+---
+
+# 📜 Декларативное программирование
+
+<v-clicks>
+
+- Код описывает ожидаемый результат, а не способ его получения
+  - Код описывает структуру UI, потоки данных, логику приложения в виде **деклараций**, а не последовательности действий
+- Domain Specific Language (DSL) вместо универсального JavaScript
+- Строгие абстракции:
+  - Программист сосредоточен на семантике DSL
+  - Детали реализации берёт на себя фреймворк
+
+</v-clicks>
+
+
 ---
 level: 3
 ---
@@ -395,24 +421,25 @@ level: 3
 При любом изменении состояния просто пересчитать всё
 
 <div class="grid grid-cols-2 gap-4">
-<div class="card" v-click>
-<div class="card-header">Преимущества</div>
-<div>
-  <ul>
-  <li>0 накладных расходов на 1 расчёт</li>
-  <li>0 затрат на реализацию: не нужны ни runtime-библиотека, ни расширения языка</li>
-  </ul>
-</div>
-</div>
-<div class="card" v-click>
-<div class="card-header">Недостатки</div>
-<div>
-  <ul>
-  <li>Повторение одних тех же вычислений с одинаковым результатом</li>
-  <li>Побочные эффекты тоже выполняются каждый раз</li>
-  </ul>
-</div>
-</div>
+  <div class="card" v-click>
+    <div class="card-header">Преимущества</div>
+    <div>
+      <ul>
+        <li>0 накладных расходов на 1 расчёт</li>
+        <li>0 затрат на реализацию: нет runtime-библиотеки, нет расширения языка</li>
+        <li>Знакомая модель: state --&gt; view</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" v-click>
+    <div class="card-header">Недостатки</div>
+    <div>
+      <ul>
+        <li>Повторение вычислений с тем же результатом</li>
+        <li>Побочные эффекты выполняются каждый раз</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 ---
@@ -424,25 +451,26 @@ level: 3
 Пересчёт "крупных" частей приложения в ответ на изменения
 
 <div class="grid grid-cols-2 gap-4">
-<div class="card" v-click>
-<div class="card-header">Преимущества</div>
-<div>
-<ul>
-<li>Знакомая модель: state --&gt; view</li>
-<li>Небольшие модификации кода</li>
-</ul>
-</div>
-</div>
-<div class="card" v-click>
-<div class="card-header">Недостатки</div>
-<div>
-<ul>
-<li>Повторение одних тех же вычислений с одинаковым результатом</li>
-<li>Побочные эффекты могут выполняються лишний раз</li>
-<li>Реализация требует применения diff результатов</li>
-</ul>
-</div> 
-</div>
+  <div class="card" v-click>
+    <div class="card-header">Преимущества</div>
+    <div>
+      <ul>
+        <li>Знакомая модель: state --&gt; view</li>
+        <li>Знакомый JavaScript</li>
+        <li>Небольшой boilerplate API</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" v-click>
+    <div class="card-header">Недостатки</div>
+    <div>
+      <ul>
+        <li>Повторение вычислений с тем же результатом</li>
+        <li>Накладные расходы на reconcilliation</li>
+        <li>Побочные эффекты могут выполняються лишний раз</li>
+      </ul>
+    </div> 
+  </div>
 </div>
 
 ---
@@ -452,11 +480,11 @@ level: 3
 <style>
   .slidev-code-wrapper {
     --slidev-code-font-size: 12px;
-    --slidev-code-line-height: 1em;
+    --slidev-code-line-height: 1.1em;
   }
 </style>
 
-# "Coarse-grained reactivity" (React)
+# "Coarse-grained reactivity": React
 
 ````md magic-move
 ```tsx
@@ -522,10 +550,10 @@ const OhmsLaw = () => {
       }}/></p>
       <p>Сила тока: <span>{amperage}</span> А</p>
       <p>Мощность: <span>{power}</span> Вт</p>
-      <p>Направленность:{" "}
+      <p>Направление:{" "}
         <select value={currentDirection}>
-          <option>AC</option>
-          <option>DC</option>
+          <option value="AC">Переменный ток</option>
+          <option value="DC">Постоянный ток</option>
         </select>
       </p>
     </div>
@@ -538,7 +566,7 @@ const OhmsLaw = () => {
 level: 3
 ---
 
-# "Coarse-grained reactivity" (React)
+# "Coarse-grained reactivity": React
 
 <div class="grid grid-cols-2 gap-4">
   <div class="card" v-click>
@@ -547,7 +575,7 @@ level: 3
       <ul>
         <li>Это всё ещё JavaScript, который вы знаете</li>
         <li>Просто библиотека, легко интегрировать</li>
-        <li>Удобный "синтаксис" деструктуризация props, условный рендеринг, рендеринг массивов</li>
+        <li v-mark.circle.red="3">Удобный "синтаксис": деструктуризация props, условный рендеринг, рендеринг массивов</li>
       </ul>
     </div>
   </div>
@@ -555,10 +583,9 @@ level: 3
     <div class="card-header">Недостатки</div>
     <div>
       <ul>
-        <li>Лишние перевычисления</li>
+        <li>Лишние rerenders</li>
         <li>"Правила хуков"</li>
-        <li>Дополнительный "синтаксис" хуков</li>
-        <li>Явное перечисление зависимостей useMemo</li>
+        <li>Boilerplate хуков, явное перечисление зависимостей</li>
         <li>"Магия" порядка исполнения вычислений</li>
       </ul>
     </div>
@@ -584,8 +611,8 @@ level: 2
 <div class="card" v-click>
 <div class="card-header">Недостатки</div>
 
-- Накладные расходы на поддержание графа
 - "Boilerplate" описания графа
+- Накладные расходы на поддержание графа
 
 </div>
 </div>
@@ -594,7 +621,7 @@ level: 2
 level: 2
 ---
 
-# Сигнальная реактивность
+# "Fine-grained reactivity": Сигналы (API)
 
 ```ts
 type Signal<T> = {
@@ -614,7 +641,7 @@ const computed = <T>(func: () => T): Computed<T> => { /* ... */ }
 level: 3
 ---
 
-# Сигнальная реактивность
+# "Fine-grained reactivity": Сигналы
 
 ```ts{all|1-2|4-5|7-8|10|12-13}
 const voltage = signal(5)
@@ -639,24 +666,28 @@ console.log("power", power.get())  // --> 16
 level: 3
 ---
 
-# Сигнальная реактивность
+# "Fine-grained reactivity": Сигналы
 
 <div class="grid grid-cols-2 gap-4">
 <div class="card" v-click>
 <div class="card-header">Преимущества</div>
-
-- Это всё ещё JavaScript, который вы знаете
-- Просто библиотека, легко интегрировать
-- Простые соглашения, понятные ограничения
-
+<div>
+<ul>
+<li>Это всё ещё JavaScript, который вы знаете</li>
+<li>Просто библиотека, легко интегрировать</li>
+<li>Простые соглашения, понятные ограничения</li>
+</ul>
+</div>
 </div>
 <div class="card" v-click>
 <div class="card-header">Недостатки</div>
-
-- "Магия" порядка исполнения вычислений
-- Дополнительный "синтаксис": создание сигналов и computed, получение и изменение значений
-- Возможность "потерять реактивность"
-
+<div>
+<ul>
+<li>"Магия" порядка исполнения вычислений</li>
+<li v-mark.circle.red="3">Boilerplate создания сигналов и computed, получения и изменения значений</li>
+<li v-mark.circle.red="3">Возможность "потерять реактивность"</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -664,28 +695,35 @@ level: 3
 level: 3
 ---
 
-# computed внутри computed?
+# Сигналы: computed внутри computed?
 
 ````md magic-move
-```ts{all|4}
+```ts{all|5-7}
 const amperage = signal(1)
 const resistance = signal(5)
 
-const power = computed(() => amperage.get() * amperage.get() * resistance.get())  // P == I^2 * R == I * U
+// P == I^2 * R == I * U
+const power = computed(
+  () => amperage.get() * amperage.get() * resistance.get()
+)
 ```
-```ts{4}
+```ts{6}
 const amperage = signal(1)
 const resistance = signal(5)
 
-const power = computed(() => amperage.get() * computed(() => amperage.get() * resistance.get()))
+// P == I^2 * R == I * U
+const power = computed(
+  () => computed(() => amperage.get() * amperage.get()) * resistance.get()
+)
 ```
-```ts{4-5}
+```ts{4-7}
 const amperage = signal(1)
 const resistance = signal(5)
 
-const voltage = computed(() => amperage.get() * resistance.get())
+const amperageSquare = computed(() => amperage.get() * amperage.get())
 
-const power = computed(() => amperage.get() * voltage.get())
+// P == I * U
+const power = computed(() => amperageSquare.get() * resistance.get())
 ```
 ````
 
@@ -693,7 +731,7 @@ const power = computed(() => amperage.get() * voltage.get())
 level: 3
 ---
 
-# Потеря реактивности сигналов
+# Сигналы: Потеря реактивности
 
 ````md magic-move
 ```ts
@@ -739,8 +777,9 @@ console.log(power.get())  // 8
 level: 3
 ---
 
-# Proxy-объекты
+# Сигналы: Proxy-объекты
 
+````md magic-move
 ```ts
 const reactive = <T extends Record<string, unknown>>(o: T): T => {
   const res = {}
@@ -753,13 +792,27 @@ const reactive = <T extends Record<string, unknown>>(o: T): T => {
   }
   return res
 }
-
 ```
+```ts{all|1|5|9-11}
+const obj = reactive({ a: 42, b: true, c: "The Answer" })
+
+const foo = computed(() => {
+  // ...
+  obj.a /* ... */  obj.b /* ... */ obj.c
+  // ...
+})
+
+obj.a = 100500
+obj.b = false
+obj.c = "Whatever"
+```
+````
+
 ---
 level: 3
 ---
 
-# Потеря реактивности сигналов: деструктуризация
+# Сигналы: деструктуризация
 
 ````md magic-move
 ```ts{all|1|2-3|5|7-8|10|12-13|5}
@@ -770,12 +823,12 @@ console.log(bar.get())  // "Resistance == 5"
 const { name, value } = foo
 
 const baz = computed(() => `${name} is ${value}`)
-console.log(baz.get())  // "Resistance == 5"
+console.log(baz.get())  // "Resistance is 5"
 
 foo.value = 2
 
 console.log(bar.get())  // "Resistance == 2"
-console.log(baz.get())  // "Resistance == 5"
+console.log(baz.get())  // "Resistance is 5"
 ```
 ```ts{5-6}
 const foo = reactive({ name: "Resistance", value: 5 })
@@ -786,14 +839,14 @@ const name = foo.name
 const value = foo.value
 
 const baz = computed(() => `${name} is ${value}`)
-console.log(baz.get())  // "Resistance == 5"
+console.log(baz.get())  // "Resistance is 5"
 
 foo.value = 2
 
 console.log(bar.get())  // "Resistance == 2"
-console.log(baz.get())  // "Resistance == 5"
+console.log(baz.get())  // "Resistance is 5"
 ```
-```ts{5-6,8|all|14}
+```ts{5-6,8,14}
 const foo = reactive({ name: "Resistance", value: 5 })
 const bar = computed(() => `${foo.name} == ${foo.value}`)
 console.log(bar.get())  // "Resistance == 5"
@@ -802,12 +855,12 @@ const name = computed(() => foo.name)
 const value = computed(() => foo.value)
 
 const baz = computed(() => `${name.get()} is ${value.get()}`)
-console.log(baz.get())  // "Resistance == 5"
+console.log(baz.get())  // "Resistance is 5"
 
 foo.value = 2
 
 console.log(bar.get())  // "Resistance == 2"
-console.log(baz.get())  // "Resistance == 2"
+console.log(baz.get())  // "Resistance is 2"
 ```
 ````
 
@@ -880,7 +933,7 @@ level: 2
 
 # Solid.js
 
-```js{all|1-2}
+```js{all|1-2|8-13}
 function MyComponent(props) {
   const finalProps = mergeProps({ defaultName: "Ryan Carniato" }, props);
   const [count, setCount] = createSignal(1);
@@ -903,7 +956,7 @@ level: 2
 
 # Что смущает?
 
-<div>
+<v-clicks>
 
 Фреймворки пытаются преодолеть:
 - ограничения JavaScript для реализации реактивности
@@ -914,32 +967,62 @@ level: 2
 - API runtime-реализации реактивности
 - "Магия" преобразований кода
 
-</div>
+</v-clicks>
 
 ---
 level: 2
 ---
 
-```tsx{all|1|2|3-4|6-16|9-13|8}
-const MyComponent = ({ answer = 42 }) => {
-	let count = 1;
-	const doubled = count * 2;
-	const quadrupled = doubled * 2;
+````md magic-move
+```tsx
+const OhmsLaw = () => {
+  let voltage = 1.5   // U
+  let resistance = 2  // R
+
+  const amperage = voltage / resistance  // I
+
   return (
-    <>
-      <p>The Answer is {answer}</p>
-      <button onСlick={() => { count += 1 }}>Count: {count}</button>
-      <p>{count === answer ? (
-        <span class="equals">Count === The Answer</span>
-      ) : (
-        <span class="not-equals">Count !== The Answer</span>
-      )}</p>
-      <p>{count} * 2 = {doubled}</p>
-      <p>{doubled} * 2 = {quadrupled}</p>
-    </>
+    <div>
+      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+        voltage = e.target.valueAsNumber
+      }}/></p>
+      <p>Сопротивление: <input type="number" value={resistance} onInput={e => {
+        resistance = e.target.valueAsNumber
+      }}/></p>
+      <p>Сила тока: <span>{amperage}</span> А</p>
+      <p>Мощность: <span>{amperage * voltage}</span> Вт</p>
+    </div>
   )
 }
 ```
+```tsx
+const OhmsLaw = () => {
+  const voltage = signal(1.5)   // U
+  const resistance = signal(2)  // R
+
+  const amperage = computed(() => voltage.get() / resistance.get())  // I
+
+  return (
+    <div>
+      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+        voltage.set(e.target.valueAsNumber)
+      }}/></p>
+      <p>Сопротивление: <input type="number" value={resistance} onInput={e => {
+        resistance.set(e.target.valueAsNumber)
+      }}/></p>
+      <p>Сила тока: <span>{amperage}</span> А</p>
+      <p>Мощность: <span>{computed(() => amperage.get() * voltage.get())}</span> Вт</p>
+    </div>
+  )
+}
+```
+````
+---
+level: 1
+layout: center
+---
+
+# Инкрементальные вычисления
 
 ---
 level: 2
@@ -975,48 +1058,103 @@ flowchart LR
 
 И если мы внесём небольшие изменения в аргумент, то вместо того, чтобы делать полный перезапуск вычисления всей функции, мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений.
 -->
-
 ---
-level: 1
-layout: center
+level: 3
 ---
 
-# Инкрементальные вычисления
-
----
-level: 2
-layout: center
----
-
+````md magic-move {at:1}
 ```ts
 let a = 40
 let b = 2
 
 const c = a + b
 ```
-
----
-level: 2
-layout: center
----
-
-````md magic-move
 ```ts
-let a = "The "
-let b = "Answer"
+const a = signal(40)
+const b = signal(2)
 
-const c = a + b
+const c = computed(() => a.get() + b.get())
 ```
+````
+
+<br/><br/>
+
+````md magic-move {at:1}
 ```ts
 let a = "The Answer"
 let b = "Life and Universe and Everything"
 
 const c = `${a} to ${b}`
 ```
+```ts
+const a = signal("The Answer")
+const b = signal("Life and Universe and Everything")
+
+const c = computed(() => `${a} to ${b}`)
+```
 ````
 
 ---
-level: 2
+level: 3
+---
+
+````md magic-move
+```ts{all|1}
+let lightswitch = false
+
+let voltage = 5
+let resistance = 2
+
+const amperage = lightswitch ? voltage / resistance : 0  // --> 0
+const power = lightswitch ? amperage * voltage : 0  // --> 0
+```
+```ts{1,6,7}
+let lightswitch = true
+
+let voltage = 5
+let resistance = 2
+
+const amperage = lightswitch ? voltage / resistance : 0  // --> 2.5
+const power = lightswitch ? amperage * voltage : 0  // --> 12.5
+```
+```ts{1,6-14}
+const lightswitch = signal(true)
+
+const voltage = signal(5)
+const resistance = signal(2)
+
+const amperage = computed(() =>
+  lightswitch.get()
+    ? voltage.get() / resistance.get()
+    : 0)
+
+const power = computed(() =>
+  lightswitch.get()
+    ? amperage.get() * voltage.get()
+    : 0)
+```
+```ts{all|1,6,12}
+const lightswitch = signal(false)
+
+const voltage = signal(5)
+const resistance = signal(2)
+
+const _amperage1 = computed(() => voltage.get() / resistance.get())
+const amperage = computed(() =>
+  lightswitch.get()
+    ? _amperage1.get()
+    : 0)
+
+const _power1 = computed(() => amperage.get() * voltage.get())
+const power = computed(() =>
+  lightswitch.get()
+    ? _power1.get()
+    : 0)
+```
+````
+
+---
+level: 3
 ---
 
 ````md magic-move
@@ -1074,7 +1212,7 @@ let a = "The Answer"
 let b = 42
 f(a, b)
 ```
-```ts{3-4|3-4,8-12}
+```ts{3-4}
 const f = (a: string, b: number) => {  // a = "The Answer", b = 42
   const c = a.toUppercase()  // c = "THE ANSWER"
   const d = g(b * 2, 42)  // g(84, 42) = ?
@@ -1092,7 +1230,7 @@ let a = "The Answer"
 let b = 42
 f(a, b)
 ```
-```ts{3|8-12}
+```ts{3,8-12}
 const f = (a: string, b: number) => {  // a = "The Answer", b = 42
   const c = a.toUppercase()  // c = "THE ANSWER"
   const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
@@ -1110,7 +1248,7 @@ let a = "The Answer"
 let b = 42
 f(a, b)
 ```
-```ts{4|8-12}
+```ts{4,8-12}
 const f = (a: string, b: number) => {  // a = "The Answer", b = 42
   const c = a.toUppercase()  // c = "THE ANSWER"
   const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
@@ -1200,7 +1338,7 @@ let a = "Any questions?"
 let b = 43
 f(a, b)
 ```
-```ts{15}
+```ts{1,3-4,15|3,8,9,11|4,8,10,11}
 const f = (a: string, b: number) => {  // a = "Any questions?", b = 43
   const c = a.toUppercase()  // c = "ANY QUESTIONS?"
   const d = g(b * 2, 42)  // g(86, 42) = 7062.480740698408
@@ -1221,23 +1359,186 @@ f(a, b)
 ````
 
 ---
-level: 2
+level: 3
 ---
 
+````md magic-move
+```ts
+const f = (a: string, b: number) => {
+  const c = a.toUppercase()
+  const d = g(b * 2, 42)
+  const e = g(100500, b * 3)
+  return `${c} ${d} ${e}`
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "Any questions?"
+let b = 43
+f(a, b)
+```
+```ts
+const f = (a: Computed<string>, b: Computed<number>): Computed<string> => {
+  const c = computed(() => a.get().toUppercase())
+  const d = g(computed(() => b.get() * 2), 42)
+  const e = g(100500, computed(() => b.get() * 3))
+  return computed(() => `${c.get()} ${d.get()} ${e.get()}`)
+}
+
+const g = (p: Computed<number>, q: Computed<number>): Computed<string> => {
+  const pp = computed(() => p.get() * p.get())
+  const qq = computed(() => Math.sqrt(q.get()))
+  return computed(() => pp.get() + qq.get())
+}
+
+const a = signal("The answer")
+const b = signal(42)
+const result = f(a, b)
+
+console.log(result.get())  // "THE ANSWER 7062.480740698408 10100250011.224972"
+a.set("Any questions?")
+console.log(result.get())  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
+```
+````
+
+---
+level: 3
+---
+
+# Декларативный TSX
+
+- Подмножество TypeScript, для которого можно определить семантику инкрементальных вычислений
+- Используется как "язык шаблонов" для UI-компонентов
+- Поддерживает простую логику состояния UI, трансформации и привязки данных
+- Сложная логика выносится за пределы декларативного TSX
+- Взаимодействие с обычным TypeScript - через "границу"
+
+Это не TypeScript!!!
+
+---
+level: 3
+---
+
+# Декларативный TSX: ограничения
+
+<div class="flex gap-4">
+<div>
+
+- Запрещён "лишний" синтаксис: class, this, new и т.п. (ESLint конфиг)
+- "Белый список" API:
+  - нет прямого доступа к Web APIs
+  - import-ить можно другие модули декларативного TSX
+- Специальный API для реактивных массивов
+- Чистота функций:
+  - отсутствие циклов
+  - Изменения данных - только в специальных контекстах (например, обработчики событий)
+
+
+</div>
+<div>
+  <img src="./images/statham.jpg"/>
+</div>
+</div>
+
+---
+level: 3
+---
+
+````md magic-move
 ```ts
 let a = 100500.0
 let b = "Whatever"
 
 const c = { foo: a, bar: b }
 ```
+```ts
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = computed(() => ({ foo: a.get(), bar: b.get() }))
+```
+```ts{4-6}
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = computed(() => ({ foo: a.get(), bar: b.get() }))
+
+const d = computed(() => `${c.get().foo} is ${c.get().bar}!`)
+```
+```ts
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = { foo: a, bar: b }
+
+const d = computed(() => `${c.foo.get()} is ${c.bar.get()}!`)
+```
+```ts{6-8}
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = { foo: a, bar: b }
+
+const { foo, bar } = c
+
+const d = computed(() => `${foo.get()} is ${bar.get()}!`)
+```
+```ts{10}
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = { foo: a, bar: b }
+
+const { foo, bar } = c
+
+const d = computed(() => `${foo.get()} is ${bar.get()}!`)
+
+const e = computed(() => JSON.stringify(c))  // ???
+```
+```ts{4,8}
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = computed(() => ({ foo: a.get(), bar: b.get() }))
+
+const d = computed(() => `${c.get().foo} is ${c.get().bar}!`)
+
+const e = computed(() => JSON.stringify(c.get()))
+```
+````
 
 ---
 level: 3
 ---
 
-# Identity объектов и value types
+# Identity объектов
 
-TBD
+<v-clicks>
+
+- Свойство, уникально идентифицирующее конкретный объект
+- Обычно это ссылка на объект
+- Имеет смысл для объектов с изменяемым содержимым
+
+</v-clicks>
+
+---
+level: 3
+---
+
+# Value types
+
+<v-clicks>
+
+- Их identity - это их содержимое
+- Два объекта в памяти с одинаковым содержимым равны друг другу
+- При изменении содержимого менялось бы identity
+- Value types - immutable
+
+</v-clicks>
 
 ---
 level: 3
@@ -1261,23 +1562,6 @@ level: 3
 # Вложенная реактивность: пример
 
 TBD
-
----
-level: 2
----
-
-# 📜 Декларативное программирование
-
-<v-clicks>
-
-- Код описывает ожидаемый результат, а не способ его получения
-  - Код описывает структуру UI, потоки данных, логику приложения в виде **деклараций**, а не последовательности действий
-- Domain Specific Language (DSL) поверх универсального JavaScript
-- Строгие абстракции:
-  - Программист сосредоточен на семантике DSL
-  - Детали реализации берёт на себя фреймворк
-
-</v-clicks>
 
 ---
 level: 1
@@ -1361,14 +1645,49 @@ class: text-center
 level: 3
 ---
 
-# MVP
+# MVC --> MVP --> MVVM
 
 <div class="text-center">
 
+<v-click>
+
 ```mermaid
 flowchart LR
-  M(Model) --> V(View) --> P(Presenter)
+  M(Model) --> C(Controller) --> V(View)
 ```
+
+</v-click>
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> P(Presenter) --> V(View)
+```
+
+</v-click>
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> PM(Presentation Model) --> V(View)
+```
+
+</v-click>
+
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> VM(View Model) --> V(View)
+```
+
+</v-click>
+</div>
+---
+level: 3
+---
+
+<div class="text-center">
 
 ```mermaid
 flowchart LR
@@ -1376,23 +1695,6 @@ flowchart LR
 ```
 
 </div>
-
----
-level: 3
----
-
-# Ограничения декларативного языка
-
-TBD
-
-- Запрещён лишний синтаксис: class, this, new и т.п. (ESLint конфиг)
-- Ограниченный API: нет прямого доступа к Web APIs, не всё можно import-ить
-- Специальный API для реактивных массивов
-- Чистота функций: отсутствие циклов
-- Изменения данных - только в специальных контекстах (например, обработчики событий)
-- Взаимодействие с обычным кодом - через "границу"
-
-При этом это всё ещё подмножество TypeScript
 
 ---
 level: 1

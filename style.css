@@ -9,8 +9,8 @@
 }
 
 :root.dark {
-  --slidev-code-background: rgb(11, 9, 0);
-  --slidev-slide-content-background: rgb(11, 9, 0);
+  --slidev-code-background: #0f111a;
+  --slidev-slide-content-background: #0f111a;
   --brand-primary-color: #7dc9e8;
   --brand-secondary-color: #bb89dc;
   --brand-third-color: #f78c6c;
@@ -118,4 +118,12 @@ li.slidev-vclick-current {
   .card-header {
     font-weight: 700;
   }
+}
+
+.fill-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
