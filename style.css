@@ -80,8 +80,10 @@
   }
 }
 
-li.slidev-vclick-current {
-  font-weight: 800;
+li, p {
+  &.slidev-vclick-current {
+    font-weight: 800;
+  }
 }
 
 .reference {
