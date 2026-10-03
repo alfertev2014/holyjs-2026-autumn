@@ -7,7 +7,8 @@ info: |
   Слайды к докладу на HolyJS 2026 Autumn
 class: text-center
 fonts:
-  sans: Roboto
+  sans: Google Sans
+  mono: Cascadia Code
 
 drawings:
   persist: false
@@ -19,7 +20,7 @@ comark: true
 <!--
 Всех ещё раз приветствую!
 
-Как видно из названия доклада, сейчас я буду говорить о фреймворках.
+Как видно из названия доклада, я сейчас буду говорить о фреймворках и одной любопытной модели вычислений. Доклад будет визионерский, про мой взгляд на фреймворки.
 -->
 ---
 level: 1
@@ -185,10 +186,81 @@ level: 3
 Фреймворк должен снимать с нас большую часть забот, повторяющихся из проекта в проект, чтобы мы сосредоточили своё внимание на том, что по настоящему *специфично* для проекта. Иными словами, мы хотим оставаться в той абстракции, которая нам интересна, а фреймворк должен быть инструментом обеспечения её корректной реализации, забирая от нас необходимость погружаться в низкоуровневые детали.
 -->
 ---
-leve: 3
+level: 3
 ---
 
-# Все фреймворки похожи друг на друга
+<div class="grid grid-cols-2 gap-4">
+  <div>
+    <img src="./images/frameworkless.jpg" style="width:70%"/>
+  </div>
+  <div>
+    (Картинка с таймлайном выхода фреймворков)
+  </div>
+</div>
+
+<!--
+Я тоже был когда-то в поисках и метался между тем, чтобы отказаться от фреймворков вообще, как советовалось в книге Fremeworkless Web Development (Ведь можно же писать на Vanilla JS и вэб-компонентах), или изучать хайпующий на тот момент фреймворк. Каждый год новый.
+
+Только со временем у меня сформировалась картина, чего я от фреймворка хочу и почему мне это кажется важным. В результате, практикуясь на Vanilla JS, я постепенно нарастил свой фреймворк, чтобы через него постигать идеи, лежащие в основе других фреймворков.
+-->
+---
+level: 3
+---
+
+<div class="grid grid-cols-2 gap-4 text-center">
+  <div class="card">
+    <div class="card-header">🚀 Реактивность</div>
+    <div>
+      <p>Реактивное обновление представления при изменении состояния</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">📜 Декларативность</div>
+    <div>
+      <p>Описание структуры и поведения UI на декларативном DSL</p>
+    </div>
+  </div>
+</div>
+<div class="card text-center" style="width:50%;margin: 1em auto">
+  <div class="card-header">✅ Строгость</div>
+  <div>
+    <p>Строгая типизация, ограничения, инкапсуляция для выполнения гарантий</p>
+  </div>
+</div>
+
+<!--
+И отметил для себя следующие ключевые моменты, которые трудно самому переизобретать и обеспечивать на Vanilla JS, из-за чего и требуется фреймворк:
+- Реактивность
+- Декларативность
+- Строгость
+
+Именно эти вещи и способствуют повышению developer experience и позволяют фреймворку быть оптимизированным. И если приглядеться, 
+-->
+---
+level: 3
+class: bg-image-gradient-right
+style: '--slide-background-image: url(./images/layers.jpg)'
+---
+
+# Фреймворки и слои абстракции
+
+- Коробочные решения
+- Конструкторы сайтов, CMS, NoCode
+- Каталоги готовых компонентов, LowCode
+- UI-киты
+- Библиотеки компонентов, утилит и тем
+- **Слой абстракции с другой парадигмой** <logos-react /> <logos-vue/> <logos-angular-icon/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-preact /> <logos-ember/>  ...
+- Общие библиотеки для типовых задач
+- Язык программирования и его runtime
+
+<!--
+Давайте сейчас определимся, что мы будем называть фреймворками. Любые популярные фреймворки - что React, что Vue и другие - создают свой слой абстракции, который в каком-то смысле меняет парадигму языка, на котором они стоят, то есть JavaScript. Именно об этот уровень фреймворков мы будем рассматривать. Хотя разумно было бы называть фреймворками целые UI-киты или даже больше. Итак, фреймворк создаёт свой слой абстракции, свой особенный язык с соглашениями, и мы уже не пишем на нижележащем JavaScript.
+-->
+---
+level: 3
+---
+
+# Фреймворки похожи друг на друга
 
 <div class="text-center grid grid-cols-2">
 <div>
@@ -220,6 +292,41 @@ flowchart TD
 
 <!--
 И так как абстракция, к которой мы стремимся, для всех фреймворков одна - это некая ментальная модель UI - то все популярные фреймворки в последнее время стали похожи друг на друга и обмениваются одиними удачными идеями реализации. Практически везде можно увидеть компонентную модель и привычный уже всем цикл обновления представления при изменении состояния, различные паттерны MVC, MVP, MVVM. А сложные интерактивные и динамичные UI всегда завязаны на логику работы с состоянием и потоками данных. И чтобы упорядочить это движение данных между State и View и их трансформацию, во всех фреймворках в том или ином виде появляется такой сложный по своей реализации механизм как...
+-->
+
+---
+level: 2
+---
+
+# Инкрементальные вычисления
+
+<div class="text-center">
+
+```mermaid
+flowchart LR
+  arg([arg]) ==> func ==> res([res])
+```
+
+<div v-click>
+
+```mermaid
+flowchart LR
+  delta([Δarg]) --> magic@{ shape: cloud } --> deltaRes([Δres])
+```
+
+</div>
+</div>
+<v-clicks>
+
+- Чистая функция - декларация связей и потоков данных
+- Инкрементальное обновление может взять на себя фреймворк
+
+</v-clicks>
+
+<!--
+Основная идея инкрементальных вычислений заключается вот в чём. Есть у нас чистая функция, преобразующая некоторый аргумент в результат без побочных эффектов. Представьте, что тут аргумент может быть большой и сложный, например, целое дерево данных. Функция тоже может быть композицией других функций. И результат тоже может быть большим и сложным.
+
+И если мы внесём небольшие изменения в аргумент, то вместо того, чтобы делать полный перезапуск вычисления всей функции, мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений.
 -->
 ---
 level: 2
@@ -376,14 +483,7 @@ const P = I * U  // --> 1.125
     <img src="./images/excel.png" style="width: 100%" />
   </div>
   <div class="text-center fill-container" v-click="2">
-
-```mermaid
-flowchart BT
-  P(P) --> I(I)
-  P --> U[U]
-  I --> U
-  I --> R[R]
-```
+<img src="./images/test.svg" />
 
   </div>
 </div>
@@ -516,77 +616,6 @@ flowchart LR
 level: 3
 ---
 
-# Стратегия "Пересчитать всё"
-
-При любом изменении состояния просто пересчитать всё
-
-<div class="grid grid-cols-2 gap-4">
-  <div class="card" v-click>
-    <div class="card-header">Преимущества</div>
-    <div>
-      <ul>
-        <li>0 накладных расходов на 1 расчёт</li>
-        <li>0 затрат на реализацию: нет runtime-библиотеки, нет расширения языка</li>
-        <li>Знакомая модель: state --&gt; view</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card" v-click>
-    <div class="card-header">Недостатки</div>
-    <div>
-      <ul>
-        <li>Повторение вычислений с тем же результатом</li>
-        <li>Побочные эффекты выполняются каждый раз</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!--
-Итак, первая крайность - это пересчитывать всё по каждому мелкому изменению в состоянии.
-
-1. И преимуществом здесь будет полное отсутствие накладных расходов по процессору и по памяти, когда мы выполняем один расчёт. Выполняется чисто код отображения состояния в представление. И мы можем написать это тупо и прямолинейно на привычном нам языке, не подключая никаких библиотек или ещё какой-то магии.
-
-2. Недостатки, конечно же - это повторные вычисления, завершающиеся по большей части одним и тем же результатом. И если бы мы хотели вставить побочные эффекты, то нам пришлось бы принимать дополнительные меры, чтобы они не выполнялись каждый раз.
--->
----
-level: 3
----
-
-# "Coarse-grained reactivity"
-
-Пересчёт "крупных" частей приложения в ответ на изменения
-
-<div class="grid grid-cols-2 gap-4">
-  <div class="card" v-click>
-    <div class="card-header">Преимущества</div>
-    <div>
-      <ul>
-        <li>Знакомая модель: state --&gt; view</li>
-        <li>Знакомый JavaScript</li>
-        <li>Небольшой boilerplate API</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card" v-click>
-    <div class="card-header">Недостатки</div>
-    <div>
-      <ul>
-        <li>Повторение вычислений с тем же результатом</li>
-        <li>Накладные расходы на reconcilliation</li>
-        <li>Побочные эффекты могут выполняються лишний раз</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!--
-
--->
----
-level: 3
----
-
 <style>
   .slidev-code-wrapper {
     --slidev-code-font-size: 12px;
@@ -700,31 +729,6 @@ level: 3
       </ul>
     </div>
   </div>
-</div>
-
----
-level: 3
----
-
-# "Fine-grained reactivity"
-
-"Точечное" обновление данных
-
-<div class="grid grid-cols-2 gap-4">
-<div class="card" v-click>
-<div class="card-header">Преимущества</div>
-
-- Точечное обновление результата
-- Меньше лишних вычислений
-
-</div>
-<div class="card" v-click>
-<div class="card-header">Недостатки</div>
-
-- "Boilerplate" описания графа
-- Накладные расходы на поддержание графа
-
-</div>
 </div>
 
 ---
@@ -927,64 +931,52 @@ level: 3
 ````md magic-move
 ```ts{all|1|2-3|5|7-8|10|12-13|5}
 const foo = reactive({ name: "Resistance", value: 5 })
-const bar = computed(() => `${foo.name} == ${foo.value}`)
-console.log(bar.get())  // "Resistance == 5"
+const bar = computed(() => `${foo.name} equals to ${foo.value}`)
+console.log(bar.get())  // "Resistance equals to 5"
 
 const { name, value } = foo
 
-const baz = computed(() => `${name} is ${value}`)
-console.log(baz.get())  // "Resistance is 5"
+const baz = computed(() => `${name} equals to ${value}`)
+console.log(baz.get())  // "Resistance equals to 5"
 
 foo.value = 2
 
-console.log(bar.get())  // "Resistance == 2"
-console.log(baz.get())  // "Resistance is 5"
+console.log(bar.get())  // "Resistance equals to 2"
+console.log(baz.get())  // "Resistance equals to 5"
 ```
 ```ts{5-6}
 const foo = reactive({ name: "Resistance", value: 5 })
-const bar = computed(() => `${foo.name} == ${foo.value}`)
-console.log(bar.get())  // "Resistance == 5"
+const bar = computed(() => `${foo.name} equals to ${foo.value}`)
+console.log(bar.get())  // "Resistance equals to 5"
 
 const name = foo.name
 const value = foo.value
 
 const baz = computed(() => `${name} is ${value}`)
-console.log(baz.get())  // "Resistance is 5"
+console.log(baz.get())  // "Resistance equals to 5"
 
 foo.value = 2
 
-console.log(bar.get())  // "Resistance == 2"
-console.log(baz.get())  // "Resistance is 5"
+console.log(bar.get())  // "Resistance equals to 2"
+console.log(baz.get())  // "Resistance equals to 5"
 ```
 ```ts{5-6,8,14}
 const foo = reactive({ name: "Resistance", value: 5 })
-const bar = computed(() => `${foo.name} == ${foo.value}`)
-console.log(bar.get())  // "Resistance == 5"
+const bar = computed(() => `${foo.name} equals to ${foo.value}`)
+console.log(bar.get())  // "Resistance equals to 5"
 
 const name = computed(() => foo.name)
 const value = computed(() => foo.value)
 
 const baz = computed(() => `${name.get()} is ${value.get()}`)
-console.log(baz.get())  // "Resistance is 5"
+console.log(baz.get())  // "Resistance equals to 5"
 
 foo.value = 2
 
-console.log(bar.get())  // "Resistance == 2"
-console.log(baz.get())  // "Resistance is 2"
+console.log(bar.get())  // "Resistance equals to 2"
+console.log(baz.get())  // "Resistance equals to 2"
 ```
 ````
-
----
-level: 3
----
-
-# Гранулярность реактивности: итоги
-
-- Стремимся к "fine-grained reactivity"
-- Сигнальная реактивность - удачная реализация с минимальными перевычислениями
-- Недостатки:
-  - Накладные расходы на поддержание графа
-  - Error prone boilerplate API
 
 ---
 level: 2
@@ -1025,9 +1017,6 @@ const emit = defineEmits<{
 </script>
 ```
 
-<!--
-
--->
 ---
 level: 2
 ---
@@ -1111,7 +1100,7 @@ const OhmsLaw = () => {
 level: 3
 ---
 
-# Компилируемая реактивность: итоги
+# Реактивность во фреймворках: наблюдения
 
 <div>
 <v-clicks>
@@ -1218,41 +1207,6 @@ level: 3
   </div>
 </div>
 
-
----
-level: 2
----
-
-# Инкрементальные вычисления
-
-<div class="text-center">
-
-```mermaid
-flowchart LR
-  arg([arg]) ==> func ==> res([res])
-```
-
-<div v-click>
-
-```mermaid
-flowchart LR
-  delta([Δarg]) --> magic@{ shape: cloud } --> deltaRes([Δres])
-```
-
-</div>
-</div>
-<v-clicks>
-
-- Чистая функция - декларация связей и потоков данных
-- Инкрементальное обновление может взять на себя фреймворк
-
-</v-clicks>
-
-<!--
-Основная идея инкрементальных вычислений заключается вот в чём. Есть у нас чистая функция, преобразующая некоторый аргумент в результат без побочных эффектов. Представьте, что тут аргумент может быть большой и сложный, например, целое дерево данных. Функция тоже может быть композицией других функций. И результат тоже может быть большим и сложным.
-
-И если мы внесём небольшие изменения в аргумент, то вместо того, чтобы делать полный перезапуск вычисления всей функции, мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений.
--->
 ---
 level: 3
 ---

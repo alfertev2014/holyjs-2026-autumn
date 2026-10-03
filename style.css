@@ -14,6 +14,8 @@
   --brand-primary-color: #7dc9e8;
   --brand-secondary-color: #bb89dc;
   --brand-third-color: #f78c6c;
+  --brand-fourth-color: #c3e88d;
+  --brand-fifth-color: #ffcb6b;
   .slidev-slide-container .slidev-slide-content .slidev-page {
     background-color: var(--slidev-slide-content-background);
   }
@@ -76,13 +78,13 @@
     opacity: 0.5;
   }
   .shiki .line, .shiki-magic-move-item {
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
 li, p {
   &.slidev-vclick-current {
-    font-weight: 800;
+    font-weight: 700;
   }
 }
 
@@ -128,4 +130,9 @@ li, p {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+.bg-image-gradient-right {
+  background-image: linear-gradient(to right, var(--slidev-slide-content-background) 25%, rgba(0,0,0,0)), var(--slide-background-image);
+  background-size: cover;
 }
