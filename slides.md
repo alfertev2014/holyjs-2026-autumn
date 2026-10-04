@@ -291,8 +291,77 @@ flowchart TD
 </div>
 
 <!--
-И так как абстракция, к которой мы стремимся, для всех фреймворков одна - это некая ментальная модель UI - то все популярные фреймворки в последнее время стали похожи друг на друга и обмениваются одиними удачными идеями реализации. Практически везде можно увидеть компонентную модель и привычный уже всем цикл обновления представления при изменении состояния, различные паттерны MVC, MVP, MVVM. А сложные интерактивные и динамичные UI всегда завязаны на логику работы с состоянием и потоками данных. И чтобы упорядочить это движение данных между State и View и их трансформацию, во всех фреймворках в том или ином виде появляется такой сложный по своей реализации механизм как...
+И так как абстракция, к которой мы стремимся, для всех фреймворков одна - это некая ментальная модель UI - то все популярные фреймворки в последнее время стали похожи друг на друга и обмениваются одиними удачными идеями реализации. Практически везде можно увидеть компонентную модель и привычный уже всем цикл обновления представления при изменении состояния.
 -->
+
+---
+level: 3
+---
+
+# MVC --> MVP --> MVVM --> ...
+
+<div class="text-center">
+
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> C(Controller) --> V(View)
+```
+
+</v-click>
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> P(Presenter) --> V(View)
+```
+
+</v-click>
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> PM(Presentation Model) --> V(View)
+```
+
+</v-click>
+
+<v-click>
+
+```mermaid
+flowchart LR
+  M(Model) --> VM(View Model) --> V(View)
+```
+
+</v-click>
+</div>
+
+<!--
+различные паттерны MVC, MVP, MVVM. Если честно, я сам до конца не понимаю всех тонкостей различия между ними. Я лишь могу понять, в какие моменты логика описана императивно, а в какие декларативно. Были времена, когда считалось нормой на основе начального состояния отрисовать представление, а потом по событиям взаимодействия с ним менять данные состояния и одновременно стараться выполнить все необходимые действия по обновлению представления в надежде, что результирующее представление будет актуальным и соответствовать текущему состоянию. На деле легко было ошибиться и 
+Сложные интерактивные и динамичные UI всегда завязаны на логику работы с состоянием, отделённого от представления, и потоками данных для их синхронизации. И как ни крути, логика, связывающая состояние с представлением, очень удобно описывается чистой функцией.
+-->
+---
+level: 3
+---
+
+<div class="grid grid-cols-3 gap-2">
+  <div class="card">
+    <div class="card-header">State</div>
+    <div>(Дерево данных)</div>
+  </div>
+  <div class="card">
+    <div class="card-header">Logic</div>
+    <div>(Код компонента)</div>
+  </div>
+  <div class="card" style="position:relative">
+    <div class="card-header">View</div>
+    <div style="position:absolute;z-index:1">
+      <img v-click src="./images/tychevonadelal.jpg" style="width:100%" />
+    </div>
+    <div>(Дерево UI)</div>
+  </div>
+</div>
 
 ---
 level: 2
@@ -304,41 +373,107 @@ level: 2
 
 ```mermaid
 flowchart LR
-  arg([arg]) ==> func ==> res([res])
+  state([state]) ==> func ==> view([view])
 ```
 
 <div v-click>
 
 ```mermaid
 flowchart LR
-  delta([Δarg]) --> magic@{ shape: cloud } --> deltaRes([Δres])
+  delta([Δstate]) --> magic@{ shape: cloud } --> deltaView([Δview])
 ```
 
 </div>
 </div>
-<v-clicks>
-
-- Чистая функция - декларация связей и потоков данных
-- Инкрементальное обновление может взять на себя фреймворк
-
-</v-clicks>
 
 <!--
 Основная идея инкрементальных вычислений заключается вот в чём. Есть у нас чистая функция, преобразующая некоторый аргумент в результат без побочных эффектов. Представьте, что тут аргумент может быть большой и сложный, например, целое дерево данных. Функция тоже может быть композицией других функций. И результат тоже может быть большим и сложным.
 
 И если мы внесём небольшие изменения в аргумент, то вместо того, чтобы делать полный перезапуск вычисления всей функции, мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений.
 -->
+
+---
+level: 3
+---
+
+# Как описывать изменения дерева данных?
+
+<div class="grid grid-cols-2 gap-4">
+<div v-click>
+
+Новая версия данных
+
+```mermaid
+flowchart LR
+  subgraph gv1 [Vertion N]
+    direction TD
+    v1((v1)) --> v2((v2)) --> v3((v3))
+    v2 --> v4((v4))
+    v1 --> v5((v5))
+  end
+  subgraph gv2 [Version N+1]
+    direction TD
+    g1((v1)) --> g2(((v2'))) --> g3(((v3')))
+    g2 --> g4((v4))
+    g1 --> g5(((v5')))
+  end
+  gv1 --> gv2
+```
+
+</div>
+<div v-click>
+
+"Patch" данных
+
+```mermaid
+flowchart LR
+  subgraph gv1 [Vertion N]
+    direction TD
+    v1((v1)) --> v2((v2)) --> v3((v3))
+    v2 --> v4((v4))
+    v1 --> v5((v5))
+  end
+  subgraph gv2 [Diff N+1]
+    direction TD
+    g2(((v2'))) --> g3(((v3')))
+    g5(((v5')))
+  end
+  gv1 --> gv2
+```
+
+</div>
+</div>
+<!--
+И нельзя сказать однозначно, что удобнее.
+-->
+---
+level: 3
+---
+
+# Инкрементальные вычисления
+
+- **Реактивность**: обновление результата при изменении входных данных
+- **Декларативность**: описание результата как чистой функции от входных данных
+- **Строгость**: легко обеспечить соблюдение соглашений для гарантий корректности и избежания ошибок
+
+<v-click>
+
+Слой абстракции поверх JavaScript, часть ментальной модели UI.
+
+- Способствует улучшению Developer Experience
+- Позволяет фреймворку оптимизации
+
+</v-click>
+
 ---
 level: 2
-layout: image-right
-image: images/rocket.jfif
+class: bg-image-gradient-right
+style: '--slide-background-image: url(images/rocket.jfif)'
 ---
 
-<br /><br /><br />
+<br/><br/><br/>
 
 # 🚀 Реактивность
-
-<p v-click>Автоматическое обновление производных данных как "реакция" на изменение первичных данных</p>
 
 <!--
 ...реактивность.
@@ -503,6 +638,11 @@ const P = I * U  // --> 1.125
 level: 3
 ---
 
+<div style="position:relative">
+<div class="card" style="position:absolute;top:0;right:0;z-index:1">
+  Псевдокод
+</div>
+
 ```tsx{all|2-5|8-17|9,12,15,16|10,13|all}
 const OhmsLaw = () => {
   let voltage = 1.5   // U
@@ -525,6 +665,8 @@ const OhmsLaw = () => {
 }
 ```
 
+</div>
+
 <!--
 И я бы ожидал от UI-фреймворка примерно такого же. Здесь пример кода, как бы это могло выглядеть, псевдокодом в синтаксисе JSX.
 
@@ -544,13 +686,7 @@ const OhmsLaw = () => {
 level: 2
 ---
 
-# В JavaScript нет реактивности
-
-<div v-click class="text-center text-xl">
-
-**Решения?**
-
-</div>
+# Реактивность в JavaScript
 
 <div class="grid grid-cols-2 gap-4">
 <div class="card" v-click>
@@ -592,11 +728,6 @@ flowchart LR
   r(Пересчитать всё) ---|>| cg("coarse-graned") ---|>| fg("fine-graned") ---|>| i(Пересчитать инкрементально)
 ```
 
-<div class="text-xl" v-click>
-
-Идеал: минимально необходимые обновления - **инкрементальные вычисления**.
-
-</div>
 </div>
 
 <!--
@@ -986,8 +1117,10 @@ level: 2
 
 <v-clicks>
 
-- Преобразования кода для удобства использования сигналов
+- Преобразования кода для удобства использования реактивности
 - Всё тот же JavaScript, который вы знаете?
+
+Фреймворки давно это делают
 
 </v-clicks>
 
@@ -1100,7 +1233,7 @@ const OhmsLaw = () => {
 level: 3
 ---
 
-# Реактивность во фреймворках: наблюдения
+# Реактивность во фреймворках
 
 <div>
 <v-clicks>
@@ -1119,10 +1252,29 @@ level: 3
 
 ---
 level: 1
-layout: center
 ---
 
-# Инкрементальные вычисления
+<br/><br/><br/>
+
+# 📜 Декларативность
+
+
+---
+level: 3
+---
+
+# Декларативное программирование
+
+<v-clicks>
+
+- Код описывает ожидаемый результат, а не способ его получения
+  - Код описывает структуру UI, потоки данных, логику приложения в виде **деклараций**, а не последовательности действий
+- Domain Specific Language (DSL) вместо универсального JavaScript
+- Строгие абстракции:
+  - Программист сосредоточен на семантике DSL
+  - Детали реализации берёт на себя фреймворк
+
+</v-clicks>
 
 
 ---
@@ -1260,49 +1412,56 @@ level: 3
 let lightswitch = false
 
 let voltage = 5
-let resistance = 2
+let resistance1 = 1
+let resistance2 = 1
 
-const amperage = lightswitch ? voltage / resistance : 0  // --> 0
-const power = lightswitch ? amperage * voltage : 0  // --> 0
+const power = lightswitch ? voltage * voltage / (resistance1 + resistance2) : 0  // --> 0
 ```
-```ts{1,6,7}
+```ts{1,7}
 let lightswitch = true
 
 let voltage = 5
-let resistance = 2
+let resistance1 = 1
+let resistance2 = 1
 
-const amperage = lightswitch ? voltage / resistance : 0  // --> 2.5
-const power = lightswitch ? amperage * voltage : 0  // --> 12.5
+const power = lightswitch ? voltage * voltage / (resistance1 + resistance2) : 0  // --> 12.5
 ```
-```ts{1,6-14}
+```ts{1,7-10}
 const lightswitch = signal(true)
 
 const voltage = signal(5)
-const resistance = signal(2)
-
-const amperage = computed(() =>
-  lightswitch.get()
-    ? voltage.get() / resistance.get()
-    : 0)
+const resistance1 = signal(1)
+const resistance2 = signal(1)
 
 const power = computed(() =>
   lightswitch.get()
-    ? amperage.get() * voltage.get()
+    ? (voltage.get() * voltage.get()) / (resistance1.get() + resistance2.get())
     : 0)
 ```
-```ts{all|1,6,12}
-const lightswitch = signal(false)
+```ts{7-12}
+const lightswitch = signal(true)
 
 const voltage = signal(5)
-const resistance = signal(2)
+const resistance1 = signal(1)
+const resistance2 = signal(1)
 
-const _amperage1 = computed(() => voltage.get() / resistance.get())
-const amperage = computed(() =>
+const _voltageSquare = computed(() => voltage.get() * voltage.get())
+const _resistance12 = computed(() => resistance1.get() + resistance2.get())
+const power = computed(() =>
   lightswitch.get()
-    ? _amperage1.get()
+    ? _voltageSquare.get() / _resistance12.get()
     : 0)
+```
+```ts{7-13}
+const lightswitch = signal(true)
 
-const _power1 = computed(() => amperage.get() * voltage.get())
+const voltage = signal(5)
+const resistance1 = signal(1)
+const resistance2 = signal(1)
+
+const _voltageSquare = computed(() => voltage.get() * voltage.get())
+const _resistance12 = computed(() => resistance1.get() + resistance2.get())
+const _power1 = computed(() => _voltageSquare.get() / _resistance12.get())
 const power = computed(() =>
   lightswitch.get()
     ? _power1.get()
@@ -1642,15 +1801,25 @@ const d = computed(() => `${foo.get()} is ${bar.get()}!`)
 
 const e = computed(() => JSON.stringify(c))  // ???
 ```
-```ts{4,8}
+```ts{8}
 const a = signal(100500.0)
 const b = signal("Whatever")
 
-const c = computed(() => ({ foo: a.get(), bar: b.get() }))
+const c = { foo: a, bar: b }
 
 const d = computed(() => `${c.get().foo} is ${c.get().bar}!`)
 
-const e = computed(() => JSON.stringify(c.get()))
+const e = computed(() => JSON.stringify(toJS(c)))
+```
+```ts{4,8}
+let a = 100500.0
+let b = "Whatever"
+
+const c = { foo: a, bar: b }
+
+const d = `${c.foo} is ${c.bar}!`
+
+const e = JSON.stringify(toJS(c))
 ```
 ````
 
@@ -1660,165 +1829,20 @@ const e = computed(() => JSON.stringify(c.get()))
 level: 3
 ---
 
-# Как описывать изменения дерева данных?
-
-<div class="grid grid-cols-2 gap-4">
-<div v-click>
-
-Новая версия данных
-
-```mermaid
-flowchart LR
-  subgraph gv1 [Vertion N]
-    direction TD
-    v1((v1)) --> v2((v2)) --> v3((v3))
-    v2 --> v4((v4))
-    v1 --> v5((v5))
-  end
-  subgraph gv2 [Version N+1]
-    direction TD
-    g1((v1)) --> g2(((v2'))) --> g3(((v3')))
-    g2 --> g4((v4))
-    g1 --> g5(((v5')))
-  end
-  gv1 --> gv2
-```
-
-</div>
-<div v-click>
-
-"Patch" данных
-
-```mermaid
-flowchart LR
-  subgraph gv1 [Vertion N]
-    direction TD
-    v1((v1)) --> v2((v2)) --> v3((v3))
-    v2 --> v4((v4))
-    v1 --> v5((v5))
-  end
-  subgraph gv2 [Diff N+1]
-    direction TD
-    g2(((v2'))) --> g3(((v3')))
-    g5(((v5')))
-  end
-  gv1 --> gv2
-```
-
-</div>
-</div>
-<!--
-И нельзя сказать однозначно, что удобнее.
--->
-
----
-level: 3
----
-
 # Равенство объектов
-
-```ts{all|4-6|8}
-const a = signal(100500.0)
-const b = signal("Whatever")
-
-const c = computed(() => ({ foo: a.get(), bar: b.get() }))
-
-const d = { foo: a, bar: b }
-
-const e = computed(() => c === d)  // ???
-```
-
-
----
-level: 3
----
-
-# Identity объектов
-
-<v-clicks>
-
-- Свойство, уникально идентифицирующее конкретный объект
-- Обычно это ссылка на объект
-- Ссылочное равенство (===) проверяет совпадение identity
-- Изменяемым объектам нужен identity
-- Клонирование - создание нового объекта с другим identity
-
-</v-clicks>
-
----
-level: 3
----
-
-# Value types
-
-<v-clicks>
-
-- Их identity - это их содержимое
-- Два объекта в памяти с одинаковым содержимым равны друг другу
-- При изменении содержимого менялось бы identity
-- Value types - immutable
-
-</v-clicks>
-
----
-level: 3
----
-
-# Identity и равенство объектов
-
-- Узлы реактивного графа - объекты с identity
-- Значения в узлах графа - value types
-- Одни объекты - часть графа
-- Другие объекты - значения в узлах
-
----
-level: 3
----
 
 <DeclarativeCode>
 
-````md magic-move
-```ts
+```ts{all|4-6|8}
 let a = 100500.0
 let b = "Whatever"
 
 const c = { foo: a, bar: b }
 
-const d = `${c.foo} is ${c.bar}!`
+const d = c
+
+const e = c === d  // ???
 ```
-```ts
-let a = 100500.0
-let b = "Whatever"
-
-let c = { foo: a, bar: b }
-
-const d = `${c.foo} is ${c.bar}!`
-```
-```ts
-const a = signal(100500.0)
-const b = signal("Whatever")
-
-const c = signal({ foo: a, bar: b })
-
-const d = computed(() => `${c.get().foo.get()} is ${c.get().bar.get()}!`)
-```
-```ts
-const a = signal(100500.0)
-const b = signal("Whatever")
-
-const c = signal({ foo: a.get(), bar: b.get() })
-
-const d = computed(() => `${c.get().foo} is ${c.get().bar}!`)
-```
-```ts
-const a = signal(100500.0)
-const b = signal("Whatever")
-
-const c = signal({ foo: signal(a.get()), bar: signal(b.get()) })
-
-const d = computed(() => `${c.get().foo.get()} is ${c.get().bar.get()}!`)
-```
-````
 
 </DeclarativeCode>
 
@@ -1828,29 +1852,48 @@ level: 3
 
 # Вложенная реактивность
 
-<v-clicks>
-
 - Реактивные массивы и их трансформация (map, filter, reduce и т.п.)
 - Rendering списков на основе реактивных массивов
 - Union-типы, состоящие из объектных типов
 - Вложенные объекты и вложенные массивы
-- Только деревья, нет циклов в данных
+- Замена поддерева в реактивном дереве
 - Передача ссылки на изменяемые данные (binding)
+- Жизненный цикл графов и связей
 
-</v-clicks>
+---
+level: 3
+layout: image
+image: ./images/trees.jpg
+class: text-center
+---
+
+<br/><br/>
+
+# Древовидные данные
+
+<div>
+
+Отсутствие циклов
+
+У каждого узла один родитель
+
+В чистых функциях - только "value-types"
+
+</div>
 
 ---
 level: 1
-layout: center
 ---
 
-# Декларативный UI-фреймворк
+<br/><br/><br/>
+
+# ✅ Строгость
 
 ---
 level: 2
 ---
 
-# Все фреймворки похожи друг на друга
+# Ментальная модель UI - основа DSL
 
 <div class="text-center grid grid-cols-2">
 <div>
@@ -1882,60 +1925,13 @@ flowchart TD
 
 ---
 level: 3
----
-
-# 📜 Декларативное программирование
-
-<v-clicks>
-
-- Код описывает ожидаемый результат, а не способ его получения
-  - Код описывает структуру UI, потоки данных, логику приложения в виде **деклараций**, а не последовательности действий
-- Domain Specific Language (DSL) вместо универсального JavaScript
-- Строгие абстракции:
-  - Программист сосредоточен на семантике DSL
-  - Детали реализации берёт на себя фреймворк
-
-</v-clicks>
-
----
-level: 3
----
-
-# Ментальная модель UI
-
-```mermaid
-flowchart LR
-  State -- component --> View
-  View -- event --> Action
-  Action -- mutation --> State
-```
-
-- UI разделяется на дерево компонентов с жизненным циклом
-- Состояние, изменяемое во времени
-- Представление, производное от состояния (чистая функция)
-- Пользовательские действия и фоновые события
-- Действия над состоянием
-
-<!--
-Быстро вспомним, как мы себе представляем UI. Примерно так же себе представляет его и пользователь.
-
-1. Это некоторая иерархическая структура из элементов (компонентов), которые могут появляться и исчезать, то есть, обладают жизненным циклом.
-2. Некоторые компоненты могут иметь состояние, изменяемое во времени, привязанное к жизненному циклу компонентов.
-3. То, что видит пользователь - это представление, которое рисуется на основе данных, производных от состояния. И это отображение можно определить чистой функцией.
-4. У представления есть средства для выполнения пользовательских действий - кликов, жестов, нажатий клавиш.
-5. Также, в приложении могут происходить другие фоновые события, например, таймеры или завершение загрузки данных с сервера. Они выступают триггерами для
-6. модификации состояния UI - простые транзакции по изменению данных, описывающие новое состояние на основе предыдущего (тоже чисто функционально).
--->
-
----
-level: 3
 layout: center
 class: text-center
 ---
 
 Большая часть UI укладывается в эту модель.
 
-Исключения из правил фреймворка можно (нужно!) держать в коде отдельно.
+Исключения из правил фреймворка - держать в коде отдельно.
 
 <!--
 Большая часть UI укладывается в эту модель. В любом типовом UI будут компоненты, цикл обновления представления и потоки данных, описываемые чистыми функциями. В этом и состоит идея фреймворка - упросить нам работу с этой большей частью UI и сделать это наиболее оптимально.
@@ -1960,6 +1956,14 @@ level: 3
 level: 3
 ---
 
+<style>
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.1em;
+  }
+</style>
+
 # Декларативный TSX: ограничения
 
 <div class="flex gap-4">
@@ -1969,11 +1973,14 @@ level: 3
 - "Белый список" API:
   - нет прямого доступа к Web APIs
   - import-ить можно другие модули декларативного TSX
-- Специальный API для реактивных массивов
 - Чистота функций:
   - отсутствие циклов
   - Изменения данных - только в специальных контекстах (например, обработчики событий)
-- Запрет сравнения изменяемых объектов по ссылке
+- Древовидные данные:
+  - Запрет сравнения изменяемых объектов по ссылке
+- Специальный API:
+  - реактивные массивы
+  - snapshot и reconcile вложенных данных
 
 </div>
 <div>
@@ -1981,48 +1988,6 @@ level: 3
 </div>
 </div>
 
----
-level: 3
----
-
-# MVC --> MVP --> MVVM
-
-<div class="text-center">
-
-<v-click>
-
-```mermaid
-flowchart LR
-  M(Model) --> C(Controller) --> V(View)
-```
-
-</v-click>
-<v-click>
-
-```mermaid
-flowchart LR
-  M(Model) --> P(Presenter) --> V(View)
-```
-
-</v-click>
-<v-click>
-
-```mermaid
-flowchart LR
-  M(Model) --> PM(Presentation Model) --> V(View)
-```
-
-</v-click>
-
-<v-click>
-
-```mermaid
-flowchart LR
-  M(Model) --> VM(View Model) --> V(View)
-```
-
-</v-click>
-</div>
 ---
 level: 3
 ---
@@ -2035,6 +2000,18 @@ flowchart LR
 ```
 
 </div>
+---
+level: 2
+---
+
+# Примеры инкрементальных вычислений
+
+- Mint - специальный язык для UI с компиляцией в JS
+- Marko - расширение HTML для описания состояния
+- "Реактивный CSS" - CSS Variables, пользовательские функции и properties
+- Compose - компиляторный плагин для Kotlin, `@Composable`-функции
+- QML - декларативный язык разметки UI в Qt
+
 
 ---
 level: 1
@@ -2049,25 +2026,14 @@ level: 1
 
 # Заключение
 
-- Большая часть UI описывается декларативно
-- Ментальная модель UI: состояние --> представление --> события
-- Реактивность в UI: автоматическое обновление представления при изменении состояния
-- Сигнальная реактивность: состояние --> представление - граф зависимостей данных 
-- Инкрементальные вычисления: состояние --> представление - чистая функция, вычисляемая инкрементально
-- Компиляция чистых функций в графы сигналов
-- Декларативный компилируемый DSL требует выполнения ограничений и соглашений
-
----
-level: 2
----
-
-# Выводы
-
-- UI-фреймворки имеют неудобства в реализации и использовании реактивности
-- UI-фреймворки похожи друг на друга: ориентированы на одну ментальную модель UI
-- Более декларативный подход имеет свои преимущества в DX
-- Отделение простого от сложного
-- Полезно видеть абстракции и неявные соглашения, даже оставаясь в JavaScript
+- UI-фреймворк - решение, способствующее улучшению DX при разработке UI
+- UI-фреймворк создаёт свою абстракцию - ментальная модель UI:
+  - Чистая функция с семантикой инкрементального исполнения - "fine-grained reactivity"
+  - Декларативный DSL описания связей между данными, преобразований и привязки к представлению
+  - Строгие ограничения для поддержания абстракции
+- Многие фреймворки приходят к этой концепции:
+  - Те же соглашения и ограничения 
+  - Разделение "обычного" кода от нестандартного, "прикладного" от "системного"
 
 ---
 level: 2
