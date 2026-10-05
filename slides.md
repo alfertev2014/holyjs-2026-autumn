@@ -194,7 +194,7 @@ level: 3
     <img src="./images/frameworkless.jpg" style="width:70%"/>
   </div>
   <div>
-    (Картинка с таймлайном выхода фреймворков)
+    <img src="./images/frameworks_timeline.png" style="width:100%"/>
   </div>
 </div>
 
@@ -234,7 +234,7 @@ level: 3
 - Декларативность
 - Строгость
 
-Именно эти вещи и способствуют повышению developer experience и позволяют фреймворку быть оптимизированным. И если приглядеться, 
+Именно эти вещи и способствуют повышению developer experience и позволяют фреймворку быть оптимизированным.
 -->
 ---
 level: 3
@@ -618,7 +618,14 @@ const P = I * U  // --> 1.125
     <img src="./images/excel.png" style="width: 100%" />
   </div>
   <div class="text-center fill-container" v-click="2">
-<img src="./images/test.svg" />
+
+```mermaid
+flowchart BT
+  P(P) --> I(I)
+  P --> U[U]
+  I --> U
+  I --> R[R]
+```
 
   </div>
 </div>
@@ -695,12 +702,16 @@ level: 2
 - Библиотеки реактивности
 - Интеграция с фреймворками
 
+Примеры: <logos-mobx/> MobX, <logos-reactivex/> Rx.js, <logos-vue/> Vue, <logos-solidjs-icon/> Solid
+
 </div>
 <div class="card" v-click>
 <div class="card-header">Build-time</div>
 
 - Расширение языка, трансформации кода
 - +1 шаг сборки
+
+Примеры: <logos-svelte-icon/> Svelte, TSRX, Ripple
 
 </div>
 </div>
@@ -721,13 +732,30 @@ level: 2
 
 # "Гранулярность" реактивности
 
-<div class="text-center">
+<v-drag-arrow pos="59,316,873,7"/>
 
-```mermaid
-flowchart LR
-  r(Пересчитать всё) ---|>| cg("coarse-graned") ---|>| fg("fine-graned") ---|>| i(Пересчитать инкрементально)
-```
-
+<div class="text-center grid grid-cols-4 gap-2">
+  <div class="card">
+    <div class="card-header">Пересчитать всё</div>
+  </div>
+  <div class="card">
+    <div class="card-header">"Coarse-grained reactivity"</div>
+    <div>
+      <p><logos-react/> <logos-preact/></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">"Fine-grained reactivity"</div>
+    <div>
+      <p><logos-vue/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-mobx/></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">Пересчитать инкрементально</div>
+    <div>
+      <p><strong>?</strong></p>
+    </div>
+  </div>
 </div>
 
 <!--
@@ -743,6 +771,7 @@ flowchart LR
 
 В идеале, конечно, хотелось бы избежать лишних действий вообще, выполнить ровно то, что нужно для обновления производных данных, инкрементально. Но такой подход имеет свою цену. При экономии на лишних действиях мы много потеряем на организацию точности всего этого процесса.
 -->
+
 ---
 level: 3
 ---
@@ -918,9 +947,9 @@ level: 3
     <div class="card-header">Преимущества</div>
       <div>
       <ul>
+        <li>Избегание лишних вычислений</li>
         <li>Это всё ещё JavaScript, который вы знаете</li>
         <li>Просто библиотека, легко интегрировать</li>
-        <li>Простые соглашения, понятные ограничения</li>
       </ul>
     </div>
   </div>
@@ -1025,17 +1054,17 @@ level: 3
 # Сигналы: Proxy-объекты
 
 ````md magic-move
-```ts
+```ts{all|1|4|5-8}
 const reactive = <T extends Record<string, unknown>>(o: T): T => {
-  const res = {}
+  const res = {} as Record<string, unknown>
   for (const [key, value] of Object.entries(o)) {
-    const s = signal(value)
+    const s = signal<unknown>(value)
     Object.defineProperty(res, key, {
-      get() { return s.get() }
-      set(newValue) { s.set(newValue) }
+      get(): unknown { return s.get() }
+      set(newValue: unknown) { s.set(newValue) }
     })
   }
-  return res
+  return res as T
 }
 ```
 ```ts{all|1|5|9-11}
@@ -1334,7 +1363,7 @@ const OhmsLaw = () => {
 level: 3
 ---
 
-# Компиляция JavaScript  в сигналы
+# Компиляция DSL в сигналы
 
 <div class="grid grid-cols-2 gap-4">
   <div class="card" v-click>
@@ -1990,6 +2019,13 @@ level: 3
 
 ---
 level: 3
+layout: image
+image: images/cocktail.jpg
+backgroundSize: contain
+---
+
+---
+level: 3
 ---
 
 <div class="text-center">
@@ -2026,6 +2062,8 @@ level: 1
 
 # Заключение
 
+<v-clicks>
+
 - UI-фреймворк - решение, способствующее улучшению DX при разработке UI
 - UI-фреймворк создаёт свою абстракцию - ментальная модель UI:
   - Чистая функция с семантикой инкрементального исполнения - "fine-grained reactivity"
@@ -2034,6 +2072,8 @@ level: 1
 - Многие фреймворки приходят к этой концепции:
   - Те же соглашения и ограничения 
   - Разделение "обычного" кода от нестандартного, "прикладного" от "системного"
+
+</v-clicks>
 
 ---
 level: 2

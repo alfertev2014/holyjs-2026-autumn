@@ -82,12 +82,6 @@
   }
 }
 
-li, p {
-  &.slidev-vclick-current {
-    font-weight: 700;
-  }
-}
-
 .reference {
   margin-block: 1rem;
 }
