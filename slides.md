@@ -9,7 +9,7 @@ class: text-center
 fonts:
   sans: Google Sans
   mono: Cascadia Code
-
+background: images/cover.svg
 drawings:
   persist: false
 comark: true
@@ -201,7 +201,7 @@ level: 3
 level: 3
 ---
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-4 items-center">
   <div>
     <img src="./images/frameworkless.jpg" style="width:70%"/>
   </div>
@@ -220,23 +220,23 @@ level: 3
 ---
 
 <div class="grid grid-cols-2 gap-4 text-center">
-  <div class="card">
+  <div class="card" style="--card-color:var(--brand-color-5)" v-click>
     <div class="card-header">🚀 Реактивность</div>
-    <div>
-      <p>Реактивное обновление представления при изменении состояния</p>
+    <div class="card-body">
+      <p>Обновление представления при изменении состояния</p>
     </div>
   </div>
-  <div class="card">
+  <div class="card" style="--card-color:var(--brand-color-4)" v-click>
     <div class="card-header">📜 Декларативность</div>
-    <div>
-      <p>Описание структуры и поведения UI на декларативном DSL</p>
+    <div class="card-body">
+      <p>Структура и поведение UI - на декларативном DSL</p>
     </div>
   </div>
 </div>
-<div class="card text-center" style="width:50%;margin: 1em auto">
+<div class="card text-center" style="width:50%;margin: 1em auto;--card-color:var(--brand-color-1)" v-click>
   <div class="card-header">✅ Строгость</div>
-  <div>
-    <p>Строгая типизация, ограничения, инкапсуляция для выполнения гарантий</p>
+  <div class="card-body">
+    <p>Строгая типизация, ограничения, инкапсуляция, гарантии</p>
   </div>
 </div>
 
@@ -254,6 +254,14 @@ class: bg-image-gradient-right
 style: '--slide-background-image: url(./images/layers.jpg)'
 ---
 
+<style>
+  li {
+    transform: translateX(calc((sibling-count() - sibling-index()) * 1em));
+  }
+</style>
+
+<v-drag-arrow pos="47,336,58,0" v-click style="color:var(--brand-color-3)"/>
+
 # Фреймворки и слои абстракции
 
 - Коробочные решения
@@ -262,12 +270,13 @@ style: '--slide-background-image: url(./images/layers.jpg)'
 - UI-киты
 - Библиотеки компонентов, утилит и тем
 - **Слой абстракции с другой парадигмой** <logos-react /> <logos-vue/> <logos-angular-icon/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-preact /> <logos-ember/>  ...
-- Общие библиотеки для типовых задач
-- Язык программирования и его runtime
+- Общие Javascript-библиотеки для типовых задач
+- Язык JavaScript и его runtime
 
 <!--
 Давайте сейчас определимся, что мы будем называть фреймворками. Любые популярные фреймворки - что React, что Vue и другие - создают свой слой абстракции, который в каком-то смысле меняет парадигму языка, на котором они стоят, то есть JavaScript. Именно об этот уровень фреймворков мы будем рассматривать. Хотя разумно было бы называть фреймворками целые UI-киты или даже больше. Итак, фреймворк создаёт свой слой абстракции, свой особенный язык с соглашениями, и мы уже не пишем на нижележащем JavaScript.
 -->
+
 ---
 level: 3
 ---
@@ -277,28 +286,16 @@ level: 3
 <div class="text-center grid grid-cols-2">
 <div>
 
-**Компонентная модель**
+**Дерево компонентов**
 
-```mermaid
-flowchart TD
-  с1(Component) --> c2(Component)
-  с1(Component) --> c3(Component)
-  c2(Component) --> c4(Component)
-  c2(Component) --> c5(Component)
-```
+<img src="./drawio/components_tree.drawio.svg" style="margin: 0 auto;width:70%" />
 
 </div>
 <div>
 
 **Цикл обновления**
 
-```mermaid
-flowchart TD
-  State -- component --> View
-  View -- event --> Action
-  Action -- mutation --> State
-```
-
+<img src="./drawio/update_cycle.drawio.svg" style="margin: 0 auto;width:70%" />
 </div>
 </div>
 
@@ -312,39 +309,26 @@ level: 3
 
 # MVC --> MVP --> MVVM --> ...
 
-<div class="text-center">
-
+<div class="text-center flex flex-col gap-y-4">
 <v-click>
 
-```mermaid
-flowchart LR
-  M(Model) --> C(Controller) --> V(View)
-```
+<img src="./drawio/mvc.drawio.svg" style="margin:0 auto" />
 
 </v-click>
 <v-click>
 
-```mermaid
-flowchart LR
-  M(Model) --> P(Presenter) --> V(View)
-```
+<img src="./drawio/mvp.drawio.svg" style="margin:0 auto" />
 
 </v-click>
 <v-click>
 
-```mermaid
-flowchart LR
-  M(Model) --> PM(Presentation Model) --> V(View)
-```
+<img src="./drawio/mvpm.drawio.svg" style="margin:0 auto" />
 
 </v-click>
 
 <v-click>
 
-```mermaid
-flowchart LR
-  M(Model) --> VM(View Model) --> V(View)
-```
+<img src="./drawio/mvvm.drawio.svg" style="margin:0 auto" />
 
 </v-click>
 </div>
@@ -357,23 +341,39 @@ flowchart LR
 level: 3
 ---
 
-<div class="grid grid-cols-3 gap-2">
-  <div class="card">
-    <div class="card-header">State</div>
-    <div>(Дерево данных)</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+  <div>
+    <p>Состояние</p>
+    <img src="./drawio/state_tree.drawio.svg" style="margin: 0 auto;width:70%" />
   </div>
-  <div class="card">
-    <div class="card-header">Logic</div>
-    <div>(Код компонента)</div>
+  <div>
+    <p>Логика</p>
+    <img src="./drawio/code_logic.drawio.svg" style="margin: 0 auto;width:70%" />
   </div>
-  <div class="card" style="position:relative">
-    <div class="card-header">View</div>
+  <div style="position:relative">
+    <p>Представление</p>
     <div style="position:absolute;z-index:1">
-      <img v-click src="./images/tychevonadelal.jpg" style="width:100%" />
+      <img v-click="3" src="./images/tychevonadelal.jpg" style="width:100%" />
     </div>
-    <div>(Дерево UI)</div>
+    <img src="./drawio/view_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    <img src="./drawio/fire_event.drawio.svg" v-click="[1,3]" style="margin: 0 auto;width:40%;position:absolute;right:10%;top:40%" />
   </div>
 </div>
+
+<v-drag-arrow pos="560,318,93,0" v-click="2"/>
+<v-drag-arrow pos="561,238,90,-1" v-click="2"/>
+<v-drag-arrow pos="774,222,-293,-112" v-click="2"/>
+<v-drag-arrow pos="415,166,-150,0" v-click="2"/>
+
+---
+level: 3
+layout: image
+image: images/hands_shadow.jpg
+---
+
+<div v-drag="[85,109,113,33]">Состояние</div>
+
+<div v-drag="[621,418,170,33]">Представление</div>
 
 ---
 level: 2
@@ -381,21 +381,36 @@ level: 2
 
 # Инкрементальные вычисления
 
-<div class="text-center">
-
-```mermaid
-flowchart LR
-  state([state]) ==> func ==> view([view])
-```
-
-<div v-click>
-
-```mermaid
-flowchart LR
-  delta([Δstate]) --> magic@{ shape: cloud } --> deltaView([Δview])
-```
-
+<div>
+  <img src="./drawio/pure_function.drawio.svg" style="margin: 0 auto;width:70%" />
 </div>
+<br/>
+<div class="grid grid-cols-3 gap-1 text-center" v-click="1">
+  <div style="position:relative">
+    <div class="fill-container" v-click="[1,3]">
+      <img src="./drawio/state_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    </div>
+    <div class="fill-container" v-click="3">
+      <img src="./drawio/changed_state_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    </div>
+  </div>
+  <div style="position:relative">
+    <div class="fill-container" v-click="[1,4]">
+      <img src="./drawio/func_logic.drawio.svg" style="margin: 0 auto" />
+    </div>
+    <div class="fill-container" v-click="4">
+      <img src="./drawio/changed_func_logic.drawio.svg" style="margin: 0 auto" />
+    </div>
+  </div>
+  <div style="position:relative">
+    <div class="fill-container" v-click="[1,4]">
+      <img src="./drawio/view_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    </div>
+    <div class="fill-container" v-click="4">
+      <img src="./drawio/changed_view_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    </div>
+    <img src="./drawio/fire_event.drawio.svg" v-click="[2,3]" style="margin: 0 auto;width:40%;position:absolute;right:10%;top:40%" />
+  </div>
 </div>
 
 <!--
@@ -464,18 +479,19 @@ level: 3
 
 # Инкрементальные вычисления
 
-- **Реактивность**: обновление результата при изменении входных данных
-- **Декларативность**: описание результата как чистой функции от входных данных
-- **Строгость**: легко обеспечить соблюдение соглашений для гарантий корректности и избежания ошибок
-
-<v-click>
 
 Слой абстракции поверх JavaScript, часть ментальной модели UI.
+
+<v-clicks>
 
 - Способствует улучшению Developer Experience
 - Позволяет фреймворку оптимизации
 
-</v-click>
+- **Реактивность**: обновление результата при изменении входных данных
+- **Декларативность**: описание результата как чистой функции от входных данных
+- **Строгость**: легко обеспечить соблюдение соглашений для гарантий корректности и избежания ошибок
+
+</v-clicks>
 
 ---
 level: 2

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Фоновый градиент -->
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#0f111a"/>
+      <stop offset="55%" stop-color="#0b0f1c"/>
+      <stop offset="100%" stop-color="#05070d"/>
+    </radialGradient>
+
+    <!-- Градиенты для узлов -->
+    <linearGradient id="nodeCyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7dc9e8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#7dc9e8" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="nodeViolet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#bb89dc" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#bb89dc" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="nodePink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#db2777" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="nodeAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7dc9e8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#7dc9e8" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Свечение -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Сетка -->
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1e293b" stroke-width="0.7" opacity="0.5"/>
+    </pattern>
+    <pattern id="gridLarge" width="240" height="240" patternUnits="userSpaceOnUse">
+      <path d="M 240 0 L 0 0 0 240" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.4"/>
+    </pattern>
+
+    <!-- Маска для виньетки -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.85"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Фон -->
+  <rect width="1920" height="1080" fill="url(#bgGrad)"/>
+
+  <!-- Сетки -->
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <rect width="1920" height="1080" fill="url(#gridLarge)"/>
+
+  <!-- Абстрактные свечения по углам -->
+  <circle cx="1600" cy="150" r="420" fill="#bb89dc" opacity="0.10" filter="url(#glow)"/>
+  <circle cx="300" cy="950" r="380" fill="#7dc9e8" opacity="0.10" filter="url(#glow)"/>
+  <circle cx="960" cy="540" r="300" fill="#db2777" opacity="0.05" filter="url(#glow)"/>
+
+
+</svg>

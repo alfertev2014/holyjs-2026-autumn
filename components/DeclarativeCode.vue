@@ -12,7 +12,7 @@ const { clicks } = defineProps<{ clicks?: [number,number] }>()
   position: absolute;
   top: 0;
   right: 0;
-  border: 3px solid var(--brand-primary-color);
+  border: 3px solid var(--brand-color-1);
   padding: 0.3em 0.5em;
   border-bottom-left-radius: 1em;
   font-size: 0.7rem;
