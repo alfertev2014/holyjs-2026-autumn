@@ -201,9 +201,28 @@ level: 3
 level: 3
 ---
 
+# О чём доклад
+
+<v-clicks>
+
+- UI-фреймворк создаёт слой абстракции
+- Ментальная модель UI - дерево компонентов, состояние, представление, цикл обновления
+- Реактивность, декларативность, строгость абстракции
+- **Инкрементальные вычисления** - частичное выполнение чистых функций
+- "Proof-of-concept" UI-фреймворк
+- Соглашения, допущения и ограничения
+
+</v-clicks>
+
+---
+level: 3
+---
+
+# Vanilla JS vs. фреймворки
+
 <div class="grid grid-cols-2 gap-4 items-center">
   <div>
-    <img src="./images/frameworkless.jpg" style="width:70%"/>
+    <img src="./images/frameworkless.jpg" style="width:60%"/>
   </div>
   <div>
     <img src="./images/frameworks_timeline.png" style="width:100%"/>
@@ -218,6 +237,8 @@ level: 3
 ---
 level: 3
 ---
+
+# Ключевые моменты
 
 <div class="grid grid-cols-2 gap-4 text-center">
   <div class="card" style="--card-color:var(--brand-color-5)" v-click>
@@ -236,7 +257,7 @@ level: 3
 <div class="card text-center" style="width:50%;margin: 1em auto;--card-color:var(--brand-color-1)" v-click>
   <div class="card-header">✅ Строгость</div>
   <div class="card-body">
-    <p>Строгая типизация, ограничения, инкапсуляция, гарантии</p>
+    <p>Строгая типизация, строгие абстракции, ограничения, гарантии</p>
   </div>
 </div>
 
@@ -344,7 +365,14 @@ level: 3
 <div class="grid grid-cols-3 gap-2 text-center">
   <div>
     <p>Состояние</p>
-    <img src="./drawio/state_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    <div style="position:relative">
+      <div class="fill-container" v-click.hide="3">
+        <img src="./drawio/state_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+      </div>
+      <div class="fill-container" v-click="3">
+        <img src="./drawio/changed_state_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+      </div>
+    </div>
   </div>
   <div>
     <p>Логика</p>
@@ -353,17 +381,17 @@ level: 3
   <div style="position:relative">
     <p>Представление</p>
     <div style="position:absolute;z-index:1">
-      <img v-click="3" src="./images/tychevonadelal.jpg" style="width:100%" />
+      <img v-click="5" src="./images/tychevonadelal.jpg" style="width:100%" />
     </div>
-    <img src="./drawio/view_tree.drawio.svg" style="margin: 0 auto;width:70%" />
+    <img src="./drawio/view_tree.drawio.svg" style="margin: 0 auto;width:80%" />
     <img src="./drawio/fire_event.drawio.svg" v-click="[1,3]" style="margin: 0 auto;width:40%;position:absolute;right:10%;top:40%" />
   </div>
 </div>
 
-<v-drag-arrow pos="560,318,93,0" v-click="2"/>
-<v-drag-arrow pos="561,238,90,-1" v-click="2"/>
-<v-drag-arrow pos="774,222,-293,-112" v-click="2"/>
-<v-drag-arrow pos="415,166,-150,0" v-click="2"/>
+<v-drag-arrow pos="546,319,84,-1" v-click="4"/>
+<v-drag-arrow pos="547,239,85,-1" v-click="4"/>
+<v-drag-arrow pos="774,222,-293,-112" v-click="[2,3]"/>
+<v-drag-arrow pos="415,166,-150,0" v-click="3"/>
 
 ---
 level: 3
@@ -374,6 +402,38 @@ image: images/hands_shadow.jpg
 <div v-drag="[85,109,113,33]">Состояние</div>
 
 <div v-drag="[621,418,170,33]">Представление</div>
+
+
+---
+level: 2
+---
+
+# Функциональное программирование
+
+<br/>
+<div>
+  <img src="./drawio/pure_function_cycle.drawio.svg" style="margin: 0 auto;width:70%" />
+</div>
+
+---
+level: 3
+---
+
+# Изменения в данных
+
+<div class="grid grid-cols-2 gap-4 text-center">
+  <div v-click>
+    <p>Immutable data</p>
+    <img src="./drawio/state_tree_versions.drawio.svg" style="margin: 0 auto;width:80%" />
+  </div>
+  <div v-click>
+    <p>Mutable data</p>
+    <img src="./drawio/state_tree_patch.drawio.svg" style="margin: 0 auto;width:70%" />
+  </div>
+</div>
+<!--
+И нельзя сказать однозначно, что удобнее.
+-->
 
 ---
 level: 2
@@ -423,73 +483,17 @@ level: 2
 level: 3
 ---
 
-# Как описывать изменения дерева данных?
-
-<div class="grid grid-cols-2 gap-4">
-<div v-click>
-
-Новая версия данных
-
-```mermaid
-flowchart LR
-  subgraph gv1 [Vertion N]
-    direction TD
-    v1((v1)) --> v2((v2)) --> v3((v3))
-    v2 --> v4((v4))
-    v1 --> v5((v5))
-  end
-  subgraph gv2 [Version N+1]
-    direction TD
-    g1((v1)) --> g2(((v2'))) --> g3(((v3')))
-    g2 --> g4((v4))
-    g1 --> g5(((v5')))
-  end
-  gv1 --> gv2
-```
-
-</div>
-<div v-click>
-
-"Patch" данных
-
-```mermaid
-flowchart LR
-  subgraph gv1 [Vertion N]
-    direction TD
-    v1((v1)) --> v2((v2)) --> v3((v3))
-    v2 --> v4((v4))
-    v1 --> v5((v5))
-  end
-  subgraph gv2 [Diff N+1]
-    direction TD
-    g2(((v2'))) --> g3(((v3')))
-    g5(((v5')))
-  end
-  gv1 --> gv2
-```
-
-</div>
-</div>
-<!--
-И нельзя сказать однозначно, что удобнее.
--->
----
-level: 3
----
-
 # Инкрементальные вычисления
-
-
-Слой абстракции поверх JavaScript, часть ментальной модели UI.
 
 <v-clicks>
 
-- Способствует улучшению Developer Experience
-- Позволяет фреймворку оптимизации
-
-- **Реактивность**: обновление результата при изменении входных данных
-- **Декларативность**: описание результата как чистой функции от входных данных
-- **Строгость**: легко обеспечить соблюдение соглашений для гарантий корректности и избежания ошибок
+- Остаёмся в привычной модели:
+  - рендеринг - чистые функции
+  - изменения состояния - мутирующие операции 
+- Минимизация вычислений и аллокаций
+- **🚀 Реактивность**: обновление результата при изменении входных данных
+- **📜 Декларативность**: описание результата как чистой функции от входных данных, а изменений состояния как действий - всё в виде DSL
+- **✅ Строгость**: легче обеспечить соблюдение соглашений для гарантий корректности и избежания ошибок
 
 </v-clicks>
 
@@ -1309,6 +1313,8 @@ level: 3
 
 ---
 level: 1
+class: bg-image-gradient-right
+style: '--slide-background-image: url(images/declaration.jpg)'
 ---
 
 <br/><br/><br/>
@@ -1886,27 +1892,6 @@ const e = JSON.stringify(toJS(c))
 level: 3
 ---
 
-# Равенство объектов
-
-<DeclarativeCode>
-
-```ts{all|4-6|8}
-let a = 100500.0
-let b = "Whatever"
-
-const c = { foo: a, bar: b }
-
-const d = c
-
-const e = c === d  // ???
-```
-
-</DeclarativeCode>
-
----
-level: 3
----
-
 # Вложенная реактивность
 
 - Реактивные массивы и их трансформация (map, filter, reduce и т.п.)
@@ -1940,6 +1925,8 @@ class: text-center
 
 ---
 level: 1
+class: bg-image-gradient-right
+style: '--slide-background-image: url(images/strict.jpg)'
 ---
 
 <br/><br/><br/>

@@ -131,6 +131,6 @@
 }
 
 .bg-image-gradient-right {
-  background-image: linear-gradient(to right, var(--slidev-slide-content-background) 25%, rgba(0,0,0,0)), var(--slide-background-image);
+  background-image: linear-gradient(to right, var(--slidev-slide-content-background) 20%, rgba(0,0,0,0) 80%), var(--slide-background-image);
   background-size: cover;
 }
