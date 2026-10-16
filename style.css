@@ -112,13 +112,24 @@
   background-color: rgb(from var(--card-color, var(--brand-color-1)) r g b / 10%);
   border-radius: 0.5em;
   padding: 0.3em 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
 
   .card-header {
     font-weight: 700;
   }
 
   .card-body {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+
+  .card-footer {
+    padding-top: 0.2em;
   }
 }
 
