@@ -1,3 +1,3 @@
 <template>
-  <footer class="absolute bottom-5 left-0 right-7 text-right"><b><SlideCurrentNo/></b> <span style="opacity: 0.5;">/ <SlidesTotal /></span></footer>
+  <footer class="absolute bottom-5 left-0 right-7 text-right" style="z-index:1"><b><SlideCurrentNo/></b> <span style="opacity: 0.5">/ <SlidesTotal /></span></footer>
 </template>

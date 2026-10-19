@@ -1,7 +1,7 @@
 :root {
   font-size: 20px;
   --slidev-code-font-size: 16px;
-  --slidev-code-line-height: 1.2em;
+  --slidev-code-line-height: 1.3em;
   --slidev-code-margin: 0;
   --slidev-code-background: white;
   --brand-color-1: #2d79c7;
@@ -16,7 +16,8 @@
   --brand-color-3: #f78c6c;
   --brand-color-4: #c3e88d;
   --brand-color-5: #ffcb6b;
-  --brand-color-6: #babed8;
+  --brand-color-6: #82aaff;
+  --brand-color-7: #babed8;
   .slidev-slide-container .slidev-slide-content .slidev-page {
     background-color: var(--slidev-slide-content-background);
   }
@@ -31,14 +32,13 @@
   }
 
   a {
-    font-size: 0.8rem;
     color: #82aaff;
   }
 
   li {
     line-height: 1.5em;
     margin-bottom: 0.3rem;
-    list-style-type: disc;
+    list-style-type: square;
   }
 
   li::marker {
@@ -110,7 +110,7 @@
 .card {
   border: 2pt solid var(--card-color, var(--brand-color-1));
   background-color: rgb(from var(--card-color, var(--brand-color-1)) r g b / 10%);
-  border-radius: 0.5em;
+  border-radius: 1rem;
   padding: 0.3em 0.5em;
   display: flex;
   flex-flow: column nowrap;
@@ -144,4 +144,10 @@
 .bg-image-gradient-right {
   background-image: linear-gradient(to right, var(--slidev-slide-content-background) 20%, rgba(0,0,0,0) 80%), var(--slide-background-image);
   background-size: cover;
+}
+
+.contrast-bg {
+  border-radius: 1em;
+  background-color: rgb(from var(--slidev-slide-content-background) r g b / 40%);
+  box-shadow: 0 0 0.5rem 0.5rem rgb(from var(--slidev-slide-content-background) r g b / 40%);
 }
