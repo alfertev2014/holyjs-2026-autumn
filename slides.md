@@ -116,7 +116,7 @@ li {
 3. И с развитием Web-технологий UI-фреймворки для меня становились всё более интересны изнутри. О них я и буду говорить в докладе.
 -->
 ---
-level: 2
+level: 1
 layout: section
 ---
 
@@ -148,12 +148,6 @@ style: 'background-color: white'
 
 <div v-drag="[98,177,268,116]" class="caption">Я просто пишу на <logos-jquery/></div>
 
-<!--
-Кто пишет на React, поднимите руку? А у кого основной фреймворк - это Vue? Ангулярщики есть в зале? Svelte? А кто хотя бы знаком с Solid JS?
-
-Да, были времена, когда новые JavaScript-фреймворки выходили каждый день, и были популярны холивары на тему, какой же фреймворк чем лучше. Каждый защищал свой любимый фреймворк. Разработчики любили спорить, сравнивать...
--->
-
 ---
 level: 3
 layout: image
@@ -161,13 +155,8 @@ image: ./images/tierlist.png
 backgroundSize: contain
 ---
 
-<!--
-Составляли tier-листы... Это, кстати, мой.
-
-Да и сейчас, в эпоху ИИ это всё ещё продолжается.
--->
 ---
-level: 3
+level: 2
 ---
 
 # Чего мы хотим от UI-фреймворка?
@@ -189,42 +178,24 @@ level: 3
 </v-clicks>
 </div>
 
-<!--
-Потому что экосистема всё ещё в поисках, как бы сделать ещё лучше. Мы постоянно хотим, чтобы что-то стало лучше: мы ждём новых версий, новых возможностей.
-
-А чего же мы хотим от UI-фреймворка, как и от любого другого инструмента или решения?
-
-1. Это, конечно же, повышение нашей продуктивности по сравнению с работой без него. И здесь есть два аспекта: 
-2. Мы хотим, чтобы код можно было писать удобно для нас - в понятной парадигме. Это так называемый Developer Experience.
-3. И в то же время мы хотим, чтобы этот код не тормозил, не съедал много памяти - и всё это было волшебным образом, само собой, автоматически.
-
-Фреймворк бы взял на себя большую часть этих забот, чтобы мы сосредоточили своё внимание на том, что по настоящему *специфично* для проекта. Мы хотим оставаться в той абстракции, которая нам интересна, а фреймворк должен быть инструментом обеспечения её корректной реализации, забирая от нас необходимость погружаться в низкоуровневые детали.
--->
 ---
-level: 3
+level: 2
 ---
 
 # О чём доклад
 
 <v-clicks>
 
-- UI-фреймворк создаёт слой абстракции
-- Ментальная модель UI - дерево компонентов, состояние, представление, события, цикл обновления
-- **Инкрементальные вычисления** - реактивное обновление чистых функций
-- "Proof-of-concept" UI-фреймворк
-- Соглашения, допущения и ограничения
+- **Инкрементальные вычисления** как модель исполнения чистых функций
+- "Fine-grained reactivity" для точечного обновления UI
+- UI-фреймворк - слой абстракции с соглашениями, допущениями и ограничениями
+- Декларативный DSL для UI с семантикой инкрементального исполнения
+- "Proof-of-concept" UI-фреймворк с инкрементальными вычислениями
 
 </v-clicks>
 
-<!--
-1. Поэтому рассказывать я буду о том, как фреймворк создаёт такой слой абстракции,
-2. Которая опирается на некую ментальную модель UI - наши представления об интерфейсах, то, как мы мыслим про UI, даже то, как пользователь воспринимает UI - в виде дерева компонентов со своей внутренней логикой работы.
-3. Посмотрим на интересную идею инкрементальных вычислений - немного другой взгляд на реактивность, как она находит своё воплощение в существующих фреймворках.
-4. Попробуем представить, как бы выглядел фреймворк, если эту идею попробовать реализовать буквально.
-5. И, конечно же, какие при этом условия мы должны выдержать, чтобы абстракция не рассыпалась.
--->
 ---
-level: 3
+level: 2
 ---
 
 # Ключевые моменты
@@ -250,18 +221,8 @@ level: 3
   </div>
 </div>
 
-<!--
-Итак, за своё время во front-end-e, я успел поизучать и попробовать разные известные и не очень фреймворки. Пытался даже разрабатывать без фреймворка чисто на JS и нативных API браузера.
-
-И отметил для себя следующие ключевые моменты, которые трудно самому переизобретать и обеспечивать на Vanilla JS. Из-за чего и требуется фреймворк. Это:
-1. Реактивность - она везде нужна. И не так тривиально делается, как может наивно показаться.
-2. Декларативность - хочешь-не-хочешь, а много в UI требуется описывать структуры и связей, вырабатывать свой язык для выразительности. Ведь, грамотно спроектировать API дорогого стоит.
-3. И Строгость - чтобы обезопасить себя от неправильного использования. Сюда же относится и типизация, и ограничения, чтобы оставаться в абстракции фреймворка.
-
-Именно эти вещи и способствуют повышению developer experience и позволяют фреймворку иметь эффективную реализацию.
--->
 ---
-level: 3
+level: 2
 background: ''
 class: bg-image-gradient-right
 style: '--slide-background-image: url(./images/layers.jpg)'
@@ -293,7 +254,7 @@ style: '--slide-background-image: url(./images/layers.jpg)'
 -->
 
 ---
-level: 3
+level: 2
 ---
 
 # Фреймворки похожи друг на друга
@@ -323,39 +284,6 @@ level: 3
 И так как абстракция, к которой мы стремимся, для всех фреймворков одна - это некая ментальная модель UI - то все популярные фреймворки в последнее время стали похожи друг на друга и обмениваются одиними удачными идеями реализации. Практически везде можно увидеть компонентную модель и привычный уже всем цикл обновления представления при изменении состояния.
 -->
 
----
-level: 3
----
-
-# MVC --> MVP --> MVVM --> ...
-
-<div class="text-center flex flex-col gap-y-4">
-<v-click>
-
-<img src="./drawio/mvc.drawio.svg" style="margin:0 auto" />
-
-</v-click>
-<v-click>
-
-<img src="./drawio/mvp.drawio.svg" style="margin:0 auto" />
-
-</v-click>
-<v-click>
-
-<img src="./drawio/mvpm.drawio.svg" style="margin:0 auto" />
-
-</v-click>
-
-<v-click>
-
-<img src="./drawio/mvvm.drawio.svg" style="margin:0 auto" />
-
-</v-click>
-</div>
-
-<!--
-различные паттерны MVC, MVP, MVVM. Если честно, я сам до конца не понимаю всех тонкостей различия между ними. Я лишь могу понять, что в какие-то моменты логика описана императивно, а в какие декларативно. Сложные интерактивные и динамичные UI всегда завязаны на организацию взаимодействия между моделью и представлением.
--->
 ---
 level: 3
 ---
@@ -393,15 +321,6 @@ level: 3
 <v-drag-arrow pos="788,268,-307,-158" v-click="[2,3]"/>
 <v-drag-arrow pos="415,166,-150,0" v-click="3"/>
 
-<!--
-Были времена, когда считалось нормой на основе начального состояния отрисовать представление,
-
-1. а потом по событиям взаимодействия с ним
-2. запустить отдельную императивную логику, form1::button1_on_click, в которой
-3. менять данные состояния и одновременно стараться выполнить все необходимые действия по обновлению представления. Например, прямыми DOM-manipulation. В лучшем случае, эти действия будут организованы в вызовы вроде updateUI.
-4. И можно было легко было ошибиться, сделать что-то не то и не в тот момент, или забыть сделать... и получить представление в неконсистентном виде, не соответствующим состоянию.
--->
-
 ---
 level: 3
 layout: image
@@ -412,11 +331,8 @@ image: images/hands_shadow.jpg
 
 <div v-drag="[621,418,170,33]">Представление</div>
 
-<!--
-Но нам бы было очень удобно считать представление как некую проекцию состояния. Живую проекцию с некоторыми трансформациями, которая при любом изменении состояния изменяется как бы сама сразу.
--->
 ---
-level: 2
+level: 3
 ---
 
 # Чистые функции
@@ -426,13 +342,6 @@ level: 2
   <img src="./drawio/pure_function_cycle.drawio.svg" style="margin: 0 auto;width:70%" />
 </div>
 
-<!--
-Поэтому стала популярна идея функционального программирования во фронтенде. Представление описывается чистой функцией от состояния - без побочных эффектов и своего внутреннего состояния. Для одного и того же состояния в аргументе она выдаст одно и то же представление в результате.
-
-Если какое-то событие требует изменение в состоянии, то оно оформляется в виде сообщения-действия, при котором выстраивается новая версия состояния со всеми необходимыми изменениями. И для этой новой версии должна снова запуститься функция для создания новой версии представления.
-
-Если реализовать эту идею влоб, как это я только что описал, звучит страшно. Ведь мы каждый раз вынуждены выстраивать новые объекты. И самое главное - запускать всю функцию целиком.
--->
 ---
 level: 3
 ---
@@ -450,14 +359,13 @@ level: 3
   </div>
 </div>
 
-<!--
-И отдельный вопрос: как будет выглядеть описание логики изменений данных по событию в коде.
+---
+level: 1
+layout: section
+---
 
-1. Можно создавать новую версию данных целиком со всеми необходимыми изменениями. Ведь функциональное программирование допускает только immutable-данные.
-2. А можно явно указать, что мы хотим в определённых местах дерева данных поместить вот такие значения.
+# Инкрементальные вычисления
 
-И нельзя сказать однозначно, что удобнее. Но на мой взгляд, бывают моменты, когда намного выразительнее будет просто оператором присваивания написать, что в дереве состояния вот по этой ссылке в следующий момент должно лежать вот такое значение. И это как бы будет означать, что у нас новая версия состояния, и функция представления сама автоматически пересчитается. В идеале, ей не нужно пересчитываться всей целиком, а отреагировать только на изменения в этих точках данных.
--->
 ---
 level: 2
 ---
@@ -507,147 +415,6 @@ level: 2
   </div>
 </div>
 
-<!--
-В этом и состоит основная идея инкрементальных вычислений.
-Есть у нас чистая функция, преобразующая некоторый аргумент в результат без побочных эффектов. Представьте, что тут аргумент - состояние UI -  может быть большой и сложный, например, целое дерево данных. Функция тоже может быть композицией других функций - композицией компонентов. И результат - представление -  тоже большое и сложное дерево.
-
-1. И если мы по событию
-2. внесём небольшие изменения в состояние, то вместо того, чтобы делать полный перезапуск вычисления всей функции,
-3. мы хотели бы сделать такие минимальные действия, основанные на коде этой функции, чтобы точечно изменить результат, оставшийся от предыдущих вычислений. Кроме того, мы бы и все промежуточные вычисления выполняли только те, которые зависят от изменений состояния, а всё остальное нам пересчитывать незачем.
--->
-
----
-level: 3
----
-
-# Инкрементальные вычисления
-
-<ul>
-  <li v-click>Остаёмся в привычной модели:
-    <ul>
-      <li>рендеринг - чистые функции</li>
-      <li>изменения состояния - мутирующие операции</li>
-    </ul>
-  </li>
-  <li v-click>Минимизация вычислений и аллокаций</li>
-  <li v-click="4">...</li>
-  <li v-click="5">PROFIT!!!</li>
-</ul>
-
-<div v-drag="[627,123,318,257]" v-click="[3,4]">
-  <img src="./images/netochno.jpeg" />
-</div>
-
-<!--
-1. Таким образом мы остаёмся в понятной для нас парадигме, у нас код компонентов - это просто чистые функции, трансформирующие состояние в представление, и изменения состояния мы описываем так, как нам удобно, хоть операторами присваивания.
-2. При этом реализация исполнения сама устроена таким образом, что мы минимизируем лишние вычисления и неоправданное создание объектов, чтобы не нагружать сборщик мусора.
-
-Но сразу сделаю дисклеймер: Я не буду рассматривать и рассуждать об итоговой производительности, потому что здесь не всё однозначно, и надо подтверждать экспериментами.
--->
-
----
-level: 3
----
-
-# Инкрементальные вычисления
-
-- **🚀 Реактивность**:
-  - обновление результата при изменении входных данных
-- **📜 Декларативность**:
-  - описание результата как чистой функции от входных данных, <br/> а изменений состояния как действий - всё в виде DSL
-- **✅ Строгость**:
-  - легче обеспечить соблюдение соглашений <br/>для гарантий корректности и избежания ошибок
-
-<!--
-И далее мы разберём, как инкрементальные вычисления вписываются во фреймворк, в разрезе трёх ключевых аспектов.
-1. Здесь очевидно просматривается реактивность, мы описываем data-flow, по которому протекают изменения.
-2. Наше описание довольно декларативно, мы не программируем никакой логики на JavaScript, а пишем всё на ограниченном DSL
-3. И так как наши декларации - это по большей части чистые функции, их проще типизировать, их проще тестировать. Нам надо лишь соблюдать соглашения и не выходить за рамки DSL, чтобы мы были уверены в этой абстракции.
-Итак, начнём рассмотрение реализации инкрементальных вычислений с такого сложного механизма организации движения данных между состоянием и представлением как
--->
----
-level: 2
-background: ''
-class: bg-image-gradient-right
-style: '--slide-background-image: url(images/rocket.jfif)'
----
-
-<br/><br/><br/>
-
-# 🚀 Реактивность
-
-<!--
-...реактивность.
-
-Тема реактивности мне давно интересна. Но она достаточно широкая, и каждый может под реактивностью понимать что-то своё. Я бы даже сказал, что существуют разные виды реактивности, вообще отличающиеся друг от друга, но отдельного удачного термина под каждую реактивность не нашлось.
-
-1. В самом общем приближении под реактиновстью можно считать автоматическое выполнение каких-то реакций в ответ на изменение данных.
--->
----
-level: 3
----
-
-# Разновидности реактивности
-
-<style>
-li {
-  margin-block: 0;
-  line-height: 1.4rem;
-}
-</style>
-<div class="grid grid-cols-2 gap-4">
-<div class="card" style="--card-color:var(--brand-color-5)" v-click>
-<div class="card-header">Ориентированные на данные</div>
-<div class="card-body">
-
-- первичные и производные данные
-- граф зависимостей
-
-</div>
-<div class="card-footer flex justify-around text-xl"><span><logos-mobx/> MobX</span><span><logos-vue/> Vue</span><span><logos-solidjs-icon/> Solid</span></div>
-</div>
-<div class="card" style="--card-color:var(--brand-color-2)" v-click>
-<div class="card-header">Ориентированные на события</div>
-<div class="card-body">
-
-- события и потоки данных
-- трансформация, фильтрация, <br/>буферизация событий и т.п.
-
-</div>
-<div class="card-footer flex justify-around text-xl"><span><logos-reactivex/> Rx.js</span></div>
-</div>
-<div class="card" style="--card-color:var(--brand-color-3)" v-click>
-<div class="card-header">Гибрид первых двух</div>
-<div class="card-body">
-
-- подробный граф из событий, <br/>данных и действий с ними
-
-</div>
-<div class="card-footer flex justify-around text-xl"><span><logos-effector/> Effector</span></div>
-</div>
-<div class="card" style="--card-color:var(--brand-color-6)" v-click>
-<div class="card-header">Основанные на перевычислении</div>
-<div class="card-body">
-
-- rerender частей приложения
-- reconcilliation результатов
-
-</div>
-<div class="card-footer flex justify-around text-xl"><span><logos-react/> React</span><span><logos-preact/> Preact</span></div>
-</div>
-</div>
-
-<!--
-А если пуститься в детали, то можно выделить, например,
-
-1. реактивность, которая строится вокруг данных и построения графа зависимостей между ними. И я лично для себя реактивность представляю именно так. Примером реализации такой реактивности может служить сигнальная реактивность: библиотека MobX, современный Vue, Solid js.
-
-2. Бывает другое популярное представление о реактивности - это потоки данных и других произвольных событий. В этом случае тоже выстраивается граф. Но не узлов, в которых хранятся данные. А узлами являются обработчики протекающих по ним данных. Пример библиотеки, которая здесь сразу вспоминается, это Rx.js. Для меня это уже немного не то, что я бы называл реактивностью. И в докладе мы такой тип реактивности рассматривать не будем.
-
-3. Где-то посередине между этими двумя типами можно расположить Effector, в котором формируется подробный граф, где узлами являются и хранилища данных, и события, и действия по их обработке.
-
-4. И вот сейчас может быть неожиданно. React тоже реактивен. Хотя когда-то говорили, что React не реактивен, хоть и называется React-ом. Он по своему реактивен, как мы далее увидим, когда поговорим про "гранулярность" реактивности.
--->
 ---
 level: 3
 ---
@@ -658,8 +425,6 @@ level: 3
     --slidev-code-line-height: 1.5em;
   }
 </style>
-
-# Как я представляю реактивность?
 
 <div class="grid grid-cols-2 gap-4">
 <div>
@@ -747,21 +512,9 @@ const P = I * U  // --> 1.125
 </div>
 </div>
 
-<!--
-Так вот. Что я себе всегда представлял с самого начала под реактивностью? Как я уже сказал, для меня реактивность больше строится вокруг данных. А взаимосвязи между данными описываются выражениями формулами. Здесь я их псевдокодом написал в синтаксисе JavaScript.
-
-1. Поведение напоминает Excel-таблички. И именно Excel обычно приводят в пример, когда пытаются объяснить реактивность. Для каждого вычисляемого значения можно из выражения формулы определить, от каких значений оно зависит.
-
-2. Если составить граф из этих значений, то это должен быть ориентированный ациклический граф.
-
-3. При изменении исходных данных должны пересчитаться все зависимые от них данные, и затем зависимые зависимых. Вся эта последовательность вычислений должна произойти за один проход таким образом, чтобы потребитель конечных данных не увидел их в состоянии промежуточных вычислений. И если мы одновременно изменим несколько значений исходных данных, то мы не хотим несолько раз перевычислять весь граф - все зависимые узлы должны пересчитаться один раз.
-
--->
 ---
 level: 3
 ---
-
-<DeclarativeCode text="Псевдокод">
 
 ```tsx{all|2-5|8-17|9,12,15,16|10,13|all}
 const OhmsLaw = () => {
@@ -785,23 +538,6 @@ const OhmsLaw = () => {
 }
 ```
 
-</DeclarativeCode>
-
-<!--
-И я бы ожидал от UI-фреймворка примерно такого же. Здесь пример псевдокода, как бы это могло выглядеть в синтаксисе JSX.
-
-1. Здесь те же выражения, что и на прошлом примере, просто переименованные под стиль именования.
-
-2. UI описывается простой структурой дерева элементов
-
-3. с привязкой реактивных данных в нужные места. Для примера я выражение для мощности написал прямо inline в шаблоне.
-
-4. События вызывают изменения исходных данных - просто синтаксисом присваивания.
-
-5. А в ответ на изменения происходил бы не ререндер целого компонента, а точечно изменялось бы в UI ровно то, что нужно, и промежуточные вычисления выполнялись бы минимальные.
-
-Иными словами, хочется, чтобы код был лаконичный и понятный, как обычный JavaScript, но выполнялся бы с семантикой реактивности, описывая граф потоков данных.
--->
 ---
 level: 3
 ---
@@ -809,453 +545,45 @@ level: 3
 <img src="./drawio/data_flow_graph.drawio.svg" style="margin: 0 auto; width:60%" />
 
 ---
-level: 2
+level: 3
 ---
 
-# Реактивность в JavaScript
+# Представление
 
-<div class="grid grid-cols-2 gap-4">
-<div class="card" style="--card-color:var(--brand-color-6)" v-click>
-<div class="card-header">Run-time</div>
-<div class="card-body">
-
-- Библиотеки реактивности
-- Интеграция с фреймворками
-
-</div>
-<div class="card-footer flex justify-around"><span><logos-mobx/> MobX</span><span><logos-reactivex/> Rx.js</span><span><logos-vue/> Vue</span><span><logos-solidjs-icon/> Solid</span></div>
-</div>
-<div class="card" style="--card-color:var(--brand-color-5)" v-click>
-<div class="card-header">Build-time</div>
-<div class="card-body">
-
-- Расширение языка, трансформации кода
-- +1 шаг сборки
-
-</div>
-<div class="card-footer flex justify-around"><span><logos-svelte-icon/> Svelte</span><span><img src="./images/ripple.png" style="display:inline;height:1lh" /> Ripple</span><span><logos-marko-icon/> Marko</span></div>
-
-</div>
-</div>
-
-<!--
-Это был псевдокод. Какие есть средства добавить реактивность в JavaScript?
-
-1. Это либо решения в runtime: специальные библиотеки реактивности с интеграцией прямо во фреймворк
-
-2. Либо дополнительный шаг сборки, чтобы както  модифицировать язык, или даже придумать новый язык с семантикой реактивности, компилирующийся в JavaScript.
--->
-
----
-level: 2
-background: images/coffee.jpg
----
-
-<style>
-  .card {
-    background-color: rgb(from var(--slidev-slide-content-background) r g b / 40%);
-  }
-</style>
-
-# "Гранулярность" реактивности
-
-<div style="position:relative;height: 230px">
-  <div class="fill-container" v-click.hide="1">
-    <img src="./images/grind_sizes.png" style="width:90%;margin:0 auto" />
+<div class="grid grid-cols-5 gap-4">
+  <div>
+    Декларативное представление
   </div>
-  <div class="fill-container text-center grid grid-cols-4 gap-2" v-click="1">
-    <div class="card">
-      <div class="card-header">Пересчитать всё</div>
-    </div>
-    <div class="card">
-      <div class="card-header">"Coarse-grained reactivity"</div>
-      <div class="card-body">
-        <div class="flex justify-around text-3xl">
-          <logos-react/> <logos-preact/>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">"Fine-grained reactivity"</div>
-      <div class="card-body">
-        <div class="flex justify-around text-3xl">
-          <logos-vue/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-mobx/>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Пересчитать инкрементально</div>
-      <div class="card-body">
-        <span class="text-2xl" v-click="2"><b>"Можно, <br/>а зачем?"</b></span>
-      </div>
-    </div>
+  <div>
+    DOM-дерево
+  </div>
+  <div>
+    Дерево layout
+  </div>
+  <div>
+    Дерево рендеринга
+  </div>
+  <div>
+    Графическая подсистема
   </div>
 </div>
 
-<v-drag-arrow v-click="1" pos="72,375,834,0" style="color:var(--brand-color-1)"/>
-
-<!--
-Разбирая модель выполнения реактивного кода для любого решения (не важно, библиотека это или языковое расширение), стоит обратить внимание на такую характеристику как гранулярность реактивности. Этот неформальный термин был придуман некоторыми реализациями реактивности, чтобы подчеркнуть их эффективность по сравнению с другими.
-
-Под гранулярностью понимается, насколько мелкие блоки из действий по пересчёту производных данных могут выполняться атомарно и независимо. Цель дробления операций на мелкие кусочки была в том, чтобы без толку не выполнять лишние вычисления, приводящие к тем же самым результатам.
-
-Ведь можно по любому изменению исходных данных пересчитывать вообще всё. Это дорого, хотя где-то такой подход выигрывает. В видео-играх, например, при отрисовке каждого кадра.
-
-Бывают реализации, допускающие некоторые лишние действия, потому что исходная причина реакции не влияет на их результат. А всё потому, что реакции организованы в довольно большие группы действий - крупные гранулы - и мы вынуждены выполнять их целиком. Отсюда и название "coarse-graned reactivity".
-
-Есть более умные реализации, старающиеся минимизировать лишние действия. Для этого все действия реакций разбиваются на более мелкие операции, как мелкие гранулы, поэтому распространился термин "fine-graned reactivity".
-
-В идеале, конечно, хотелось бы избежать лишних действий вообще, выполнить ровно то, что нужно для обновления производных данных, инкрементально. Но такой подход имеет свою цену. При экономии на лишних действиях мы много потеряем на организацию точности всего этого процесса.
--->
-
 ---
 level: 3
 ---
 
-# "Fine-grained reactivity": Сигналы (API)
+# Потребители данных (эффекты)
 
-```ts
-type Signal<T> = {
-  get: () => T
-  set: (value: T) => void
-}
-
-type Computed<T> = {
-  get: () => T
-}
-
-const signal = <T>(initValue: T): Signal<T> => { /* ... */ }
-const computed = <T>(func: () => T): Computed<T> => { /* ... */ }
-```
-
----
-level: 3
----
-
-# "Fine-grained reactivity": Сигналы
-
-```ts{all|1-2|4-5|7-8|10|12-13}
-const voltage = signal(5)
-const resistance = signal(1)
-
-const amperage = computed(() => voltage.get() / resistance.get())
-const power = computed(() => amperage.get() * voltage.get())
-
-console.log("amperage", amperage.get())  // --> 5
-console.log("power", power.get())  // --> 25
-
-voltage.set(4)
-
-console.log("amperage", amperage.get())  // --> 4
-console.log("power", power.get())  // --> 16
-```
-
-<!--
-Одной из самых удачных библиотечных реализаций реализаций, набравшей популярность и принятной многими фреймворками, является так называемая сигнальная реактивность. Данные делятся на изменяемые первичные данные (которые здесь создаются в условном API функцией signal) и производные данные (computed), которые вычисляются выражением на основе первичных данных. Производные данные зависят от других первичных и произвоных данных. Поэтому все узлы данных объединяются в направленный ациклический граф, связывающий из отношением зависимости. Сигнал напоминает паттерн Observable. Но вместо того, чтобы сразу вызывать коллбэк по изменению данных, сначала происходит распространение уведомления тем узлам, которые необходимо пересчитать, а сами вычисления выполняются в правильном порядке в отдельной фазе, чтобы каждый computed вычислялся только с актуальными версиями своих зависимостей.
--->
----
-level: 3
----
-
-# Сигналы: Потеря реактивности
-
-````md magic-move
-```ts
-const amperage = signal(2)
-const resistance = signal(1)
-
-const power = computed(() => amperage.get() * amperage.get() * resistance.get())
-```
-```ts{4-6}
-const amperage = signal(2)
-const resistance = signal(1)
-
-const voltage = amperage.get() * resistance.get()  // --> 2
-
-const power = computed(() => amperage.get() * voltage)  // --> 4
-```
-```ts{8-10}
-const amperage = signal(2)
-const resistance = signal(1)
-
-const voltage = amperage.get() * resistance.get()  // --> 2
-
-const power = computed(() => amperage.get() * voltage)  // --> 4
-
-resistance.set(2)
-
-console.log(power.get())  // 4
-```
-```ts{4|10}
-const amperage = signal(2)
-const resistance = signal(1)
-
-const voltage = computed(() => amperage.get() * resistance.get())  // --> 2
-
-const power = computed(() => amperage.get() * voltage.get())  // --> 4
-
-resistance.set(2)
-
-console.log(power.get())  // 8
-```
-````
----
-level: 3
----
-
-# Сигналы: Proxy-объекты
-
-````md magic-move
-```ts{all|1|4|5-8}
-const reactive = <T extends Record<string, unknown>>(o: T): T => {
-  const res = {} as Record<string, unknown>
-  for (const [key, value] of Object.entries(o)) {
-    const s = signal<unknown>(value)
-    Object.defineProperty(res, key, {
-      get(): unknown { return s.get() }
-      set(newValue: unknown) { s.set(newValue) }
-    })
-  }
-  return res as T
-}
-```
-```ts{all|1|5|9-11}
-const obj = reactive({ a: 42, b: true, c: "The Answer" })
-
-const foo = computed(() => {
-  // ...
-  obj.a /* ... */  obj.b /* ... */ obj.c
-  // ...
-})
-
-obj.a = 100500
-obj.b = false
-obj.c = "Whatever"
-```
-````
-
----
-level: 3
----
-
-# Сигналы: деструктуризация
-
-````md magic-move
-```ts{all|1|2-3|5|7-8|10|12-13|5}
-const foo = reactive({ name: "Resistance", value: 5 })
-const bar = computed(() => `${foo.name} equals to ${foo.value}`)
-console.log(bar.get())  // "Resistance equals to 5"
-
-const { name, value } = foo
-
-const baz = computed(() => `${name} equals to ${value}`)
-console.log(baz.get())  // "Resistance equals to 5"
-
-foo.value = 2
-
-console.log(bar.get())  // "Resistance equals to 2"
-console.log(baz.get())  // "Resistance equals to 5"
-```
-```ts{5-6}
-const foo = reactive({ name: "Resistance", value: 5 })
-const bar = computed(() => `${foo.name} equals to ${foo.value}`)
-console.log(bar.get())  // "Resistance equals to 5"
-
-const name = foo.name
-const value = foo.value
-
-const baz = computed(() => `${name} is ${value}`)
-console.log(baz.get())  // "Resistance equals to 5"
-
-foo.value = 2
-
-console.log(bar.get())  // "Resistance equals to 2"
-console.log(baz.get())  // "Resistance equals to 5"
-```
-```ts{5-6,8,14}
-const foo = reactive({ name: "Resistance", value: 5 })
-const bar = computed(() => `${foo.name} equals to ${foo.value}`)
-console.log(bar.get())  // "Resistance equals to 5"
-
-const name = computed(() => foo.name)
-const value = computed(() => foo.value)
-
-const baz = computed(() => `${name.get()} is ${value.get()}`)
-console.log(baz.get())  // "Resistance equals to 5"
-
-foo.value = 2
-
-console.log(bar.get())  // "Resistance equals to 2"
-console.log(baz.get())  // "Resistance equals to 2"
-```
-````
----
-level: 3
----
-
-# Реактивность: итоги
-
-<div>
-
-- Реактивность, ориентированная на данные и граф зависимостей
-- "Fine-grained reactivity"
-- Сигналы - удачная run-time реализация со своими недостатками
-
-</div>
+- Подписываются на некоторый узел графа
+- Запускают императивные действия по изменению данных
+- Граница между декларативным кодом и императивным миром
 
 ---
 level: 2
+layout: section
 ---
 
-# Компилируемая реактивность?
-
-<v-clicks>
-
-- Преобразования кода и расширение языка
-  - для удобства использования API
-  - для уменьшения шанса ошибок
-  - для оптимизаций
-- Использование привычного синтаксиса из JavaScript
-
-</v-clicks>
-
-<!--
-И многие фреймворки держатся за идею оставаться в рамках всем знакомого JavaScript. Хотя на самом деле применяют к нему преобразования при сборке.
--->
----
-level: 2
----
-
-# Vue.js
-
-```html{all|6,10}
-<script setup lang="ts">
-interface Props {
-  msg?: string
-  labels?: string[]
-}
-const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
-
-watchEffect(() => { console.log(msg) })
-
-const emit = defineEmits<{
-  (e: 'change', id: number): void
-  (e: 'update', value: string): void
-}>()
-</script>
-```
-
----
-level: 2
----
-
-# Svelte
-
-```html{all|2-5}
-<script>
-  let { answer = 42 } = $props();
-	let count = $state(1);
-	let doubled = $derived(count * 2);
-	let quadrupled = $derived(doubled * 2);
-	function handleClick() { count += 1; }
-</script>
-
-<p>The answer is {answer}</p>
-<button onclick={handleClick}>Count: {count}</button>
-<p>{count} * 2 = {doubled}</p>
-<p>{doubled} * 2 = {quadrupled}</p>
-```
-
----
-level: 2
----
-
-# Solid.js
-
-```js{all|1-2|8-13}
-function MyComponent(props) {
-  const finalProps = mergeProps({ defaultName: "Ryan Carniato" }, props);
-  const [count, setCount] = createSignal(1);
-  const increment = () => setCount(count => count + 1);
-  const doubled = createMemo(() => count() * 2);
-  const quadrupled = createMemo(() => doubled() * 2);
-  return (
-    <div>
-      <div>Hello {finalProps.defaultName}</div>
-      <button type="button" onClick={increment}>Count: {count()}</button>
-      <p>{count()} * 2 = {doubled()}</p>
-      <p>{doubled()} * 2 = {quadrupled()}</p>
-    </div>
-  );
-}
-```
----
-level: 3
----
-
-<style>
-  .slidev-code-wrapper {
-    --slidev-code-font-size: 12px;
-    --slidev-code-line-height: 1.1em;
-  }
-</style>
-
-<h1>React <span v-click>Compiler?</span></h1>
-
-```tsx
-const OhmsLaw = () => {
-  const [voltage, setVoltage] = useState(1.5)
-  const [resistance, setResistance] = useState(2)
-
-  const amperage = voltage / resistance
-
-  return (
-    <div>
-      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
-        setVoltage(e.target.valueAsNumber)
-      }}/></p>
-      <p>Сопротивление: <input type="number" value={resistance} onInput={e => {
-        setResistance(e.target.valueAsNumber)
-      }}/></p>
-      <p>Сила тока: <span>{amperage}</span> А</p>
-      <p>Мощность: <span>{amperage * voltage}</span> Вт</p>
-    </div>
-  )
-}
-```
-
----
-level: 3
----
-
-# Компилируемая реактивность: итоги
-
-<div>
-<v-clicks>
-
-Фреймворки пытаются преодолеть:
-- ограничения JavaScript для реализации реактивности
-- неудобства API реализации реактивности
-
-Смешиваются:
-- обычный JavaScript
-- API runtime-реализации реактивности
-- "Магия" преобразований кода
-
-</v-clicks>
-</div>
-
----
-level: 1
-background: ''
-class: bg-image-gradient-right
-style: '--slide-background-image: url(images/declaration.jpg)'
----
-
-<br/><br/><br/>
-
-# 📜 Декларативность
-
+# Декларативный TSX
 
 ---
 level: 3
@@ -1274,6 +602,119 @@ level: 3
 
 </v-clicks>
 
+---
+level: 3
+---
+
+# Декларативность в UI-фреймворках
+
+Многие фреймворки имеют свои языки шаблонов с особым синтаксисом не только для разметки, но и для описания потока данных
+
+Но часть state management остаётся в части JavaScript, к которому компилятором могут применяться преобразования.
+
+---
+level: 3
+---
+
+# Декларативный TSX
+
+<v-clicks>
+
+- Подмножество TypeScript с семантикой инкрементальных вычислений
+- Используется как "язык шаблонов" для UI-компонентов
+- Поддерживает простую логику состояния, трансформации и привязки данных
+- Сложная логика выносится за пределы языка в обычный TypeScript
+- Взаимодействие с обычным TypeScript - через "границу" интеграции
+
+</v-clicks>
+
+---
+level: 3
+---
+
+# Декларативный TSX vs. языки шаблонов
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+Декларативный TSX:
+
+- Уже типизирован TypeScript-ом
+- Уже есть поддержка IDE
+- Lexical scopes, замыкания, функции высшего порядка
+
+</div>
+<div>
+
+Языки шаблонов:
+
+- Нужно интегрировать TypeScript (или писать свой typechecker?)
+- Нужна поддержка IDE, начиная с синтаксиса
+- В разметке свои правила видимости имён, замыканий, передачи аргументов функций и т.п.
+
+</div>
+</div>
+
+---
+level: 2
+layout: section
+---
+
+# "Fine-grained reactivity"
+
+---
+level: 3
+---
+
+# Разновидности реактивности
+
+<style>
+li {
+  margin-block: 0;
+  line-height: 1.4rem;
+}
+</style>
+<div class="grid grid-cols-2 gap-4">
+<div class="card" style="--card-color:var(--brand-color-5)" v-click>
+<div class="card-header">Ориентированные на данные</div>
+<div class="card-body">
+
+- первичные и производные данные
+- граф зависимостей
+
+</div>
+<div class="card-footer flex justify-around text-xl"><span><logos-mobx/> MobX</span><span><logos-vue/> Vue</span><span><logos-solidjs-icon/> Solid</span></div>
+</div>
+<div class="card" style="--card-color:var(--brand-color-2)" v-click>
+<div class="card-header">Ориентированные на события</div>
+<div class="card-body">
+
+- события и потоки данных
+- трансформация, фильтрация, <br/>буферизация событий и т.п.
+
+</div>
+<div class="card-footer flex justify-around text-xl"><span><logos-reactivex/> Rx.js</span></div>
+</div>
+<div class="card" style="--card-color:var(--brand-color-3)" v-click>
+<div class="card-header">Гибрид первых двух</div>
+<div class="card-body">
+
+- подробный граф из событий, <br/>данных и действий с ними
+
+</div>
+<div class="card-footer flex justify-around text-xl"><span><logos-effector/> Effector</span></div>
+</div>
+<div class="card" style="--card-color:var(--brand-color-6)" v-click>
+<div class="card-header">Основанные на перевычислении</div>
+<div class="card-body">
+
+- rerender частей приложения
+- reconcilliation результатов
+
+</div>
+<div class="card-footer flex justify-around text-xl"><span><logos-react/> React</span><span><logos-preact/> Preact</span></div>
+</div>
+</div>
 
 ---
 level: 3
@@ -1332,84 +773,76 @@ const OhmsLaw = () => {
 level: 3
 ---
 
-<img src="./drawio/data_flow_graph.drawio.svg" style="margin: 0 auto; width:60%" />
+# Сигналы (API)
+
+```ts
+type Signal<T> = {
+  get: () => T
+  set: (value: T) => void
+}
+
+type Computed<T> = {
+  get: () => T
+}
+
+const signal = <T>(initValue: T): Signal<T> => { /* ... */ }
+const computed = <T>(func: () => T): Computed<T> => { /* ... */ }
+```
 
 ---
 level: 3
+background: images/coffee.jpg
 ---
 
-# Компиляция DSL в сигналы
+<style>
+  .card {
+    background-color: rgb(from var(--slidev-slide-content-background) r g b / 50%);
+  }
+</style>
 
-<div class="grid grid-cols-2 gap-4">
-  <div class="card" style="--card-color:var(--brand-color-4)" v-click>
-    <div class="card-header">Преимущества</div>
-    <div>
-      <ul>
-        <li><span v-mark.red="1">Выглядит</span> как TypeScript</li>
-        <li>Можно деструктурировать объекты (props)</li>
-        <li>Нет boilerplate ".get()", ".set()", "signal()", "computed(() => ...)"</li>
-      </ul>
-    </div>
+# "Гранулярность" реактивности
+
+<div style="position:relative;height: 230px">
+  <div class="fill-container" v-click.hide="1">
+    <img src="./images/grind_sizes.png" style="width:90%;margin:0 auto" />
   </div>
-  <div class="card" style="--card-color:var(--brand-color-3)" v-click>
-    <div class="card-header">Недостатки</div>
-     <div>
-      <ul>
-        <li>"Магия" порядка исполнения вычислений</li>
-        <li>+1 шаг сборки</li>
-        <li>Ограничения синтаксиса и используемых API</li>
-      </ul>
+  <div class="fill-container text-center grid grid-cols-4 gap-2" v-click="1">
+    <div class="card">
+      <div class="card-header">Пересчитать всё</div>
+    </div>
+    <div class="card">
+      <div class="card-header">"Coarse-grained reactivity"</div>
+      <div class="card-body">
+        <div class="flex justify-around text-3xl">
+          <logos-react/> <logos-preact/>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">"Fine-grained reactivity"</div>
+      <div class="card-body">
+        <div class="flex justify-around text-3xl">
+          <logos-vue/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-mobx/>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">Пересчитать инкрементально</div>
+      <div class="card-body">
+        <span class="text-2xl" v-click="2"><b>?</b></span>
+      </div>
     </div>
   </div>
 </div>
 
----
-level: 3
----
+<v-drag-arrow v-click="1" pos="72,375,834,0" style="color:var(--brand-color-1)"/>
 
-<DeclarativeCode :clicks="[0,1]">
-
-````md magic-move {at:1}
-```ts
-let a = 40
-let b = 2
-
-const c = a + b
-```
-```ts
-const a = signal(40)
-const b = signal(2)
-
-const c = computed(() => a.get() + b.get())
-```
-````
-
-</DeclarativeCode>
-<br/><br/>
-<DeclarativeCode :clicks="[0,1]">
-
-````md magic-move {at:1}
-```ts
-let a = "The Answer"
-let b = "Life and Universe and Everything"
-
-const c = `${a} to ${b}`
-```
-```ts
-const a = signal("The Answer")
-const b = signal("Life and Universe and Everything")
-
-const c = computed(() => `${a.get()} to ${b.get()}`)
-```
-````
-
-</DeclarativeCode>
 
 ---
 level: 3
 ---
 
-<DeclarativeCode :clicks="[0,3]">
+<DeclarativeCode :clicks="[0,1]">
 
 ````md magic-move
 ```ts
@@ -1462,11 +895,60 @@ const power = computed(() => lightswitch.get() ? _power1.get() : 0)
 ````
 
 </DeclarativeCode>
+
 ---
 level: 3
 ---
 
 <img src="./drawio/expression_tree.drawio.svg" style="margin:0 auto;width:60%" />
+
+
+---
+level: 3
+---
+
+# Сигналы: Потеря реактивности
+
+````md magic-move
+```ts
+const amperage = signal(2)
+const resistance = signal(1)
+
+const power = computed(() => amperage.get() * amperage.get() * resistance.get())
+```
+```ts{4-6}
+const amperage = signal(2)
+const resistance = signal(1)
+
+const voltage = amperage.get() * resistance.get()  // --> 2
+
+const power = computed(() => amperage.get() * voltage)  // --> 4
+```
+```ts{8-10}
+const amperage = signal(2)
+const resistance = signal(1)
+
+const voltage = amperage.get() * resistance.get()  // --> 2
+
+const power = computed(() => amperage.get() * voltage)  // --> 4
+
+resistance.set(2)
+
+console.log(power.get())  // 4
+```
+```ts{4|10}
+const amperage = signal(2)
+const resistance = signal(1)
+
+const voltage = computed(() => amperage.get() * resistance.get())  // --> 2
+
+const power = computed(() => amperage.get() * voltage.get())  // --> 4
+
+resistance.set(2)
+
+console.log(power.get())  // 8
+```
+````
 
 ---
 level: 3
@@ -1491,186 +973,6 @@ const g = (p: number, q: number) => {
 
 let a = "The Answer"
 let b = 42
-f(a, b)
-```
-```ts{1,16}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()
-  const d = g(b * 2, 42)
-  const e = g(100500, b * 3)
-  return `${c} ${d} ${e}`
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "The Answer"
-let b = 42
-f(a, b)
-```
-```ts{2}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()  // c = "THE ANSWER"
-  const d = g(b * 2, 42)
-  const e = g(100500, b * 3)
-  return `${c} ${d} ${e}`
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "The Answer"
-let b = 42
-f(a, b)
-```
-```ts{3-4}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()  // c = "THE ANSWER"
-  const d = g(b * 2, 42)  // g(84, 42) = ?
-  const e = g(100500, b * 3)  // g(100500, 126) = ?
-  return `${c} ${d} ${e}`
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "The Answer"
-let b = 42
-f(a, b)
-```
-```ts{3,8-12}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()  // c = "THE ANSWER"
-  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 126) = ?
-  return `${c} ${d} ${e}`
-}
-
-const g = (p: number, q: number) => {  // p = 84, p = 42
-  const pp = p * p  // pp = 7056
-  const qq = Math.sqrt(q)  // q = 6.48074069840786
-  return pp + qq  // 7062.480740698408
-}
-
-let a = "The Answer"
-let b = 42
-f(a, b)
-```
-```ts{4,8-12}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()  // c = "THE ANSWER"
-  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
-  return `${c} ${d} ${e}`
-}
-
-const g = (p: number, q: number) => {  // p = 100500, p = 126
-  const pp = p * p  // pp = 10100250000
-  const qq = Math.sqrt(q)  // q = 11.224972160321824
-  return pp + qq  // 10100250011.224972
-}
-
-let a = "The Answer"
-let b = 42
-f(a, b)
-```
-```ts{5}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()  // c = "THE ANSWER"
-  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
-  return `${c} ${d} ${e}`  // "THE ANSWER 7062.480740698408 10100250011.224972"
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "The Answer"
-let b = 42
-f(a, b)
-```
-```ts{14}
-const f = (a: string, b: number) => {  // a = "The Answer", b = 42
-  const c = a.toUppercase()  // c = "THE ANSWER"
-  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
-  return `${c} ${d} ${e}`  // "THE ANSWER 7062.480740698408 10100250011.224972"
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "Any questions?"
-let b = 42
-f(a, b)
-```
-```ts{14,1,2,5}
-const f = (a: string, b: number) => {  // a = "Any questions?", b = 42
-  const c = a.toUppercase()  // c = "ANY QUESTIONS?"
-  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
-  return `${c} ${d} ${e}`  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "Any questions?"
-let b = 42
-f(a, b)
-```
-```ts{15}
-const f = (a: string, b: number) => {  // a = "Any questions?", b = 42
-  const c = a.toUppercase()  // c = "ANY QUESTIONS?"
-  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
-  return `${c} ${d} ${e}`  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "Any questions?"
-let b = 43
-f(a, b)
-```
-```ts{1,3-4,15|3,8,9,11|4,8,10,11}
-const f = (a: string, b: number) => {  // a = "Any questions?", b = 43
-  const c = a.toUppercase()  // c = "ANY QUESTIONS?"
-  const d = g(b * 2, 42)  // g(86, 42) = 7062.480740698408
-  const e = g(100500, b * 3)  // g(100500, 129) = 10100250011.224972
-  return `${c} ${d} ${e}`  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
-}
-
-const g = (p: number, q: number) => {
-  const pp = p * p
-  const qq = Math.sqrt(q)
-  return pp + qq
-}
-
-let a = "Any questions?"
-let b = 43
 f(a, b)
 ```
 ````
@@ -1732,6 +1034,57 @@ console.log(result.get())
 level: 3
 ---
 
+# Условный рендеринг
+
+<DeclarativeCode :clicks="[0, 1]">
+
+````md magic-move
+```tsx
+const Counter = () => {
+  let counter = 0
+
+  return (
+    <div>
+      <button on:click={() => { counter++ }}>
+        Увеличить счётчик
+      </button>
+      <p>{`Кнопка была нажата ${counter} раз!`}</p>
+      <p>Это число{" "}
+        <span>{counter % 2 === 0 ? <em>чётное</em> : <strong>нечётное</strong>}!</span>
+      </p>
+    </div>
+  )
+}
+```
+```tsx
+const Counter = () => {
+  const counter = signal(0)
+
+  return (
+    <div>
+      <button on:click={() => { counter.set(counter.get() + 1) }}>
+        Увеличить счётчик
+      </button>
+      <p>{`Кнопка была нажата ${counter.get()} раз!`}</p>
+      <p>Это число <span>
+        {reIf(computed(() => counter % 2 === 0), (
+          <em>чётное</em>
+        ), (
+          <strong>нечётное</strong>
+        ))}!</span>
+      </p>
+    </div>
+  )
+}
+```
+````
+
+</DeclarativeCode>
+
+---
+level: 3
+---
+
 # Наблюдения
 
 - Инкрементальные вычисления и сигнальная реактивность похожи
@@ -1740,7 +1093,149 @@ level: 3
 - Минимизация "лишних" перевычислений
 
 ---
+level: 1
+layout: section
+---
+
+# Компиляция <br/> декларативного TSX
+
+---
+level: 2
+---
+
+# Компиляция DSL в сигналы
+
+<div class="grid grid-cols-2 gap-4">
+  <div class="card" style="--card-color:var(--brand-color-4)" v-click>
+    <div class="card-header">Преимущества</div>
+    <div>
+      <ul>
+        <li><span v-mark.red="1">Выглядит</span> как TypeScript</li>
+        <li>Можно деструктурировать объекты (props)</li>
+        <li>Нет boilerplate ".get()", ".set()", "signal()", "computed(() => ...)"</li>
+        <li>Есть возможность автоматически оптимизировать</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="--card-color:var(--brand-color-3)" v-click>
+    <div class="card-header">Недостатки</div>
+     <div>
+      <ul>
+        <li>"Магия" порядка исполнения вычислений</li>
+        <li>+1 шаг сборки</li>
+        <li>Ограничения синтаксиса и используемых API</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+---
 level: 3
+---
+
+<style>
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.2em;
+  }
+</style>
+
+# Декларативный TSX: ограничения
+
+<div class="flex gap-4">
+<div class="text-xs">
+
+- **Запрещён "лишний" синтаксис:**
+  - `class`, `this`, `new`, `delete`, `var`, `function`, циклы `for`-`in`, методы (в т.ч. `get`- и `set`-), операции с прототипами и т.д.
+- **"Белый список" API:**
+  - нет прямого доступа к Web APIs
+  - import-ить можно другие модули декларативного TSX
+- **Чистота функций:**
+  - отсутствие циклов, присваиваний, побочных эффектов
+  - Изменения данных - только в специальных контекстах
+- **Древовидные данные:**
+  - Запрет сравнения изменяемых объектов по ссылке
+- **Типизация:**
+  - Запрет небезопасных `as`, `any`
+  - Все property должны быть readonly, кроме тех, которые можно менять
+- **Специальный API:**
+  - реактивные массивы
+  - `snapshot` и `reconcile` вложенных данных
+
+</div>
+<div>
+  <img src="./images/statham.jpg" style="width: 80%"/>
+</div>
+</div>
+
+---
+level: 3
+---
+
+# "Escape Hatches"
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+- `useEffect`
+- `useRef`
+- `watch`
+- `watchEffect`
+- `onMounted`
+- `onUnmounted`
+- и т.п
+
+</div>
+<div v-click>
+  <img src="./images/pantera.jpg" style="width:100%" />
+</div>
+</div>
+
+
+---
+level: 3
+layout: image
+image: images/cocktail.jpg
+backgroundSize: contain
+---
+
+---
+level: 3
+---
+
+# Преобразования кода
+
+```ts {monaco-diff} {height:'auto',fontSize:'16px'}
+let state = initExpression
+
+const result = computationExpression(state)
+~~~
+const state = signal(currentOf(initExpression))
+
+const result = computed(() => computationExpression(currentOf(state)))
+```
+
+где:
+
+```ts
+const currentOf = <T>(s: Computed<T> | T): T => {
+  return s instanceof Computed ? s.get() : s
+}
+```
+
+<!--
+Ограничения применяются для файлов с расширениями `.decl.ts` и `.decl.tsx`. Запрещены ключевые слова class, this, new, delete, var, function, throw. enum, namespace, циклы for-in, методы, get- и set- методы, индексная сигнатура, доступ к свойствам объектов через оператор [], операции с прототипами, spread-оператор при создании и деструктуризации объектов, операторы сравнения == и !=. Ещё применяются type-aware правила, чтобы запретить тип any, запретить оператор as кроме приведения к надтипу, запретить операторы === и !== для сравнения ссылочных типов, кроме null, запретить let-переменные и не-readonly свойства со значениями функциональных типов. Будет существовать особая функция-маркер 'action' из пакета 'rwrtw' типа `(callback: () => void) => void`, которую можно вызывать только с аргументом стрелочной функции в виде `action(() => { /*код*/ })`, где код внутри подчиняется особым правилам. Вне кода, обёрнутого в action, запрещены все операторы присваивания и мутирующие операции массивов, разрешено использование идентификаторов и типов, импортированных только из файлов `.decl.ts` и `decl.tsx` или пакета 'rwrtw' или встроенных в стандартную библиотеку TypeScript. Внутри кода action разрешены присваивания и мутирующие операции массивов.
+-->
+---
+level: 1
+layout: section
+---
+
+# Вложенная реактивность
+
+---
+level: 2
 ---
 
 # Объекты как значения
@@ -1806,18 +1301,25 @@ const e = computed(() => JSON.stringify(c))  // ???
 level: 3
 ---
 
-# Вложенная реактивность
+# Изменяемые объекты
 
-- Реактивные массивы и их трансформация (map, filter, reduce и т.п.)
-- Rendering списков на основе реактивных массивов
-- Union-типы, состоящие из объектных типов
-- Вложенные объекты и вложенные массивы
-- Замена поддерева в реактивном дереве
-- Передача ссылки на изменяемые данные (binding)
-- Жизненный цикл графов и связей
+```ts
+let a = 100500.0
+let b = "Whatever"
+
+let c = { foo: a, bar: b }
+
+
+```
 
 ---
 level: 3
+---
+
+# Вложенные объекты
+
+---
+level: 2
 layout: image
 image: ./images/trees.jpg
 class: text-center
@@ -1834,135 +1336,67 @@ class: text-center
 </div>
 
 ---
-level: 1
-background: ''
-class: bg-image-gradient-right
-style: '--slide-background-image: url(images/strict.jpg)'
----
-
-<br/><br/><br/>
-
-# ✅ Строгость
-
----
-level: 2
----
-
-# Ментальная модель UI - основа DSL
-
-
-<div class="text-center grid grid-cols-2">
-<div>
-
-**Дерево компонентов**
-
-<img src="./drawio/components_tree.drawio.svg" style="margin: 0 auto;width:70%" />
-
-</div>
-<div>
-
-**Цикл обновления**
-
-<img src="./drawio/update_cycle.drawio.svg" style="margin: 0 auto;width:70%" />
-</div>
-</div>
-
----
-level: 3
-class: text-xl text-center
----
-
-**Большая часть UI укладывается в эту модель**
-
-<br/>
-<img src="./images/todomvc.png" style="margin:0 auto;width: 50%" />
-
-<!--
-Большая часть UI укладывается в эту модель. В любом типовом UI будут компоненты, цикл обновления представления и потоки данных, описываемые чистыми функциями. В этом и состоит идея фреймворка - упросить нам работу с этой большей частью UI и сделать это наиболее оптимально.
-
-А все нестандартные компоненты, такие как canvas, карты, плееры, или директивы, интеграции и другие специальные возможности, требующие доступа к низкоуровневым API нужно держать в кодовой базе отдельно. Они выступают адаптерами возможностей для фреймворка, своего рода расширениями языка.
--->
----
 level: 3
 ---
 
-# Декларативный TSX
+# Реактивные массивы и их трансформация
 
-<v-clicks>
+```tsx
+const weekdays: string[] = ["Пн", "Вт", "Ср", "Чт"]
+const weekdaysUpper: readonly string[] = weekdays.map(weekday => weekday.toUppercase())
+const weekdaysLower: readonly string[] = weekdays.map(weekday => weekday.toLowercase())
 
-- Подмножество TypeScript с семантикой инкрементальных вычислений
-- Используется как "язык шаблонов" для UI-компонентов
-- Поддерживает простую логику состояния, трансформации и привязки данных
-- Сложная логика выносится за пределы языка в обычный TypeScript
-- Взаимодействие с обычным TypeScript - через "границу" интеграции
-
-</v-clicks>
----
-level: 3
----
-
-# "Escape Hatches"
-
-<div class="grid grid-cols-2 gap-4">
-<div>
-
-- `useEffect`
-- `useRef`
-- `watch`
-- `watchEffect`
-- `onMounted`
-- `onUnmounted`
-- и т.п
-
-</div>
-<div v-click>
-  <img src="./images/pantera.jpg" style="width:100%" />
-</div>
-</div>
+weekdays.push("Пт", "Сб", "Вс")
+weekdays.splice(2, 1)
+weekdays.sort()
+reconcile(weekdays, ["Вт", "Чт", "Сб"])
+```
 
 ---
 level: 3
 ---
 
-<style>
-  li {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 1.2em;
-  }
-</style>
+```tsx
+type Todo = { task: string; done: boolean }
 
-# Декларативный TSX: ограничения
+const TodoList = () => {
+  const todos: Todo[] = [{ task: "Ничего", done: true }]
+  let input: string = ""
+  let showDone: boolean = false
 
-<div class="flex gap-4">
-<div>
-
-- Запрещён "лишний" синтаксис:
-  - class, this, new, delete, var, function, циклы for-in, методы, get- и set- методы, операции с прототипами и т.д.
-- "Белый список" API:
-  - нет прямого доступа к Web APIs
-  - import-ить можно другие модули декларативного TSX
-- Чистота функций:
-  - отсутствие циклов, присваиваний, побочных эффектов
-  - Изменения данных - только в специальных контекстах
-- Древовидные данные:
-  - Запрет сравнения изменяемых объектов по ссылке
-- Специальный API:
-  - реактивные массивы
-  - snapshot и reconcile вложенных данных
-
-</div>
-<div>
-  <img src="./images/statham.jpg" style="width: 100%"/>
-</div>
-</div>
+  return (<>
+    <input type="text" bind:value={input}>
+    <button on:click={() => { todos.push(input); input = "" }}>Добавить</button>
+    <ul>{todos.map(({ task, done }) => <li>
+      <input type="checkbox" bind:value={done}/>
+      <input type="text" bind:value={task}/>
+      <button on:click={() => { todos.splice(todos.indexOf(task), 1) }}>Удалить</button>
+    </li>)}</ul>
+    <p>{</p>
+  </>)
+}
+```
 
 ---
 level: 3
-layout: image
-image: images/cocktail.jpg
-backgroundSize: contain
 ---
+
+# Union-типы
+
+---
+level: 3
+---
+
+# Замена поддерева в реактивном дереве
+
+---
+level: 3
+---
+
+# Что осталось за кадром?
+
+- Context/Provide-Inject
+- Keep-alive - кеширование состояния компонентов
 
 ---
 level: 1
