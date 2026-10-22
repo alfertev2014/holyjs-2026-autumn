@@ -1,0 +1,94 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent; color-scheme: light;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="323px" height="443px" viewBox="0 0 323 443" content="&lt;mxfile&gt;&lt;diagram id=&quot;nOWpZ8Cy0o58Bd3pfaR9&quot; name=&quot;Page-1&quot;&gt;7Zpdj6IwFIZ/jcnuxSS0BYVLRZ3d7EcmmYu53DTSkWaQuqWOur9+Cy0C1QGdhYluiIlpj/RAz/OefuEA+avdPcfr8AcLSDSAVrAboOkAQtv25Hdq2CsDhNqw5DRQJlAYHukfoo2Wtm5oQJLKhYKxSNB11bhgcUwWomLDnLNt9bJnFlXvusZLcmR4XODo2PpEAxEqq+tYhf0LocswvzOw9C8rnF+sDUmIA7YtmdBsgHzOmFCl1c4nURq7PC6q3fyNXw8PxkkszmmA1uN9Mvy2t35937H4N33a/JzfnfCiTYnY5zGQfmS4ZWWyDakgj2u8SH/ZSuDSFopVJGtAFmUX1+RrnEhk2oKTtaLyTHdEPsjkmUaRzyLGpS1K43YXYP7yaQCRC8fj+XwA/UP5c+pScPZCLm+Rw5JhnqgOveJoozukDYQLsit1WsftnrAVEXwvLwlLaF3NcVuSgTZpJ9DTda11YOs61iJcHjwXnGRBo7oAGzwHm+AUx8voXdwCyiU3ymJZjxlPO1yDbj5y/aGvQKhyE7q6Fu2jGzaisx0D3agrdOgcdJxt4iDNl6nVTO9tLj6aue5URVmVm7jUtfgQLgAaOWVXwSDQFRi746GwJn3m/mQ40cmQlRvTp6bFh4x8JibkVjF1lj7OB6bPaOp7M1dFWZWbuNS1aJ8LvJwLQl2BGV7ZlHTlOdU8JSHHqaCzO0M36njkK5NL2KaB3GTielO9NFDlJnJ1LdonB06knbkQREbWeV2hc5VfEhztYo5Zsg1fkGYZlJnHwTjdQ2UZF6fsA5yE2cAKDOh1eLKPxpN9jvEg7fsBC0F4nHmFFjhAE5gviWheVhlw60nmaz5OIizoazWCJbpODT19hwdGZbiL3B0ZAjB3AgqGblXetBmObFh1BE0lqcAcOcrEdOj2+/XltagvdMv6Ar2+utBXvprvBTbsBdaJwECLAjuxKrodgdm9wDoRGGxRYLAXWC8wU2DtnxhetiG79mOQUxuyfAOmvTgGw+6OQYDd4nDg3PJwAE/S7YeDfx0OnDYXNDe9ZO4V1o3CzjoPLCYc0Dzh6IsfCKfy6QjXZswX+o2/7bwxLXEmsDbdedZ/d3BoV+cpU0Ows7ddoM2TQ3DTR4fXdbRjvolGpotzhxHHMhxZbQ0jslr8bUVdXvz3B83+Ag==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <g data-cell-id="0">
+            <g data-cell-id="1">
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-1">
+                    <g>
+                        <ellipse cx="101" cy="111" rx="40" ry="40" fill="#82aaff" stroke="#82aaff" stroke-width="2" pointer-events="all" style="fill: rgb(130, 170, 255); stroke: rgb(130, 170, 255);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-2">
+                    <g>
+                        <path d="M 231 91 L 291 131 L 231 171 Z" fill="#f78c6c" stroke="#f78c6c" stroke-width="2" stroke-miterlimit="10" transform="rotate(270,261,131)" pointer-events="all" style="fill: rgb(247, 140, 108); stroke: rgb(247, 140, 108);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-3">
+                    <g>
+                        <rect x="11" y="241" width="120" height="60" fill="#c3e88d" stroke="#c3e88d" stroke-width="2" pointer-events="all" style="fill: rgb(195, 232, 141); stroke: rgb(195, 232, 141);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-4">
+                    <g>
+                        <ellipse cx="211" cy="41" rx="60" ry="40" fill="#ffcb6b" stroke="#ffcb6b" stroke-width="2" pointer-events="all" style="fill: rgb(255, 203, 107); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-5">
+                    <g>
+                        <rect x="151" y="261" width="120" height="20" fill="#7dc9e8" stroke="#7dc9e8" stroke-width="2" pointer-events="all" style="fill: rgb(125, 201, 232); stroke: rgb(125, 201, 232);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-6">
+                    <g>
+                        <path d="M 136 351 L 196 391 L 136 431 Z" fill="#ffcb6b" stroke="#ffcb6b" stroke-width="2" stroke-miterlimit="10" transform="rotate(270,166,391)" pointer-events="all" style="fill: rgb(255, 203, 107); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-7">
+                    <g>
+                        <ellipse cx="41" cy="381" rx="60" ry="40" fill="#bb89dc" stroke="#bb89dc" stroke-width="2" transform="rotate(90,41,381)" pointer-events="all" style="fill: rgb(187, 137, 220); stroke: rgb(187, 137, 220);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-8">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 55.65 325.17 L 62.82 301" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-9">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 76.63 241 L 93.63 150.31" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-10">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 94.75 301 L 155.14 377.29" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-11">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 134.75 89.52 L 167.6 68.62" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-12">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 251.91 114.64 L 231.84 78.51" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-13">
+                    <g>
+                        <rect x="246" y="306" width="120" height="30" fill="#7dc9e8" stroke="#7dc9e8" stroke-width="2" transform="rotate(90,306,321)" pointer-events="all" style="fill: rgb(125, 201, 232); stroke: rgb(125, 201, 232);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-14">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 214.57 261 L 250.29 161" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-15">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 291.79 261 L 268.11 161" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-17">
+                    <g>
+                        <rect x="101" y="181" width="120" height="40" rx="18" ry="18" fill="#bb89dc" stroke="#bb89dc" stroke-width="2" pointer-events="all" style="fill: rgb(187, 137, 220); stroke: rgb(187, 137, 220);"/>
+                    </g>
+                </g>
+                <g data-cell-id="3pAys6Ky0_LxonqiWuNF-18">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 147.67 181 L 123.19 144.28" fill="none" stroke="#b3b3b3" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: rgb(179, 179, 179);"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

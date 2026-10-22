@@ -16,12 +16,6 @@ comark: true
 
 <h1>Инкрементальные вычисления <br/>в UI-фреймворках</h1>
 
-<!--
-Всех ещё раз приветствую!
-
-Как видно из названия доклада, я сейчас буду говорить о фреймворках и одной любопытной модели вычислений.
--->
-
 ---
 level: 1
 hideInToc: true
@@ -140,13 +134,15 @@ style: 'background-color: white'
   }
 </style>
 
-<img src="./images/statistics.png" style="width:90%;margin:0 auto" />
+<br/><br/><br/>
+<img src="./images/statistics.png" style="width:100%;margin:0 auto" />
 
 <div v-drag="[243,31,538,74]" class="caption"><logos-vue/> Vue лучше, чем <logos-react/> React!</div>
 
-<div v-drag="[652,132,260,96]" class="caption">Я просто пишу на <logos-jquery/></div>
+<div v-drag="[623,170,260,96]" class="caption">Я просто пишу на <logos-jquery/></div>
 
-<div v-drag="[98,177,268,116]" class="caption">Я просто пишу на <logos-jquery/></div>
+<div v-drag="[96,216,268,116]" class="caption">Я просто пишу на <logos-jquery/></div>
+
 
 ---
 level: 3
@@ -188,7 +184,7 @@ level: 2
 
 - **Инкрементальные вычисления** как модель исполнения чистых функций
 - "Fine-grained reactivity" для точечного обновления UI
-- UI-фреймворк - слой абстракции с соглашениями, допущениями и ограничениями
+- UI-фреймворк - слой абстракции над JavaScript
 - Декларативный DSL для UI с семантикой инкрементального исполнения
 - "Proof-of-concept" UI-фреймворк с инкрементальными вычислениями
 
@@ -214,10 +210,10 @@ level: 2
     </div>
   </div>
 </div>
-<div class="card text-center" style="--card-color:var(--brand-color-1);margin:1em auto;width:50%" v-click>
+<div class="card text-center" style="--card-color:var(--brand-color-1);margin:1em auto;width:60%" v-click>
   <div class="card-header">✅ Строгость</div>
   <div class="card-body">
-    <p>Строгая типизация, строгие абстракции, <br/> соглашения и ограничения</p>
+    <p>Строгая типизация, строгие абстракции, <br/> строгие соглашения и ограничения</p>
   </div>
 </div>
 
@@ -230,7 +226,7 @@ style: '--slide-background-image: url(./images/layers.jpg)'
 
 <style>
   li {
-    transform: translateX(calc((sibling-count() - sibling-index()) * 1em));
+    transform: translateX(calc((8 - var(--element-index)) * 1em));
   }
 </style>
 
@@ -239,19 +235,15 @@ style: '--slide-background-image: url(./images/layers.jpg)'
 # Фреймворки и слои абстракции
 
 <ul>
-<li>Коробочные решения</li>
-<li>Конструкторы сайтов, CMS, NoCode</li>
-<li>Каталоги готовых компонентов, LowCode</li>
-<li>UI-киты, дизайн-системы</li>
-<li>Библиотеки компонентов, утилит и тем</li>
-<li><span class="contrast-bg"><strong>Слой абстракции с другой парадигмой</strong> <logos-react /> <logos-vue/> <logos-angular-icon/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-preact /> <logos-ember/>  ...</span></li>
-<li>Общие Javascript-библиотеки для типовых задач</li>
-<li>Язык JavaScript и его runtime</li>
+<li style="--element-index:1">Коробочные решения</li>
+<li style="--element-index:2">Конструкторы сайтов, CMS, NoCode</li>
+<li style="--element-index:3">Каталоги готовых компонентов, LowCode</li>
+<li style="--element-index:4">UI-киты, дизайн-системы</li>
+<li style="--element-index:5">Библиотеки компонентов, утилит и тем</li>
+<li style="--element-index:6"><span class="contrast-bg"><strong>Слой абстракции с другой парадигмой</strong> <logos-react /> <logos-vue/> <logos-angular-icon/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-preact /> <logos-ember/>  ...</span></li>
+<li style="--element-index:7">Общие Javascript-библиотеки для типовых задач</li>
+<li style="--element-index:8">Язык JavaScript и его runtime</li>
 </ul>
-
-<!--
-Как я уже сказал, фреймворк определяет свой слой абстракции. Давайте сейчас определимся, что мы будем называть фреймворками в докладе. Ведь кто-то мог бы назвать фреймворками целые UI-киты или даже больше, позволяющие сразу собрать полноценное приложение из готовых компонентов. Мы же будем рассматривать только самый низкий уровень, поднимающий нас над JavaScript. Любые такие фреймворки наподобие React или Vue создают свой слой абстракции, который в каком-то смысле меняет парадигму языка, на котором они стоят, то есть JavaScript. Они создают как бы свой особенный язык со своими соглашениями, и мы уже не пишем на нижележащем JavaScript.
--->
 
 ---
 level: 2
@@ -276,13 +268,10 @@ level: 2
 </div>
 </div>
   <div class="fill-container" v-click.hide="1">
-    <img src="./images/actors.png" style="margin:0 auto;width:70%" />
+    <br/>
+    <img src="./images/actors.png" style="margin:0 auto;width:60%" />
   </div>
 </div>
-
-<!--
-И так как абстракция, к которой мы стремимся, для всех фреймворков одна - это некая ментальная модель UI - то все популярные фреймворки в последнее время стали похожи друг на друга и обмениваются одиними удачными идеями реализации. Практически везде можно увидеть компонентную модель и привычный уже всем цикл обновления представления при изменении состояния.
--->
 
 ---
 level: 3
@@ -318,7 +307,7 @@ level: 3
 
 <v-drag-arrow pos="546,319,84,-1" v-click="4"/>
 <v-drag-arrow pos="547,239,85,-1" v-click="4"/>
-<v-drag-arrow pos="788,268,-307,-158" v-click="[2,3]"/>
+<v-drag-arrow pos="788,268,-307,-158" v-click="[2,3]" style="color:var(--brand-color-2)"/>
 <v-drag-arrow pos="415,166,-150,0" v-click="3"/>
 
 ---
@@ -337,16 +326,22 @@ level: 3
 
 # Чистые функции
 
-<br/>
+<br/><br/>
 <div>
   <img src="./drawio/pure_function_cycle.drawio.svg" style="margin: 0 auto;width:70%" />
 </div>
+<br/>
+<v-click>
+
+где _**f**_ - чистая функция без побочных эффектов и внутреннего состояния
+
+</v-click>
 
 ---
 level: 3
 ---
 
-# Изменения в данных
+# Операции с данными
 
 <div class="grid grid-cols-2 gap-4 text-center">
   <div v-click>
@@ -374,7 +369,7 @@ level: 2
 
 <div style="position:relative;height:300px">
   <div class="fill-container" v-click.hide="1">
-    <br/><br/>
+    <br/><br/><br/>
     <img src="./drawio/pure_function.drawio.svg" style="margin: 0 auto;width:80%" />
   </div>
   <div class="fill-container grid grid-cols-3 gap-1 text-center" v-click="1">
@@ -410,10 +405,13 @@ level: 2
       <div class="fill-container flex items-center justify-center" v-click="5">
         <img src="./drawio/changed_view_tree_2.drawio.svg" style="margin: 0 auto;width:70%" />
       </div>
-      <img src="./drawio/fire_event.drawio.svg" v-click="[2,3]" style="margin: 0 auto;width:40%;position:absolute;right:10%;top:40%" />
+      <img src="./drawio/fire_event.drawio.svg" v-click="[2,3]" style="margin: 0 auto;width:40%;position:absolute;right:10%;top:35%" />
     </div>
   </div>
 </div>
+
+
+<v-drag-arrow pos="764,280,-477,0" v-click="[2,3]" style="color:var(--brand-color-2)"/>
 
 ---
 level: 3
@@ -428,6 +426,7 @@ level: 3
 
 <div class="grid grid-cols-2 gap-4">
 <div>
+<br/>
 
 ````md magic-move {at:3}
 ```ts{all|1}
@@ -525,10 +524,10 @@ const OhmsLaw = () => {
 
   return (
     <div>
-      <p>Напряжение: <input type="number" value={voltage} onInput={e => {
+      <p>Напряжение: <input type="number" value={voltage} on:input={e => {
         voltage = e.target.valueAsNumber
       }}/></p>
-      <p>Сопротивление: <input type="number" value={resistance} onInput={e => {
+      <p>Сопротивление: <input type="number" value={resistance} on:input={e => {
         resistance = e.target.valueAsNumber
       }}/></p>
       <p>Сила тока: <span>{amperage}</span> А</p>
@@ -542,7 +541,7 @@ const OhmsLaw = () => {
 level: 3
 ---
 
-<img src="./drawio/data_flow_graph.drawio.svg" style="margin: 0 auto; width:60%" />
+<img src="./drawio/data_flow_graph.drawio.svg" style="margin: 0 auto; width:70%" />
 
 ---
 level: 3
@@ -550,23 +549,59 @@ level: 3
 
 # Представление
 
-<div class="grid grid-cols-5 gap-4">
-  <div>
+<div class="grid grid-cols-5 gap-5 text-center items-center text-xs">
+  <div v-click="5">
     Декларативное представление
   </div>
-  <div>
+  <div v-click="4">
     DOM-дерево
   </div>
-  <div>
+  <div v-click="3">
     Дерево layout
   </div>
-  <div>
+  <div v-click="2">
     Дерево рендеринга
   </div>
-  <div>
+  <div v-click="1">
     Графическая подсистема
   </div>
+  <div class="text-left"  v-click="5">
+
+```tsx
+<>
+  <></>
+  <></>
+  <>
+    <></>
+    <></>
+    <></>
+  </>
+</>
+```
+
+  </div>
+  <div v-click="4">
+    <img src="./drawio/dom_tree.drawio.svg" style="width:70%;margin-left:auto" />
+  </div>
+  <div v-click="3">
+    <img src="./drawio/layout_tree.drawio.svg" style="width:90%;margin-left:auto" />
+  </div>
+  <div v-click="2">
+    <img src="./drawio/render_tree.drawio.svg" style="width:100%" />
+  </div>
+  <div v-click="1">
+    <img src="./drawio/display.drawio.svg" style="width:100%" />
+  </div>
 </div>
+
+<v-drag-arrow pos="156,212,120,0" v-click="6" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="179,272,108,0" v-click="6" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="179,332,108,0" v-click="6" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="156,390,120,0" v-click="6" style="color:var(--brand-color-4)"/>
+
+<v-drag-arrow pos="730,289,24,0" v-click="2" style="color:var(--brand-color-7)"/>
+<v-drag-arrow pos="570,289,24,0" v-click="3" style="color:var(--brand-color-7)"/>
+<v-drag-arrow pos="400,289,24,0" v-click="4" style="color:var(--brand-color-7)"/>
 
 ---
 level: 3
@@ -574,9 +609,8 @@ level: 3
 
 # Потребители данных (эффекты)
 
-- Подписываются на некоторый узел графа
-- Запускают императивные действия по изменению данных
-- Граница между декларативным кодом и императивным миром
+<br/>
+<img src="./drawio/effects.drawio.svg" style="width:90%;margin:0 auto"/>
 
 ---
 level: 2
@@ -606,11 +640,59 @@ level: 3
 level: 3
 ---
 
+<style>
+  .slidev-code-wrapper {
+    --slidev-code-font-size: 10px;
+    --slidev-code-line-height: 1.3em;
+  }
+</style>
+
 # Декларативность в UI-фреймворках
 
-Многие фреймворки имеют свои языки шаблонов с особым синтаксисом не только для разметки, но и для описания потока данных
+<div class="grid grid-cols-2 gap-4">
+<div>
 
-Но часть state management остаётся в части JavaScript, к которому компилятором могут применяться преобразования.
+**<logos-vue/> Vue**
+
+```html
+<script setup lang="ts">
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+
+watchEffect(() => { console.log(msg) })
+
+const emit = defineEmits<{
+  (e: 'change', id: number): void
+  (e: 'update', value: string): void
+}>()
+</script>
+```
+
+</div>
+<div>
+
+**<logos-svelte-icon/> Svelte**
+
+```html
+<script>
+  let { answer = 42 } = $props();
+	let count = $state(1);
+	let doubled = $derived(count * 2);
+	let quadrupled = $derived(doubled * 2);
+	function handleClick() { count += 1; }
+</script>
+
+<p>The answer is {answer}</p>
+<button onclick={handleClick}>Count: {count}</button>
+<p>{count} * 2 = {doubled}</p>
+<p>{doubled} * 2 = {quadrupled}</p>
+```
+
+</div>
+</div>
 
 ---
 level: 3
@@ -630,30 +712,43 @@ level: 3
 
 ---
 level: 3
+class: text-center
 ---
 
-# Декларативный TSX vs. языки шаблонов
+<style>
+  th {
+    font-weight: 700;
+  }
+  table {
+    background-color: #0f111a77;
+  }
+  td, th {
+    padding: 0.5rem;
+  }
+</style>
 
-<div class="grid grid-cols-2 gap-4">
-<div>
-
-Декларативный TSX:
-
-- Уже типизирован TypeScript-ом
-- Уже есть поддержка IDE
-- Lexical scopes, замыкания, функции высшего порядка
-
-</div>
-<div>
-
-Языки шаблонов:
-
-- Нужно интегрировать TypeScript (или писать свой typechecker?)
-- Нужна поддержка IDE, начиная с синтаксиса
-- В разметке свои правила видимости имён, замыканий, передачи аргументов функций и т.п.
-
-</div>
-</div>
+<table>
+  <tr>
+    <th></th>
+    <th>Декларативный TSX</th>
+    <th>Языки шаблонов</th>
+  </tr>
+  <tr>
+    <th>Типизация</th>
+    <td>Уже типизирован TypeScript-ом</td>
+    <td>Нужно интегрировать TypeScript (или писать свой typechecker?)</td>
+  </tr>
+  <tr>
+    <th>Поддержка IDE</th>
+    <td>Уже есть</td>
+    <td>Нужны дополнительные расшинения, начиная с синтаксиса</td>
+  </tr>
+  <tr>
+    <th>Гибкость языка</th>
+    <td>Lexical scopes, замыкания, функции высшего порядка</td>
+    <td>В разметке свои правила видимости имён, замыканий, передачи аргументов функций и т.п.</td>
+  </tr>
+</table>
 
 ---
 level: 2
@@ -718,6 +813,74 @@ li {
 
 ---
 level: 3
+background: images/coffee.jpg
+---
+
+<style>
+  .card {
+    background-color: rgb(from var(--card-color) r g b / 10%);
+  }
+</style>
+
+# "Гранулярность" реактивности
+
+<div style="position:relative;height: 230px">
+  <div class="fill-container" v-click.hide="1">
+    <img src="./images/grind_sizes.png" style="width:90%;margin:0 auto" />
+  </div>
+  <div class="fill-container text-center grid grid-cols-4 gap-2 contrast-bg" v-click="1">
+    <div class="card" style="--card-color:var(--brand-color-3)">
+      <div class="card-header">Пересчитать всё</div>
+    </div>
+    <div class="card" style="--card-color:var(--brand-color-1)">
+      <div class="card-header">"Coarse-grained reactivity"</div>
+      <div class="card-body">
+        <div class="flex justify-around text-3xl">
+          <logos-react/> <logos-preact/>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="--card-color:var(--brand-color-4)">
+      <div class="card-header">"Fine-grained reactivity"</div>
+      <div class="card-body">
+        <div class="flex justify-around text-3xl">
+          <logos-vue/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-mobx/>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="--card-color:var(--brand-color-5)">
+      <div class="card-header">Пересчитать инкрементально</div>
+      <div class="card-body">
+        <span class="text-2xl" v-click="2"><b>?</b></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<v-drag-arrow v-click="1" pos="72,375,834,0" style="color:var(--brand-color-1)"/>
+
+---
+level: 3
+---
+
+# Сигналы (API)
+
+```ts
+type Signal<T> = {
+  get: () => T
+  set: (value: T) => void
+}
+
+type Computed<T> = {
+  get: () => T
+}
+
+const signal = <T>(initValue: T): Signal<T> => { /* ... */ }
+const computed = <T>(func: () => T): Computed<T> => { /* ... */ }
+```
+
+---
+level: 3
 ---
 
 <DeclarativeCode :clicks="[0,1]">
@@ -769,74 +932,34 @@ const OhmsLaw = () => {
 
 </DeclarativeCode>
 
+
 ---
 level: 3
 ---
 
-# Сигналы (API)
+# Преобразования кода
 
-```ts
-type Signal<T> = {
-  get: () => T
-  set: (value: T) => void
-}
+```ts {monaco-diff} {height:'auto',fontSize:'16px'}
+let state = initExpression
 
-type Computed<T> = {
-  get: () => T
-}
+const result = computationExpression(state)
+~~~
+const state = signal(currentOf(initExpression))
 
-const signal = <T>(initValue: T): Signal<T> => { /* ... */ }
-const computed = <T>(func: () => T): Computed<T> => { /* ... */ }
+const result = computed(() => computationExpression(currentOf(state)))
 ```
 
----
-level: 3
-background: images/coffee.jpg
----
+<v-click>
 
-<style>
-  .card {
-    background-color: rgb(from var(--slidev-slide-content-background) r g b / 50%);
-  }
-</style>
+где:
 
-# "Гранулярность" реактивности
+```ts
+const currentOf = <T>(s: Computed<T> | T): T => {
+  return s instanceof Computed ? s.get() : s
+}
+```
 
-<div style="position:relative;height: 230px">
-  <div class="fill-container" v-click.hide="1">
-    <img src="./images/grind_sizes.png" style="width:90%;margin:0 auto" />
-  </div>
-  <div class="fill-container text-center grid grid-cols-4 gap-2" v-click="1">
-    <div class="card">
-      <div class="card-header">Пересчитать всё</div>
-    </div>
-    <div class="card">
-      <div class="card-header">"Coarse-grained reactivity"</div>
-      <div class="card-body">
-        <div class="flex justify-around text-3xl">
-          <logos-react/> <logos-preact/>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">"Fine-grained reactivity"</div>
-      <div class="card-body">
-        <div class="flex justify-around text-3xl">
-          <logos-vue/> <logos-svelte-icon/> <logos-solidjs-icon/> <logos-mobx/>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">Пересчитать инкрементально</div>
-      <div class="card-body">
-        <span class="text-2xl" v-click="2"><b>?</b></span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<v-drag-arrow v-click="1" pos="72,375,834,0" style="color:var(--brand-color-1)"/>
-
+</v-click>
 
 ---
 level: 3
@@ -845,14 +968,14 @@ level: 3
 <DeclarativeCode :clicks="[0,1]">
 
 ````md magic-move
-```ts
+```ts{all|7}
 let lightswitch = true
 
 let voltage = 5
 let resistance1 = 1
 let resistance2 = 1
 
-const power = lightswitch ? voltage * voltage / (resistance1 + resistance2) : 0  // --> 12.5
+const power = lightswitch ? voltage * voltage / (resistance1 + resistance2) : 0
 ```
 ```ts{7-10}
 const lightswitch = signal(true)
@@ -950,6 +1073,59 @@ console.log(power.get())  // 8
 ```
 ````
 
+
+---
+level: 3
+---
+
+# Условный рендеринг
+
+<DeclarativeCode :clicks="[0, 1]">
+
+````md magic-move
+```tsx{all|11}
+const Counter = () => {
+  let counter = 0
+
+  return (
+    <div>
+      <button on:click={() => { counter++ }}>
+        Увеличить счётчик
+      </button>
+      <p>{`Кнопка была нажата ${counter} раз!`}</p>
+      <p>Это число{" "}
+        <span>{counter % 2 === 0 ? <em>чётное</em> : <strong>нечётное</strong>}!</span>
+      </p>
+    </div>
+  )
+}
+```
+```tsx{11-15}
+const Counter = () => {
+  const counter = signal(0)
+
+  return (
+    <div>
+      <button on:click={() => { counter.set(counter.get() + 1) }}>
+        Увеличить счётчик
+      </button>
+      <p>{`Кнопка была нажата ${counter.get()} раз!`}</p>
+      <p>Это число <span>
+        {reIf(computed(() => counter % 2 === 0), (
+          <em>чётное</em>
+        ), (
+          <strong>нечётное</strong>
+        ))}!</span>
+      </p>
+    </div>
+  )
+}
+```
+````
+
+</DeclarativeCode>
+
+
 ---
 level: 3
 ---
@@ -1034,70 +1210,12 @@ console.log(result.get())
 level: 3
 ---
 
-# Условный рендеринг
-
-<DeclarativeCode :clicks="[0, 1]">
-
-````md magic-move
-```tsx
-const Counter = () => {
-  let counter = 0
-
-  return (
-    <div>
-      <button on:click={() => { counter++ }}>
-        Увеличить счётчик
-      </button>
-      <p>{`Кнопка была нажата ${counter} раз!`}</p>
-      <p>Это число{" "}
-        <span>{counter % 2 === 0 ? <em>чётное</em> : <strong>нечётное</strong>}!</span>
-      </p>
-    </div>
-  )
-}
-```
-```tsx
-const Counter = () => {
-  const counter = signal(0)
-
-  return (
-    <div>
-      <button on:click={() => { counter.set(counter.get() + 1) }}>
-        Увеличить счётчик
-      </button>
-      <p>{`Кнопка была нажата ${counter.get()} раз!`}</p>
-      <p>Это число <span>
-        {reIf(computed(() => counter % 2 === 0), (
-          <em>чётное</em>
-        ), (
-          <strong>нечётное</strong>
-        ))}!</span>
-      </p>
-    </div>
-  )
-}
-```
-````
-
-</DeclarativeCode>
-
----
-level: 3
----
-
 # Наблюдения
 
 - Инкрементальные вычисления и сигнальная реактивность похожи
 - Дерево вызовов функций <==> Дерево графов сигналов
 - Порядок вычислений +- одинаковый
 - Минимизация "лишних" перевычислений
-
----
-level: 1
-layout: section
----
-
-# Компиляция <br/> декларативного TSX
 
 ---
 level: 2
@@ -1137,7 +1255,6 @@ level: 3
   li {
     margin-top: 0;
     margin-bottom: 0;
-    line-height: 1.2em;
   }
 </style>
 
@@ -1147,21 +1264,16 @@ level: 3
 <div class="text-xs">
 
 - **Запрещён "лишний" синтаксис:**
-  - `class`, `this`, `new`, `delete`, `var`, `function`, циклы `for`-`in`, методы (в т.ч. `get`- и `set`-), операции с прототипами и т.д.
+  - `class`, `this`, `new`, `delete`, `var`, `function`, циклы `for`-`in`, методы (в т.ч. `get`- и `set`-) и т.д.
 - **"Белый список" API:**
   - нет прямого доступа к Web APIs
   - import-ить можно другие модули декларативного TSX
 - **Чистота функций:**
   - отсутствие циклов, присваиваний, побочных эффектов
   - Изменения данных - только в специальных контекстах
-- **Древовидные данные:**
-  - Запрет сравнения изменяемых объектов по ссылке
 - **Типизация:**
   - Запрет небезопасных `as`, `any`
   - Все property должны быть readonly, кроме тех, которые можно менять
-- **Специальный API:**
-  - реактивные массивы
-  - `snapshot` и `reconcile` вложенных данных
 
 </div>
 <div>
@@ -1199,30 +1311,6 @@ layout: image
 image: images/cocktail.jpg
 backgroundSize: contain
 ---
-
----
-level: 3
----
-
-# Преобразования кода
-
-```ts {monaco-diff} {height:'auto',fontSize:'16px'}
-let state = initExpression
-
-const result = computationExpression(state)
-~~~
-const state = signal(currentOf(initExpression))
-
-const result = computed(() => computationExpression(currentOf(state)))
-```
-
-где:
-
-```ts
-const currentOf = <T>(s: Computed<T> | T): T => {
-  return s instanceof Computed ? s.get() : s
-}
-```
 
 <!--
 Ограничения применяются для файлов с расширениями `.decl.ts` и `.decl.tsx`. Запрещены ключевые слова class, this, new, delete, var, function, throw. enum, namespace, циклы for-in, методы, get- и set- методы, индексная сигнатура, доступ к свойствам объектов через оператор [], операции с прототипами, spread-оператор при создании и деструктуризации объектов, операторы сравнения == и !=. Ещё применяются type-aware правила, чтобы запретить тип any, запретить оператор as кроме приведения к надтипу, запретить операторы === и !== для сравнения ссылочных типов, кроме null, запретить let-переменные и не-readonly свойства со значениями функциональных типов. Будет существовать особая функция-маркер 'action' из пакета 'rwrtw' типа `(callback: () => void) => void`, которую можно вызывать только с аргументом стрелочной функции в виде `action(() => { /*код*/ })`, где код внутри подчиняется особым правилам. Вне кода, обёрнутого в action, запрещены все операторы присваивания и мутирующие операции массивов, разрешено использование идентификаторов и типов, импортированных только из файлов `.decl.ts` и `decl.tsx` или пакета 'rwrtw' или встроенных в стандартную библиотеку TypeScript. Внутри кода action разрешены присваивания и мутирующие операции массивов.
@@ -1316,29 +1404,6 @@ let c = { foo: a, bar: b }
 level: 3
 ---
 
-# Вложенные объекты
-
----
-level: 2
-layout: image
-image: ./images/trees.jpg
-class: text-center
----
-
-<br/><br/>
-
-<h1 class="contrast-bg">Древовидные данные</h1>
-
-<div>
-<p class="contrast-bg">Отсутствие циклов</p>
-<p class="contrast-bg">У каждого узла один родитель</p>
-<p class="contrast-bg">В чистых функциях - только "value-types"</p>
-</div>
-
----
-level: 3
----
-
 # Реактивные массивы и их трансформация
 
 ```tsx
@@ -1381,6 +1446,60 @@ const TodoList = () => {
 level: 3
 ---
 
+# Вложенные объекты
+
+---
+level: 2
+layout: image
+image: ./images/trees.jpg
+class: text-center
+---
+
+<br/><br/>
+
+<h1 class="contrast-bg">Древовидные данные</h1>
+
+<div>
+<p class="contrast-bg">Отсутствие циклов</p>
+<p class="contrast-bg">У каждого узла один родитель</p>
+<p class="contrast-bg">В чистых функциях - только "value-types"</p>
+</div>
+
+
+---
+level: 3
+---
+
+<style>
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.2em;
+  }
+</style>
+
+# Декларативный TSX: ограничения
+
+<div class="flex gap-4">
+<div>
+
+- ...
+- **Древовидные данные:**
+  - Запрет сравнения изменяемых объектов по ссылке
+- **Специальный API:**
+  - реактивные массивы
+  - `snapshot` и `reconcile` вложенных данных
+
+</div>
+<div>
+  <img src="./images/statham.jpg" style="width: 80%"/>
+</div>
+</div>
+
+---
+level: 3
+---
+
 # Union-типы
 
 ---
@@ -1397,6 +1516,8 @@ level: 3
 
 - Context/Provide-Inject
 - Keep-alive - кеширование состояния компонентов
+- Асинхронная логика, например, запросы на сервер
+- SSR
 
 ---
 level: 1

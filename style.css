@@ -9,7 +9,7 @@
 }
 
 :root.dark {
-  --slidev-code-background: #0f111a;
+  --slidev-code-background: #0f111a55;
   --slidev-slide-content-background: #0f111a;
   --brand-color-1: #7dc9e8;
   --brand-color-2: #bb89dc;
@@ -121,7 +121,6 @@
   }
 
   .card-body {
-    font-size: 0.9rem;
     flex: 1 1 auto;
     display: flex;
     flex-flow: column nowrap;
@@ -148,6 +147,6 @@
 
 .contrast-bg {
   border-radius: 1em;
-  background-color: rgb(from var(--slidev-slide-content-background) r g b / 40%);
-  box-shadow: 0 0 0.5rem 0.5rem rgb(from var(--slidev-slide-content-background) r g b / 40%);
+  background-color: rgb(from var(--slidev-slide-content-background) r g b / 50%);
+  box-shadow: 0 0 0.5rem 0.5rem rgb(from var(--slidev-slide-content-background) r g b / 50%);
 }

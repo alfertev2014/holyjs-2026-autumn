@@ -1,0 +1,514 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent; color-scheme: light;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="735px" height="315px" viewBox="0 0 735 315" content="&lt;mxfile&gt;&lt;diagram id=&quot;EsaSIeunpgPCcHXpvbC-&quot; name=&quot;Page-1&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <g data-cell-id="0">
+            <g data-cell-id="1">
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-8">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 582 282 L 652 282 L 662 297 L 652 312 L 582 312 L 572 297 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 88px; height: 1px; padding-top: 297px; margin-left: 573px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="height:3px;pointer-events:none;"></div>
+                                                    <div style="text-align: left;">
+                                                        <span style="color: light-dark(rgb(192, 192, 192), rgb(72, 72, 72)); text-decoration-line: inherit; background-color: transparent;">
+                                                            <span style="font-size: 17px;">
+                                                                <b style="">
+                                                                    /
+                                                                </b>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="617" y="280" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="617" y="280"></tspan>
+                                    <tspan x="617" y="294"></tspan>
+                                    <tspan x="617" y="308"></tspan>
+                                    <tspan x="617" y="322">
+                                        /
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-9">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 622 242 L 692 242 L 702 257 L 692 272 L 622 272 L 612 257 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 88px; height: 1px; padding-top: 257px; margin-left: 613px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="height:3px;pointer-events:none;"></div>
+                                                    <div style="text-align: left;">
+                                                        <span style="color: light-dark(rgb(192, 192, 192), rgb(72, 72, 72)); text-decoration-line: inherit; background-color: transparent;">
+                                                            <span style="font-size: 17px;">
+                                                                <b style="">
+                                                                    /
+                                                                </b>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="657" y="240" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="657" y="240"></tspan>
+                                    <tspan x="657" y="254"></tspan>
+                                    <tspan x="657" y="268"></tspan>
+                                    <tspan x="657" y="282">
+                                        /
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-10">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 582 2 L 652 2 L 662 17 L 652 32 L 582 32 L 572 17 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 88px; height: 1px; padding-top: 17px; margin-left: 572px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: right; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div>
+                                                        <br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="660" y="7" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="end" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="660" y="7"></tspan>
+                                    <tspan x="660" y="21"></tspan>
+                                    <tspan x="660" y="35"></tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-11">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 622 42 L 692 42 L 702 57 L 692 72 L 622 72 L 612 57 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 88px; height: 1px; padding-top: 57px; margin-left: 612px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: right; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="height:3px;pointer-events:none;"></div>
+                                                    <div style="">
+                                                        <span style="color: light-dark(rgb(192, 192, 192), rgb(72, 72, 72)); text-decoration-line: inherit; background-color: transparent;">
+                                                            <span style="font-size: 17px;">
+                                                                <b style="">
+                                                                    /
+                                                                </b>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="700" y="40" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="end" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="700" y="40"></tspan>
+                                    <tspan x="700" y="54"></tspan>
+                                    <tspan x="700" y="68"></tspan>
+                                    <tspan x="700" y="82">
+                                        /
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-12">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 622 82 L 692 82 L 702 97 L 692 112 L 622 112 L 612 97 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 88px; height: 1px; padding-top: 97px; margin-left: 612px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: right; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div>
+                                                        <br/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="700" y="87" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="end" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="700" y="87"></tspan>
+                                    <tspan x="700" y="101"></tspan>
+                                    <tspan x="700" y="115"></tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-13">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 652 122 L 722 122 L 732 137 L 722 152 L 652 152 L 642 137 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 88px; height: 1px; padding-top: 137px; margin-left: 642px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: right; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="height:3px;pointer-events:none;"></div>
+                                                    <div style="">
+                                                        <span style="color: light-dark(rgb(192, 192, 192), rgb(72, 72, 72)); text-decoration-line: inherit; background-color: transparent;">
+                                                            <span style="font-size: 17px;">
+                                                                <b style="">
+                                                                    /
+                                                                </b>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="730" y="120" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="end" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="730" y="120"></tspan>
+                                    <tspan x="730" y="134"></tspan>
+                                    <tspan x="730" y="148"></tspan>
+                                    <tspan x="730" y="162">
+                                        /
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-14">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 652 162 L 722 162 L 732 177 L 722 192 L 652 192 L 642 177 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 88px; height: 1px; padding-top: 177px; margin-left: 642px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: right; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="height:3px;pointer-events:none;"></div>
+                                                    <div style="">
+                                                        <span style="color: light-dark(rgb(192, 192, 192), rgb(72, 72, 72)); text-decoration-line: inherit; background-color: transparent;">
+                                                            <span style="font-size: 17px;">
+                                                                <b style="">
+                                                                    /
+                                                                </b>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="730" y="160" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="end" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="730" y="160"></tspan>
+                                    <tspan x="730" y="174"></tspan>
+                                    <tspan x="730" y="188"></tspan>
+                                    <tspan x="730" y="202">
+                                        /
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-15">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 652 202 L 722 202 L 732 217 L 722 232 L 652 232 L 642 217 Z" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-end; width: 88px; height: 1px; padding-top: 217px; margin-left: 642px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: right; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div style="float:left;text-decoration:inherit;width:88px;height:26px;">
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:left;width:44px;height:26px;shape-outside:polygon(17.42% 0.05%, 0.05% 50%, 17.42% 99.95%, 0.05% 99.95%, 0.05% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="float:right;width:44px;height:26px;shape-outside:polygon(82.58% 0.05%, 99.95% 50%, 82.58% 99.95%, 99.95% 99.95%, 99.95% 0.05%);shape-margin:2px;pointer-events:none;"></div>
+                                                    <div data-shape-inside="1" contenteditable="false" style="height:3px;pointer-events:none;"></div>
+                                                    <div style="">
+                                                        <span style="color: light-dark(rgb(192, 192, 192), rgb(72, 72, 72)); text-decoration-line: inherit; background-color: transparent;">
+                                                            <span style="font-size: 17px;">
+                                                                <b style="">
+                                                                    /
+                                                                </b>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="730" y="200" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="end" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="730" y="200"></tspan>
+                                    <tspan x="730" y="214"></tspan>
+                                    <tspan x="730" y="228"></tspan>
+                                    <tspan x="730" y="242">
+                                        /
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-16">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 594.59 283.23 L 594.68 33.8" fill="none" stroke="#ffcb6b" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(255, 203, 107);"/>
+                    </g>
+                </g>
+                <g data-cell-id="WflJMsDEg5PraSOSJI1b-17">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 633.51 242.27 L 633.33 113.02" fill="none" stroke="#ffcb6b" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(255, 203, 107);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-2">
+                    <g>
+                        <rect x="2" y="82" width="40" height="30" rx="4.5" ry="4.5" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="4" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-3">
+                    <g>
+                        <rect x="102" y="142" width="40" height="30" rx="4.5" ry="4.5" fill="#82aaff22" stroke="#82aaff" stroke-width="4" pointer-events="all" style="fill: rgba(130, 170, 255, 0.133); stroke: rgb(130, 170, 255);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-4">
+                    <g>
+                        <rect x="202" y="249.5" width="40" height="30" rx="4.5" ry="4.5" fill="#82aaff22" stroke="#82aaff" stroke-width="4" pointer-events="all" style="fill: rgba(130, 170, 255, 0.133); stroke: rgb(130, 170, 255);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-5">
+                    <g>
+                        <rect x="2" y="192" width="40" height="30" rx="4.5" ry="4.5" fill="#ffcb6b22" stroke="#ffcb6b" stroke-width="4" pointer-events="all" style="fill: rgba(255, 203, 107, 0.133); stroke: rgb(255, 203, 107);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-6">
+                    <g>
+                        <rect x="192" y="72" width="40" height="30" rx="4.5" ry="4.5" fill="#82aaff22" stroke="#82aaff" stroke-width="4" pointer-events="all" style="fill: rgba(130, 170, 255, 0.133); stroke: rgb(130, 170, 255);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-7">
+                    <g>
+                        <rect x="92" y="282" width="40" height="30" rx="4.5" ry="4.5" fill="#82aaff22" stroke="#82aaff" stroke-width="4" pointer-events="all" style="fill: rgba(130, 170, 255, 0.133); stroke: rgb(130, 170, 255);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-8">
+                    <g>
+                        <rect x="82" y="2" width="40" height="30" rx="4.5" ry="4.5" fill="#82aaff22" stroke="#82aaff" stroke-width="4" pointer-events="all" style="fill: rgba(130, 170, 255, 0.133); stroke: rgb(130, 170, 255);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-9">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 42 97 L 52 97 Q 62 97 62 87 L 62 27 Q 62 17 66.95 17 L 71.9 17" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 78.65 17 L 69.65 21.5 L 71.9 17 L 69.65 12.5 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-10">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 122 17 L 147 17 Q 157 17 157 27 L 157 69.5 Q 157 79.5 167 79.5 L 181.9 79.5" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 188.65 79.5 L 179.65 84 L 181.9 79.5 L 179.65 75 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-11">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 142 157 L 157 157 Q 167 157 167 147 L 167 104.5 Q 167 94.5 174.45 94.5 L 181.9 94.5" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 188.65 94.5 L 179.65 99 L 181.9 94.5 L 179.65 90 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-12">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 142 157 L 162 157 Q 172 157 172 167 L 172 247 Q 172 257 181.95 257 L 191.9 257" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 198.65 257 L 189.65 261.5 L 191.9 257 L 189.65 252.5 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-13">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 132 297 L 157 297 Q 167 297 167 287 L 167 279.5 Q 167 272 177 272 L 191.9 272" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 198.65 272 L 189.65 276.5 L 191.9 272 L 189.65 267.5 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-14">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 42 207 L 62 207 Q 72 207 72 197 L 72 174.5 Q 72 164.5 81.95 164.5 L 91.9 164.5" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 98.65 164.5 L 89.65 169 L 91.9 164.5 L 89.65 160 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-15">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 42 207 L 57 207 Q 67 207 67 217 L 67 279.5 Q 67 289.5 74.45 289.5 L 81.9 289.5" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 88.65 289.5 L 79.65 294 L 81.9 289.5 L 79.65 285 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-16">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 42 97 L 62 97 Q 72 97 72 107 L 72 139.5 Q 72 149.5 81.95 149.5 L 91.9 149.5" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 98.65 149.5 L 89.65 154 L 91.9 149.5 L 89.65 145 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-17">
+                    <g>
+                        <ellipse cx="295.75" cy="87" rx="23.75" ry="23.75" fill="#c3e88d22" stroke="#c3e88d" stroke-width="4" pointer-events="all" style="fill: rgba(195, 232, 141, 0.133); stroke: rgb(195, 232, 141);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-18">
+                    <g>
+                        <ellipse cx="305.75" cy="264.5" rx="23.75" ry="23.75" fill="#c3e88d22" stroke="#c3e88d" stroke-width="4" pointer-events="all" style="fill: rgba(195, 232, 141, 0.133); stroke: rgb(195, 232, 141);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-19">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 232 87 L 261.9 87" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 268.65 87 L 259.65 91.5 L 261.9 87 L 259.65 82.5 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-20">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 242 264.5 L 271.9 264.5" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 278.65 264.5 L 269.65 269 L 271.9 264.5 L 269.65 260 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-21">
+                    <g>
+                        <rect x="352" y="117" width="210" height="40" fill="none" stroke="#babed8" stroke-width="2" pointer-events="all" style="stroke: rgb(186, 190, 216);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 137px; margin-left: 353px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));">
+                                                    span.textContent = value
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="457" y="142" fill="#000000" font-family="Helvetica" font-size="16px" text-anchor="middle" font-weight="bold" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    span.textContent = value
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-23">
+                    <g>
+                        <rect x="372" y="197" width="170" height="40" fill="none" stroke="#babed8" stroke-width="2" pointer-events="all" style="stroke: rgb(186, 190, 216);"/>
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 168px; height: 1px; padding-top: 217px; margin-left: 373px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));">
+                                                    input.value = value
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="457" y="222" fill="#000000" font-family="Helvetica" font-size="16px" text-anchor="middle" font-weight="bold" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    input.value = value
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-24">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 319.5 87 L 447 87 Q 457 87 457 96.95 L 457 106.9" fill="none" stroke="#c3e88d" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(195, 232, 141);"/>
+                        <path d="M 457 113.65 L 452.5 104.65 L 457 106.9 L 461.5 104.65 Z" fill="#c3e88d" stroke="#c3e88d" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(195, 232, 141); stroke: rgb(195, 232, 141);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-25">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 329.5 264.5 L 447 264.5 Q 457 264.5 457 255.8 L 457 247.1" fill="none" stroke="#c3e88d" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(195, 232, 141);"/>
+                        <path d="M 457 240.35 L 461.5 249.35 L 457 247.1 L 452.5 249.35 Z" fill="#c3e88d" stroke="#c3e88d" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(195, 232, 141); stroke: rgb(195, 232, 141);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-26">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 562 137 L 631.9 137" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 638.65 137 L 629.65 141.5 L 631.9 137 L 629.65 132.5 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+                <g data-cell-id="BZkhDUGHJ71bkKQZAe35-27">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 542 217 L 631.9 217" fill="none" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: rgb(186, 190, 216);"/>
+                        <path d="M 638.65 217 L 629.65 221.5 L 631.9 217 L 629.65 212.5 Z" fill="#babed8" stroke="#babed8" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: rgb(186, 190, 216); stroke: rgb(186, 190, 216);"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
