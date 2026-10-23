@@ -139,10 +139,9 @@ style: 'background-color: white'
 
 <div v-drag="[243,31,538,74]" class="caption"><logos-vue/> Vue лучше, чем <logos-react/> React!</div>
 
-<div v-drag="[623,170,260,96]" class="caption">Я просто пишу на <logos-jquery/></div>
+<div v-drag="[646,146,260,160]" class="caption">Я просто <strike>пишу</strike> генерирую на <logos-jquery/></div>
 
-<div v-drag="[96,216,268,116]" class="caption">Я просто пишу на <logos-jquery/></div>
-
+<div v-drag="[93,204,268,166]" class="caption">Я просто <strike>пишу</strike> генерирую на <logos-jquery/></div>
 
 ---
 level: 3
@@ -550,7 +549,7 @@ level: 3
 # Представление
 
 <div class="grid grid-cols-5 gap-5 text-center items-center text-xs">
-  <div v-click="5">
+  <div v-click="6">
     Декларативное представление
   </div>
   <div v-click="4">
@@ -565,7 +564,7 @@ level: 3
   <div v-click="1">
     Графическая подсистема
   </div>
-  <div class="text-left"  v-click="5">
+  <div class="text-left"  v-click="6">
 
 ```tsx
 <>
@@ -594,14 +593,16 @@ level: 3
   </div>
 </div>
 
-<v-drag-arrow pos="156,212,120,0" v-click="6" style="color:var(--brand-color-4)"/>
-<v-drag-arrow pos="179,272,108,0" v-click="6" style="color:var(--brand-color-4)"/>
-<v-drag-arrow pos="179,332,108,0" v-click="6" style="color:var(--brand-color-4)"/>
-<v-drag-arrow pos="156,390,120,0" v-click="6" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="156,212,120,0" v-click="7" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="179,272,108,0" v-click="7" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="179,332,108,0" v-click="7" style="color:var(--brand-color-4)"/>
+<v-drag-arrow pos="156,390,120,0" v-click="7" style="color:var(--brand-color-4)"/>
 
 <v-drag-arrow pos="730,289,24,0" v-click="2" style="color:var(--brand-color-7)"/>
 <v-drag-arrow pos="570,289,24,0" v-click="3" style="color:var(--brand-color-7)"/>
 <v-drag-arrow pos="400,289,24,0" v-click="4" style="color:var(--brand-color-7)"/>
+
+<img src="./images/key.jpg" v-drag="[64,174,361,291]" v-click="[5,6]"/>
 
 ---
 level: 3
@@ -611,6 +612,16 @@ level: 3
 
 <br/>
 <img src="./drawio/effects.drawio.svg" style="width:90%;margin:0 auto"/>
+
+---
+level: 3
+---
+
+# Инкрементальные вычисления
+
+- Минимизация промежуточных вычислений
+- Точечное обновление UI
+- Код остаётся декларативным
 
 ---
 level: 2
@@ -655,20 +666,25 @@ level: 3
 **<logos-vue/> Vue**
 
 ```html
-<script setup lang="ts">
-interface Props {
-  msg?: string
-  labels?: string[]
-}
-const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+<script setup>
+import { ref } from 'vue'
 
-watchEffect(() => { console.log(msg) })
-
-const emit = defineEmits<{
-  (e: 'change', id: number): void
-  (e: 'update', value: string): void
-}>()
+const show = ref(true)
+const list = ref([1, 2, 3])
 </script>
+
+<template>
+  <button @click="show = !show">Toggle List</button>
+  <button @click="list.push(list.length + 1)">Push</button>
+  <button @click="list.pop()">Pop</button>
+  <button @click="list.reverse()">Reverse List</button>
+
+  <ul v-if="show && list.length">
+    <li v-for="item of list">{{ item }}</li>
+  </ul>
+  <p v-else-if="list.length">List is not empty, but hidden.</p>
+  <p v-else>List is empty.</p>
+</template>
 ```
 
 </div>
@@ -678,17 +694,25 @@ const emit = defineEmits<{
 
 ```html
 <script>
-  let { answer = 42 } = $props();
-	let count = $state(1);
-	let doubled = $derived(count * 2);
-	let quadrupled = $derived(doubled * 2);
-	function handleClick() { count += 1; }
+	import Thing from './Thing.svelte';
+
+	let things = $state([
+		{ id: 1, color: 'darkblue' },
+		{ id: 2, color: 'indigo' }
+	]);
+	function handleClick() {
+		things = things.slice(1);
+	}
 </script>
 
-<p>The answer is {answer}</p>
-<button onclick={handleClick}>Count: {count}</button>
-<p>{count} * 2 = {doubled}</p>
-<p>{doubled} * 2 = {quadrupled}</p>
+<button onclick={handleClick}> Remove first thing </button>
+<div>
+	<div>
+		{#each things as thing (thing.id)}
+			<Thing current={thing.color} />
+		{/each}
+	</div>
+</div>
 ```
 
 </div>
@@ -712,7 +736,6 @@ level: 3
 
 ---
 level: 3
-class: text-center
 ---
 
 <style>
@@ -727,6 +750,7 @@ class: text-center
   }
 </style>
 
+<br/>
 <table>
   <tr>
     <th></th>
@@ -851,7 +875,7 @@ background: images/coffee.jpg
     <div class="card" style="--card-color:var(--brand-color-5)">
       <div class="card-header">Пересчитать инкрементально</div>
       <div class="card-body">
-        <span class="text-2xl" v-click="2"><b>?</b></span>
+        <span class="text-3xl" v-click="2"><b>?</b></span>
       </div>
     </div>
   </div>
@@ -1151,8 +1175,196 @@ let a = "The Answer"
 let b = 42
 f(a, b)
 ```
+```ts{1,16}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()
+  const d = g(b * 2, 42)
+  const e = g(100500, b * 3)
+  return `${c} ${d} ${e}`
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "The Answer"
+let b = 42
+f(a, b)
+```
+```ts{2}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()  // c = "THE ANSWER"
+  const d = g(b * 2, 42)
+  const e = g(100500, b * 3)
+  return `${c} ${d} ${e}`
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "The Answer"
+let b = 42
+f(a, b)
+```
+```ts{3-4}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()  // c = "THE ANSWER"
+  const d = g(b * 2, 42)  // g(84, 42) = ?
+  const e = g(100500, b * 3)  // g(100500, 126) = ?
+  return `${c} ${d} ${e}`
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "The Answer"
+let b = 42
+f(a, b)
+```
+```ts{3,8-12}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()  // c = "THE ANSWER"
+  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 126) = ?
+  return `${c} ${d} ${e}`
+}
+
+const g = (p: number, q: number) => {  // p = 84, p = 42
+  const pp = p * p  // pp = 7056
+  const qq = Math.sqrt(q)  // q = 6.48074069840786
+  return pp + qq  // 7062.480740698408
+}
+
+let a = "The Answer"
+let b = 42
+f(a, b)
+```
+```ts{4,8-12}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()  // c = "THE ANSWER"
+  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
+  return `${c} ${d} ${e}`
+}
+
+const g = (p: number, q: number) => {  // p = 100500, p = 126
+  const pp = p * p  // pp = 10100250000
+  const qq = Math.sqrt(q)  // q = 11.224972160321824
+  return pp + qq  // 10100250011.224972
+}
+
+let a = "The Answer"
+let b = 42
+f(a, b)
+```
+```ts{5}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()  // c = "THE ANSWER"
+  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
+  return `${c} ${d} ${e}`  // "THE ANSWER 7062.480740698408 10100250011.224972"
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "The Answer"
+let b = 42
+f(a, b)
+```
+```ts{14}
+const f = (a: string, b: number) => {  // a = "The Answer", b = 42
+  const c = a.toUppercase()  // c = "THE ANSWER"
+  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
+  return `${c} ${d} ${e}`  // "THE ANSWER 7062.480740698408 10100250011.224972"
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "Any questions?"
+let b = 42
+f(a, b)
+```
+```ts{14,1,2,5}
+const f = (a: string, b: number) => {  // a = "Any questions?", b = 42
+  const c = a.toUppercase()  // c = "ANY QUESTIONS?"
+  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
+  return `${c} ${d} ${e}`  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "Any questions?"
+let b = 42
+f(a, b)
+```
+```ts{15}
+const f = (a: string, b: number) => {  // a = "Any questions?", b = 42
+  const c = a.toUppercase()  // c = "ANY QUESTIONS?"
+  const d = g(b * 2, 42)  // g(84, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 126) = 10100250011.224972
+  return `${c} ${d} ${e}`  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "Any questions?"
+let b = 43
+f(a, b)
+```
+```ts{1,3-4,15|3,8,9,11|4,8,10,11}
+const f = (a: string, b: number) => {  // a = "Any questions?", b = 43
+  const c = a.toUppercase()  // c = "ANY QUESTIONS?"
+  const d = g(b * 2, 42)  // g(86, 42) = 7062.480740698408
+  const e = g(100500, b * 3)  // g(100500, 129) = 10100250011.224972
+  return `${c} ${d} ${e}`  // "ANY QUESTIONS? 7062.480740698408 10100250011.224972"
+}
+
+const g = (p: number, q: number) => {
+  const pp = p * p
+  const qq = Math.sqrt(q)
+  return pp + qq
+}
+
+let a = "Any questions?"
+let b = 43
+f(a, b)
+```
 ````
 
+
+<div v-drag="[413,66,387,435]">
+  <div style="position:relative;height:100%">
+    <img class="fill-container" src="./drawio/call_tree.drawio.svg" v-click="[8,10]" />
+    <img class="fill-container" src="./drawio/call_tree_1.drawio.svg" v-click="[10,12]" />
+    <img class="fill-container" src="./drawio/call_tree_2.drawio.svg" v-click="12" />
+  </div>
+</div>
 </DeclarativeCode>
 
 ---
@@ -1194,13 +1406,9 @@ const g = (p: Computed<number>, q: Computed<number>): Computed<string> => {
   return computed(() => pp.get() + qq.get())
 }
 
-const a = signal("The answer")
-const b = signal(42)
-const result = f(a, b)
-
-console.log(result.get())
-a.set("Any questions?")
-console.log(result.get())
+const a = signal("Any questions?")
+const b = signal(43)
+f(a, b)
 ```
 ````
 
@@ -1229,7 +1437,6 @@ level: 2
     <div>
       <ul>
         <li><span v-mark.red="1">Выглядит</span> как TypeScript</li>
-        <li>Можно деструктурировать объекты (props)</li>
         <li>Нет boilerplate ".get()", ".set()", "signal()", "computed(() => ...)"</li>
         <li>Есть возможность автоматически оптимизировать</li>
       </ul>
@@ -1264,7 +1471,7 @@ level: 3
 <div class="text-xs">
 
 - **Запрещён "лишний" синтаксис:**
-  - `class`, `this`, `new`, `delete`, `var`, `function`, циклы `for`-`in`, методы (в т.ч. `get`- и `set`-) и т.д.
+  - `class`, `this`, `new`, `delete`, `var`, `function`, циклы `for`-`in`, <br/> методы (в т.ч. `get`- и `set`-) и т.д.
 - **"Белый список" API:**
   - нет прямого доступа к Web APIs
   - import-ить можно другие модули декларативного TSX
@@ -1274,10 +1481,11 @@ level: 3
 - **Типизация:**
   - Запрет небезопасных `as`, `any`
   - Все property должны быть readonly, кроме тех, которые можно менять
+- ...
 
 </div>
-<div>
-  <img src="./images/statham.jpg" style="width: 80%"/>
+<div style="flex:1 0 auto">
+  <img src="./images/statham.jpg" width="170" style="margin:0 auto"/>
 </div>
 </div>
 
@@ -1290,6 +1498,8 @@ level: 3
 <div class="grid grid-cols-2 gap-4">
 <div>
 
+"Где мои ...?"
+
 - `useEffect`
 - `useRef`
 - `watch`
@@ -1300,6 +1510,7 @@ level: 3
 
 </div>
 <div v-click>
+  <br/>
   <img src="./images/pantera.jpg" style="width:100%" />
 </div>
 </div>
@@ -1381,6 +1592,19 @@ const d = computed(() => `${foo.get()} is ${bar.get()}!`)
 
 const e = computed(() => JSON.stringify(c))  // ???
 ```
+
+```ts{10}
+const a = signal(100500.0)
+const b = signal("Whatever")
+
+const c = { foo: a, bar: b }
+
+const { foo, bar } = c
+
+const d = computed(() => `${foo.get()} is ${bar.get()}!`)
+
+const e = computed(() => JSON.stringify(snapshot(c)))
+```
 ````
 
 </DeclarativeCode>
@@ -1391,62 +1615,136 @@ level: 3
 
 # Изменяемые объекты
 
+<DeclarativeCode>
+
+````md magic-move
 ```ts
 let a = 100500.0
 let b = "Whatever"
 
 let c = { foo: a, bar: b }
-
-
 ```
+```ts
+let a = 100500.0
+let b = "Whatever"
+
+let c: {
+  foo: number
+  bar: string
+} = { foo: a, bar: b }
+```
+```ts
+let a = 100500.0
+let b = "Whatever"
+
+let c: {
+  readonly foo: number
+  readonly bar: string
+} = { foo: a, bar: b }
+```
+````
+
+</DeclarativeCode>
 
 ---
 level: 3
 ---
 
-# Реактивные массивы и их трансформация
+# Реактивные массивы
 
-```tsx
+<DeclarativeCode>
+
+```tsx{all|1|2,3|5-7|9}
 const weekdays: string[] = ["Пн", "Вт", "Ср", "Чт"]
-const weekdaysUpper: readonly string[] = weekdays.map(weekday => weekday.toUppercase())
-const weekdaysLower: readonly string[] = weekdays.map(weekday => weekday.toLowercase())
+const weekdaysUpper: readonly string[] = weekdays.map(wd => wd.toUppercase())
+const weekdaysLower: readonly string[] = weekdays.map(wd => wd.toLowercase())
 
 weekdays.push("Пт", "Сб", "Вс")
 weekdays.splice(2, 1)
 weekdays.sort()
+
 reconcile(weekdays, ["Вт", "Чт", "Сб"])
 ```
+
+</DeclarativeCode>
 
 ---
 level: 3
 ---
 
-```tsx
-type Todo = { task: string; done: boolean }
+<br/>
+<div style="position:relative">
+  <div class="fill-container">
+    <img src="./drawio/arrays.drawio.svg" style="margin:0 auto" v-click.hide="1" />
+  </div>
+  <div class="fill-container">
+    <img src="./drawio/arrays_1.drawio.svg" style="margin:0 auto" v-click="[1,2]"  />
+  </div>
+  <div class="fill-container">
+    <img src="./drawio/arrays_2.drawio.svg" style="margin:0 auto" v-click="[2,3]"  />
+  </div>
+  <div class="fill-container">
+    <img src="./drawio/arrays_3.drawio.svg" style="margin:0 auto" v-click="[3,4]"  />
+  </div>
+</div>
 
+---
+level: 3
+---
+
+<style>
+  .slidev-code-wrapper {
+    --slidev-code-font-size: 15px;
+    --slidev-code-line-height: 1.5em;
+  }
+</style>
+
+<DeclarativeCode>
+
+```tsx{all|1,3|9|8,13|16|11,12} {at:2}
+type Todo = { task: string; done: boolean }
 const TodoList = () => {
   const todos: Todo[] = [{ task: "Ничего", done: true }]
   let input: string = ""
   let showDone: boolean = false
-
   return (<>
     <input type="text" bind:value={input}>
     <button on:click={() => { todos.push(input); input = "" }}>Добавить</button>
-    <ul>{todos.map(({ task, done }) => <li>
-      <input type="checkbox" bind:value={done}/>
-      <input type="text" bind:value={task}/>
-      <button on:click={() => { todos.splice(todos.indexOf(task), 1) }}>Удалить</button>
-    </li>)}</ul>
-    <p>{</p>
+    <ul>{todos.filter(({ done }) => !showDone || done).map(({ task, done }) => (
+      <li>
+        <input type="checkbox" bind:value={done}/>
+        <input type="text" bind:value={task}/>
+        <button on:click={() => { todos.splice(todos.indexOf(task), 1) }}>Удалить</button>
+      </li>
+    ))}</ul>
+    <button on:click={() => { showOnlyDone = !showOnlyDone }}>
+      Показать сделанные
+    </button>
   </>)
 }
 ```
+
+</DeclarativeCode>
+
+<img src="./images/todo.jpg" v-drag="[574,135,336,269]" v-click="[1,2]"/>
 
 ---
 level: 3
 ---
 
 # Вложенные объекты
+
+```ts
+type Data = {
+  foo: { readonly a: string; readonly b: boolean } | null
+  bar: {
+    readonly c: number
+    d: string | number
+    readonly e: readoly boolean[]
+  }[]
+  baz: { readonly kind: "A"; a: string } | { readonly kind: "B"; b: number }
+}
+```
 
 ---
 level: 2
@@ -1460,9 +1758,8 @@ class: text-center
 <h1 class="contrast-bg">Древовидные данные</h1>
 
 <div>
-<p class="contrast-bg">Отсутствие циклов</p>
-<p class="contrast-bg">У каждого узла один родитель</p>
-<p class="contrast-bg">В чистых функциях - только "value-types"</p>
+<p class="contrast-bg">Алгебраические типы данных</p>
+<p class="contrast-bg">"Value-types"</p>
 </div>
 
 
@@ -1485,28 +1782,19 @@ level: 3
 
 - ...
 - **Древовидные данные:**
-  - Запрет сравнения изменяемых объектов по ссылке
+  - Только объекты, массивы и примитивы
+  - Копирование объектов, а не передача по ссылке
+  - Запрет оператора `[]` для свойств объектов и индексной сигнатуры
+  - Запрет сравнения объектов по ссылке (===)
 - **Специальный API:**
-  - реактивные массивы
-  - `snapshot` и `reconcile` вложенных данных
+  - реактивные массивы вместо обычных
+  - `snapshot` и `reconcile` для вложенных данных
 
 </div>
-<div>
-  <img src="./images/statham.jpg" style="width: 80%"/>
+<div style="flex:1 0 auto">
+  <img src="./images/statham.jpg" width="170"/>
 </div>
 </div>
-
----
-level: 3
----
-
-# Union-типы
-
----
-level: 3
----
-
-# Замена поддерева в реактивном дереве
 
 ---
 level: 3
@@ -1514,10 +1802,22 @@ level: 3
 
 # Что осталось за кадром?
 
+- callbacks, event handlers, render-props (slots)
 - Context/Provide-Inject
 - Keep-alive - кеширование состояния компонентов
 - Асинхронная логика, например, запросы на сервер
-- SSR
+- SSR, SSG
+
+---
+level: 3
+---
+
+# Примеры реализации похожих идей
+
+- <logos-marko-icon/> Marko
+- Compose - компиляторный плагин для <logos-kotlin-icon/> Kotlin
+- "Реактивный CSS"
+- QML - декларативный язык для <logos-qt/>
 
 ---
 level: 1
@@ -1534,7 +1834,6 @@ level: 1
 
 <v-clicks>
 
-- UI-фреймворк - решение, способствующее улучшению DX при разработке UI
 - UI-фреймворк создаёт свою абстракцию - ментальная модель UI:
   - Чистая функция с инкрементальным исполнением - "fine-grained reactivity"
   - Декларативный DSL для описания структуры и логики UI
@@ -1542,6 +1841,7 @@ level: 1
 - Многие фреймворки приходят к этой концепции:
   - Те же соглашения и ограничения 
   - Те же паттерны и best practices
+- 
 
 </v-clicks>
 
@@ -1554,9 +1854,6 @@ level: 2
 <div class="grid grid-cols-2 gap-4 items-center">
   <div>
     <img src="./images/qr-code.svg" style="width: 70%;margin: 0 auto" />
-
-https://github.com/alfertev2014/rwrtw
-
   </div>
   <div>
     <div class="flex gap-x-2 text-2xl items-center"><img src="./images/vasya.jpg" style="border-radius: 50%" /><div><b>Василий Алфертьев</b></div></div>
